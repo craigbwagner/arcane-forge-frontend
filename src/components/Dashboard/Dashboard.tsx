@@ -1,6 +1,6 @@
 interface Props {
   user: {
-    username: string;
+    username: string; //might need to add more here
   };
 }
 
