@@ -1,5 +1,4 @@
 const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
-
 interface User {
   username: string | null;
 }
@@ -26,7 +25,7 @@ async function signup(formData) {
   }
 }
 
-async function signin(user) {
+async function signin(user: User) {
   try {
     const res = await fetch(`${BACKEND_URL}/users/signin`, {
       method: "POST",
@@ -53,7 +52,7 @@ async function signin(user) {
 function getUser(): string | null {
   const token = localStorage.getItem("token");
   if (!token) return null;
-  const user: User = JSON.parse(atob(token.split(".")[1]));
+  const user: User["username"] = JSON.parse(atob(token.split(".")[1]));
   return user;
 }
 

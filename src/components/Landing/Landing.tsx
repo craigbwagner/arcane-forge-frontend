@@ -1,4 +1,4 @@
-const Landing = () => {
+function Landing() {
   return (
     <main>
       <h1>Hello, you are on the landing page for visitors.</h1>
@@ -8,6 +8,6 @@ const Landing = () => {
       </h3>
     </main>
   );
-};
+}
 
 export default Landing;

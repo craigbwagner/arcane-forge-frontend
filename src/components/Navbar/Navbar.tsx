@@ -8,7 +8,7 @@ interface Props {
   handleSignout: MouseEventHandler; //is this correct?
 }
 
-const NavBar = ({ user, handleSignout }: Props) => {
+function NavBar({ user, handleSignout }: Props) {
   return (
     <>
       {user ? (
@@ -38,6 +38,6 @@ const NavBar = ({ user, handleSignout }: Props) => {
       )}
     </>
   );
-};
+}
 
 export default NavBar;
