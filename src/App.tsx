@@ -9,13 +9,14 @@ import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
 
 interface UserState {
-  user: {
-    username: string;
-  } | null;
+  user: string | null;
+}
+
+interface UserActions {
   updateUser: (user: UserState["user"]) => void;
 }
 
-const useStore = create<UserState>()((set) => ({
+const useStore = create<UserState & UserActions>()((set) => ({
   user: authService.getUser(),
   updateUser: (user: UserState["user"]) => set(() => ({ user: user })),
 }));
@@ -31,16 +32,24 @@ function App() {
   return (
     <>
       <h1>Hello</h1>
-      <Navbar user={user} handleSignout={handleSignout} />
       <Routes>
         {user ? (
-          <Route path="/" element={<Dashboard user={user} />} />
+          <>
+            <Route path="/" element={<Dashboard user={user} />} />
+            <Navbar user={user} handleSignout={handleSignout} />
+          </>
         ) : (
           <Route path="/" element={<Landing />} />
         )}
 
-        <Route path="/signup" element={<SignupForm setUser={updateUser} />} />
-        <Route path="/signin" element={<SigninForm setUser={updateUser} />} />
+        <Route
+          path="/signup"
+          element={<SignupForm updateUser={updateUser} />}
+        />
+        <Route
+          path="/signin"
+          element={<SigninForm updateUser={updateUser} />}
+        />
       </Routes>
     </>
   );
