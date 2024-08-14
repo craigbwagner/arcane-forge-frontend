@@ -12,14 +12,12 @@ interface UserState {
   user: {
     username: string;
   } | null;
-}
-interface UserAction {
   updateUser: (user: UserState["user"]) => void;
 }
 
-const useStore = create<UserState & UserAction>((set) => ({
+const useStore = create<UserState>()((set) => ({
   user: authService.getUser(),
-  updateUser: (user) => set(() => ({ user: user })),
+  updateUser: (user: UserState["user"]) => set(() => ({ user: user })),
 }));
 
 function App() {
