@@ -2,10 +2,8 @@ import { MouseEventHandler } from "react";
 import { Link } from "react-router-dom";
 
 interface Props {
-  user: {
-    username: string; //might need to add more here
-  };
-  handleSignout: MouseEventHandler; //is this correct?
+  user: string | null;
+  handleSignout: MouseEventHandler;
 }
 
 function NavBar({ user, handleSignout }: Props) {
