@@ -31,25 +31,26 @@ function App() {
   }
   return (
     <>
+      <Navbar user={user} handleSignout={handleSignout} />
       <h1>Hello</h1>
       <Routes>
         {user ? (
           <>
             <Route path="/" element={<Dashboard user={user} />} />
-            <Navbar user={user} handleSignout={handleSignout} />
           </>
         ) : (
-          <Route path="/" element={<Landing />} />
+          <>
+            <Route path="/" element={<Landing />} />
+            <Route
+              path="/signup"
+              element={<SignupForm updateUser={updateUser} />}
+            />
+            <Route
+              path="/signin"
+              element={<SigninForm updateUser={updateUser} />}
+            />
+          </>
         )}
-
-        <Route
-          path="/signup"
-          element={<SignupForm updateUser={updateUser} />}
-        />
-        <Route
-          path="/signin"
-          element={<SigninForm updateUser={updateUser} />}
-        />
       </Routes>
     </>
   );
