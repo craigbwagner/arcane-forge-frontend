@@ -8,14 +8,16 @@ import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
 
-interface State {
-  user: string | null;
+interface UserState {
+  user: {
+    username: string;
+  } | null;
 }
-interface Action {
-  updateUser: (user: State["user"]) => void;
+interface UserAction {
+  updateUser: (user: UserState["user"]) => void;
 }
 
-const useStore = create<State & Action>((set) => ({
+const useStore = create<UserState & UserAction>((set) => ({
   user: authService.getUser(),
   updateUser: (user) => set(() => ({ user: user })),
 }));
