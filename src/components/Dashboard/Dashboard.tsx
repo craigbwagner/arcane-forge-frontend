@@ -1,6 +1,6 @@
-interface Props {
+type Props = {
   user: string | null;
-}
+};
 
 function Dashboard({ user }: Props) {
   return (
