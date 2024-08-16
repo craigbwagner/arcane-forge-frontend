@@ -1,7 +1,7 @@
 const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
-interface User {
+type User = {
   username: string | null;
-}
+};
 
 async function signup(formData) {
   try {

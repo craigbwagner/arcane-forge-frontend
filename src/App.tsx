@@ -8,13 +8,13 @@ import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
 
-interface UserState {
+type UserState = {
   user: string | null;
-}
+};
 
-interface UserActions {
+type UserActions = {
   updateUser: (user: UserState["user"]) => void;
-}
+};
 
 const useStore = create<UserState & UserActions>()((set) => ({
   user: authService.getUser(),
