@@ -1,6 +1,7 @@
 const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 type User = {
   username: string | null;
+  iat?: number;
 };
 
 async function signup(formData) {
@@ -17,6 +18,7 @@ async function signup(formData) {
     if (json.token) {
       localStorage.setItem("token", json.token);
       const user: User = JSON.parse(atob(json.token.split(".")[1]));
+      delete user.iat;
       return user;
     }
   } catch (err) {
@@ -40,7 +42,8 @@ async function signin(user: User) {
 
     if (json.token) {
       localStorage.setItem("token", json.token);
-      const user = JSON.parse(atob(json.token.split(".")[1]));
+      const user: User = JSON.parse(atob(json.token.split(".")[1]));
+      delete user.iat;
       return user;
     }
   } catch (err) {
