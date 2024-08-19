@@ -24,7 +24,7 @@ function SigninForm(props) {
     try {
       const user = await authService.signin(formData); // TODO build signin service function
 
-      props.setUser(user);
+      props.updateUser(user);
       navigate("/");
     } catch (err) {
       updateMessage(err.message);
