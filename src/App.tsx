@@ -16,14 +16,14 @@ type UserActions = {
   updateUser: (user: UserState["user"]) => void;
 };
 
-const useStore = create<UserState & UserActions>()((set) => ({
+export const useUserStore = create<UserState & UserActions>()((set) => ({
   user: authService.getUser(),
   updateUser: (user: UserState["user"]) => set(() => ({ user: user })),
 }));
 
 function App() {
-  const user = useStore((state) => state.user);
-  const updateUser = useStore((state) => state.updateUser);
+  const user = useUserStore((state) => state.user);
+  const updateUser = useUserStore((state) => state.updateUser);
 
   function handleSignout() {
     authService.signout();
