@@ -1,8 +1,9 @@
 type Props = {
-  user: string | null;
+  user: { username: string; _id: string };
 };
 
 function Dashboard({ user }: Props) {
+  console.log(user);
   return (
     <main>
       <h1>Welcome, {user.username}</h1>
