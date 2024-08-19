@@ -3,7 +3,6 @@ type Props = {
 };
 
 function Dashboard({ user }: Props) {
-  console.log(user);
   return (
     <main>
       <h1>Welcome, {user.username}</h1>
