@@ -1,5 +1,15 @@
 import { MouseEventHandler } from "react";
 import { Link } from "react-router-dom";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
 
 type Props = {
   user: string | null;
@@ -9,7 +19,18 @@ type Props = {
 function NavBar({ user, handleSignout }: Props) {
   return (
     <>
-      {user ? (
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <NavigationMenuLink>Link</NavigationMenuLink>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+
+      {/* {user ? (
         <nav>
           <ul>
             <li>
@@ -33,7 +54,7 @@ function NavBar({ user, handleSignout }: Props) {
             </li>
           </ul>
         </nav>
-      )}
+      )} */}
     </>
   );
 }
