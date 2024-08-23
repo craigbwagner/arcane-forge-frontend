@@ -65,14 +65,13 @@ function SignupForm(props) {
     console.log(values);
     try {
       const newUserResponse = await authService.signup(values);
+      console.log(newUserResponse);
       props.updateUser(newUserResponse.user);
       navigate("/");
     } catch (err) {
       console.log(err);
     }
   }
-
-  const { username, password, passwordConf } = form.getValues();
 
   return (
     <main className="ml-[17rem]">
