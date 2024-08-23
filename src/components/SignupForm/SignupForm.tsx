@@ -62,11 +62,9 @@ function SignupForm(props) {
 
   async function handleSubmit(values: z.infer<typeof signupSchema>, e: any) {
     e.preventDefault();
-    console.log(values);
     try {
       const newUserResponse = await authService.signup(values);
-      console.log(newUserResponse);
-      props.updateUser(newUserResponse.user);
+      props.updateUser(newUserResponse);
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -99,7 +97,7 @@ function SignupForm(props) {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input placeholder="Password" {...field} />
+                  <Input type="password" placeholder="Password" {...field} />
                 </FormControl>
                 <FormDescription>
                   Should be between 8-20 characters.
@@ -115,7 +113,11 @@ function SignupForm(props) {
               <FormItem>
                 <FormLabel>Confirm Password</FormLabel>
                 <FormControl>
-                  <Input placeholder="Confirm Password" {...field} />
+                  <Input
+                    type="password"
+                    placeholder="Confirm Password"
+                    {...field}
+                  />
                 </FormControl>
                 <FormDescription></FormDescription>
                 <FormMessage />
