@@ -1,10 +1,11 @@
 const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 type User = {
   username: string | null;
+  password?: string;
   iat?: number;
 };
 
-async function signup(formData) {
+async function signup(formData: User): Promise<User> {
   try {
     const res = await fetch(`${BACKEND_URL}/users/signup`, {
       method: "POST",
@@ -20,8 +21,10 @@ async function signup(formData) {
       const user: User = JSON.parse(atob(json.token.split(".")[1]));
       delete user.iat;
       return user;
+    } else {
+      throw new Error("No token in response");
     }
-  } catch (err) {
+  } catch (err: unknown) {
     console.log(err);
     throw err;
   }
@@ -35,7 +38,6 @@ async function signin(user: User) {
       body: JSON.stringify(user),
     });
     const json = await res.json();
-
     if (json.err) {
       throw new Error(json.err);
     }
@@ -46,8 +48,8 @@ async function signin(user: User) {
       delete user.iat;
       return user;
     }
-  } catch (err) {
-    console.log(err.message);
+  } catch (err: unknown) {
+    console.log(err);
     throw err;
   }
 }
