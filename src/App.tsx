@@ -9,7 +9,10 @@ import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
 
 type UserState = {
-  user: string | null;
+  user: {
+    username: string | null;
+    _id: string | null;
+  } | null;
 };
 
 type UserActions = {
