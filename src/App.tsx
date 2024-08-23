@@ -1,7 +1,7 @@
 import "./App.css";
 import { create } from "zustand";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
+import Sidebar from "./components/Navbar/Sidebar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Landing from "./components/Landing/Landing";
 import SignupForm from "./components/SignupForm/SignupForm";
@@ -31,7 +31,7 @@ function App() {
   }
   return (
     <>
-      <Navbar user={user} handleSignout={handleSignout} />
+      <Sidebar user={user} handleSignout={handleSignout} />
       <h1>Hello</h1>
       <Routes>
         {user ? (
