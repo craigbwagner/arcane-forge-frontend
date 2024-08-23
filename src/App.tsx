@@ -1,7 +1,7 @@
 import "./App.css";
 import { create } from "zustand";
 import { Routes, Route } from "react-router-dom";
-import Sidebar from "./components/Navbar/Sidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Landing from "./components/Landing/Landing";
 import SignupForm from "./components/SignupForm/SignupForm";
