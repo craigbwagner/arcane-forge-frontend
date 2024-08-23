@@ -42,15 +42,15 @@ function App() {
           <>
             <Route path="/" element={<Landing />} />
             <Route
-              path="/signup"
-              element={<SignupForm updateUser={updateUser} />}
-            />
-            <Route
               path="/signin"
               element={<SigninForm updateUser={updateUser} />}
             />
           </>
         )}
+        <Route
+          path="/signup"
+          element={<SignupForm updateUser={updateUser} />}
+        />
       </Routes>
     </>
   );

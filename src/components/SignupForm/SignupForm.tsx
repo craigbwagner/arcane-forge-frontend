@@ -1,83 +1,138 @@
+"use client";
+
 import * as authService from "../../services/authService";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "../ui/button";
+import {
+  Form,
+  FormField,
+  FormControl,
+  FormDescription,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
+import { Input } from "../ui/input";
+
+const signupSchema = z
+  .object({
+    username: z
+      .string()
+      .min(4, {
+        message: "Username must be 4-16 characters",
+      })
+      .max(16, {
+        message: "Username must be 4-16 characters",
+      }),
+    password: z
+      .string()
+      .min(8, {
+        message: "Password must be 8-20 characters",
+      })
+      .max(20, {
+        message: "Password must be 8-20 characters",
+      }),
+    passwordConf: z.string(),
+  })
+  .superRefine(({ passwordConf, password }, ctx) => {
+    if (passwordConf !== password) {
+      ctx.addIssue({
+        code: "custom",
+        message: "The passwords did not match",
+        path: ["confirmPassword"],
+      });
+    }
+  });
 
 function SignupForm(props) {
   const navigate = useNavigate();
-  const [message, setMessage] = useState([""]);
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    passwordConf: "",
+
+  const form = useForm<z.infer<typeof signupSchema>>({
+    resolver: zodResolver(signupSchema),
+    defaultValues: {
+      username: "",
+      password: "",
+      passwordConf: "",
+    },
   });
 
-  const updateMessage = (msg) => {
-    setMessage(msg);
-  };
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
+  async function handleSubmit(values: z.infer<typeof signupSchema>) {
     e.preventDefault();
     try {
-      const newUserResponse = await authService.signup(formData);
+      const newUserResponse = await authService.signup(values);
       props.updateUser(newUserResponse.user);
       navigate("/");
     } catch (err) {
-      updateMessage(err.message);
+      console.log(err);
     }
-  };
+  }
 
-  const { username, password, passwordConf } = formData;
+  const { username, password, passwordConf } = form.getValues();
 
   const isFormInvalid = () => {
     return !(username && password && password === passwordConf);
   };
 
   return (
-    <main>
+    <main className="ml-[17rem]">
       <h1>Sign Up</h1>
-      <p>{message}</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="name"
-            value={username}
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-2">
+          <FormField
+            control={form.control}
             name="username"
-            onChange={handleChange}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input placeholder="shadcn" {...field} />
+                </FormControl>
+                <FormDescription>
+                  This is your public display name.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
+          <FormField
+            control={form.control}
             name="password"
-            onChange={handleChange}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input placeholder="Password" {...field} />
+                </FormControl>
+                <FormDescription>
+                  Should be between 8-20 characters.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
-        <div>
-          <label htmlFor="confirm">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirm"
-            value={passwordConf}
+          <FormField
+            control={form.control}
             name="passwordConf"
-            onChange={handleChange}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input placeholder="Confirm Password" {...field} />
+                </FormControl>
+                <FormDescription>
+                  This is your public display name.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
-        <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
-          <Link to="/">
-            <button>Cancel</button>
-          </Link>
-        </div>
-      </form>
+          <Button type="submit">Submit</Button>
+        </form>
+      </Form>
     </main>
   );
 }

@@ -32,7 +32,7 @@ function SigninForm(props) {
   };
 
   return (
-    <main>
+    <main className="ml-[17rem]">
       <h1>Log In</h1>
       <p>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
