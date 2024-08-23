@@ -3,7 +3,7 @@ type User = {
   username: string | null;
   password?: string;
   iat?: number;
-};
+} | null;
 
 async function signup(formData: User): Promise<User> {
   try {
@@ -19,8 +19,12 @@ async function signup(formData: User): Promise<User> {
     if (json.token) {
       localStorage.setItem("token", json.token);
       const user: User = JSON.parse(atob(json.token.split(".")[1]));
-      delete user.iat;
-      return user;
+      if (user) {
+        delete user.iat;
+        return user;
+      } else {
+        throw new Error("No user in response");
+      }
     } else {
       throw new Error("No token in response");
     }
@@ -30,7 +34,7 @@ async function signup(formData: User): Promise<User> {
   }
 }
 
-async function signin(user: User) {
+async function signin(user: User): Promise<User> {
   try {
     const res = await fetch(`${BACKEND_URL}/users/signin`, {
       method: "POST",
@@ -45,8 +49,14 @@ async function signin(user: User) {
     if (json.token) {
       localStorage.setItem("token", json.token);
       const user: User = JSON.parse(atob(json.token.split(".")[1]));
-      delete user.iat;
-      return user;
+      if (user) {
+        delete user.iat;
+        return user;
+      } else {
+        throw new Error("No user in response");
+      }
+    } else {
+      throw new Error("No token in response");
     }
   } catch (err: unknown) {
     console.log(err);
@@ -54,10 +64,10 @@ async function signin(user: User) {
   }
 }
 
-function getUser(): string | null {
+function getUser(): User {
   const token = localStorage.getItem("token");
   if (!token) return null;
-  const user: User["username"] = JSON.parse(atob(token.split(".")[1]));
+  const user: User = JSON.parse(atob(token.split(".")[1]));
   return user;
 }
 
