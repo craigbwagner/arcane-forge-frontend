@@ -60,8 +60,9 @@ function SignupForm(props) {
     },
   });
 
-  async function handleSubmit(values: z.infer<typeof signupSchema>) {
+  async function handleSubmit(values: z.infer<typeof signupSchema>, e: any) {
     e.preventDefault();
+    console.log(values);
     try {
       const newUserResponse = await authService.signup(values);
       props.updateUser(newUserResponse.user);
@@ -72,10 +73,6 @@ function SignupForm(props) {
   }
 
   const { username, password, passwordConf } = form.getValues();
-
-  const isFormInvalid = () => {
-    return !(username && password && password === passwordConf);
-  };
 
   return (
     <main className="ml-[17rem]">
@@ -89,11 +86,9 @@ function SignupForm(props) {
               <FormItem>
                 <FormLabel>Username</FormLabel>
                 <FormControl>
-                  <Input placeholder="shadcn" {...field} />
+                  <Input placeholder="Username" {...field} />
                 </FormControl>
-                <FormDescription>
-                  This is your public display name.
-                </FormDescription>
+                <FormDescription>You will use this to sign in.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -119,13 +114,11 @@ function SignupForm(props) {
             name="passwordConf"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>Confirm Password</FormLabel>
                 <FormControl>
                   <Input placeholder="Confirm Password" {...field} />
                 </FormControl>
-                <FormDescription>
-                  This is your public display name.
-                </FormDescription>
+                <FormDescription></FormDescription>
                 <FormMessage />
               </FormItem>
             )}
