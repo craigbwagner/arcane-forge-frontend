@@ -28,7 +28,7 @@ function App() {
   const user = useUserStore((state) => state.user);
   const updateUser = useUserStore((state) => state.updateUser);
 
-  function handleSignout() {
+  function handleSignout(): void {
     authService.signout();
     updateUser(null);
   }
