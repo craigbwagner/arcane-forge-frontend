@@ -2,7 +2,10 @@ import { MouseEventHandler } from "react";
 import { Link } from "react-router-dom";
 
 type Props = {
-  user: string | null;
+  user: {
+    username: string | null;
+    _id: string | null;
+  } | null;
   handleSignout: MouseEventHandler;
 };
 
