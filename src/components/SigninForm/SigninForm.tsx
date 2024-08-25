@@ -1,6 +1,5 @@
 import * as authService from "../../services/authService";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,7 +20,7 @@ const signinSchema = z.object({
   password: z.string(),
 });
 
-function SigninForm(props) {
+function SigninForm({ updateUser }: any) {
   const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof signinSchema>>({
@@ -33,10 +32,10 @@ function SigninForm(props) {
   });
 
   async function handleSubmit(values: z.infer<typeof signinSchema>, e: any) {
-    // e.preventDefault();
+    e.preventDefault();
     try {
       const user = await authService.signin(values);
-      props.updateUser(user);
+      updateUser(user);
       navigate("/dashboard");
     } catch (err) {
       console.log(err);
