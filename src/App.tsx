@@ -44,7 +44,7 @@ function App() {
       <Sidebar user={user} handleSignout={handleSignout} />
       <h1>Hello</h1>
       <Routes>
-        {user ? (
+        {user.username ? (
           <>
             <Route path="/dashboard" element={<Dashboard user={user} />} />
           </>
