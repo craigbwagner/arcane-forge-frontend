@@ -2,6 +2,7 @@ const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 
 interface User {
   username: string | null;
+  _id: string | null;
   password?: string;
   iat?: number;
 }
@@ -70,7 +71,7 @@ async function signin(user: User): Promise<UserOrNull> {
 
 function getUser(): User {
   const token = localStorage.getItem("token");
-  if (!token) return null;
+  if (!token) return { username: null, _id: null };
   const user: User = JSON.parse(atob(token.split(".")[1]));
   return user;
 }

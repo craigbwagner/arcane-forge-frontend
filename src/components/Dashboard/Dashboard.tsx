@@ -1,5 +1,5 @@
 type Props = {
-  user: { username: string; _id: string };
+  user: { username: string | null; _id: string | null };
 };
 
 function Dashboard({ user }: Props) {

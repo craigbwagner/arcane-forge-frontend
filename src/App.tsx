@@ -7,30 +7,37 @@ import Landing from "./components/Landing/Landing";
 import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
+import { useEffect } from "react";
 
-type UserState = {
-  user: {
-    username: string | null;
-    _id: string | null;
-  } | null;
-};
+interface UserState {
+  username: string | null;
+  _id: string | null;
+}
 
-type UserActions = {
-  updateUser: (user: UserState["user"]) => void;
-};
+interface UserAction {
+  updateUser: (user: UserState) => void;
+}
 
-export const useUserStore = create<UserState & UserActions>()((set) => ({
-  user: authService.getUser(),
-  updateUser: (user: UserState["user"]) => set(() => ({ user: user })),
+export const useUserStore = create<UserState & UserAction>()((set) => ({
+  username: null,
+  _id: null,
+  updateUser: (user) => set(() => ({ ...user })),
 }));
 
 function App() {
-  const user = useUserStore((state) => state.user);
+  const username = useUserStore((state) => state.username);
+  const userId = useUserStore((state) => state._id);
   const updateUser = useUserStore((state) => state.updateUser);
 
-  function handleSignout(): void {
+  const user = { username, _id: userId };
+
+  useEffect(() => {
+    updateUser(authService.getUser());
+  }, []);
+
+  function handleSignout() {
     authService.signout();
-    updateUser(null);
+    updateUser({ username: null, _id: null });
   }
   return (
     <>
@@ -39,7 +46,7 @@ function App() {
       <Routes>
         {user ? (
           <>
-            <Route path="/" element={<Dashboard user={user} />} />
+            <Route path="/dashboard" element={<Dashboard user={user} />} />
           </>
         ) : (
           <>
