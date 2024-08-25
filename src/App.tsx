@@ -8,6 +8,7 @@ import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
 import { useEffect } from "react";
+import { immer } from "zustand/middleware/immer";
 
 interface UserState {
   username: string | null;
@@ -18,11 +19,13 @@ interface UserAction {
   updateUser: (user: UserState) => void;
 }
 
-export const useUserStore = create<UserState & UserAction>()((set) => ({
-  username: null,
-  _id: null,
-  updateUser: (user) => set(() => ({ ...user })),
-}));
+export const useUserStore = create<UserState & UserAction>()(
+  immer((set) => ({
+    username: null,
+    _id: null,
+    updateUser: ({ username, _id }) => set(() => ({ username, _id })),
+  })),
+);
 
 function App() {
   const username = useUserStore((state) => state.username);
