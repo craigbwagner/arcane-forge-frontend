@@ -5,7 +5,7 @@ type Props = {
   user: {
     username: string | null;
     _id: string | null;
-  } | null;
+  };
   handleSignout: MouseEventHandler;
 };
 
@@ -60,7 +60,7 @@ function Sidebar({ user, handleSignout }: Props) {
                 <span className="ms-3">Dashboard</span>
               </a>
             </li>
-            {!user ? (
+            {!user.username ? (
               <>
                 <li>
                   <a
