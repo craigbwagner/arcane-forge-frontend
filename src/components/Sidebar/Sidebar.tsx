@@ -63,8 +63,8 @@ function Sidebar({ user, handleSignout }: Props) {
             {!user.username ? (
               <>
                 <li>
-                  <a
-                    href="/signin"
+                  <Link
+                    to="/signin"
                     className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <svg
@@ -85,11 +85,11 @@ function Sidebar({ user, handleSignout }: Props) {
                     <span className="flex-1 ms-3 whitespace-nowrap">
                       Sign In
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="/signup"
+                  <Link
+                    to="/signup"
                     className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <svg
@@ -106,13 +106,13 @@ function Sidebar({ user, handleSignout }: Props) {
                     <span className="flex-1 ms-3 whitespace-nowrap">
                       Sign Up
                     </span>
-                  </a>
+                  </Link>
                 </li>
               </>
             ) : (
               <li>
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   onClick={handleSignout}
                   className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                 >
@@ -130,7 +130,7 @@ function Sidebar({ user, handleSignout }: Props) {
                   <span className="flex-1 ms-3 whitespace-nowrap">
                     Sign Out
                   </span>
-                </a>
+                </Link>
               </li>
             )}
           </ul>
