@@ -1,7 +1,6 @@
 "use client";
 
 import * as authService from "../../services/authService";
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -65,7 +64,7 @@ function SignupForm(props) {
     try {
       const newUserResponse = await authService.signup(values);
       props.updateUser(newUserResponse);
-      navigate("/");
+      navigate("/dashboard");
     } catch (err) {
       console.log(err);
     }

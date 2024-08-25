@@ -37,7 +37,7 @@ function SigninForm(props) {
     try {
       const user = await authService.signin(values);
       props.updateUser(user);
-      navigate("/");
+      navigate("/dashboard");
     } catch (err) {
       console.log(err);
     }
