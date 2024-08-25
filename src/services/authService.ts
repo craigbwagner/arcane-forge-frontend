@@ -2,7 +2,7 @@ const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 
 interface User {
   username: string | null;
-  _id: string | null;
+  _id?: string | null;
   password?: string;
   iat?: number;
 }
