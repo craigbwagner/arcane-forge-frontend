@@ -14,14 +14,16 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+import store from "../../store/store";
 
 const signinSchema = z.object({
   username: z.string(),
   password: z.string(),
 });
 
-function SigninForm({ updateUser }: any) {
+function SigninForm() {
   const navigate = useNavigate();
+  const updateUser = store((state) => state.updateUser);
 
   const form = useForm<z.infer<typeof signinSchema>>({
     resolver: zodResolver(signinSchema),

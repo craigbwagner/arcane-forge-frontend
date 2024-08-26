@@ -1,7 +1,7 @@
 "use client";
 
 import * as authService from "../../services/authService";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +16,8 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+import store from "../../store/store";
+0;
 
 const signupSchema = z
   .object({
@@ -47,8 +49,9 @@ const signupSchema = z
     }
   });
 
-function SignupForm(props) {
+function SignupForm() {
   const navigate = useNavigate();
+  const updateUser = store((state) => state.updateUser);
 
   const form = useForm<z.infer<typeof signupSchema>>({
     resolver: zodResolver(signupSchema),
@@ -63,7 +66,7 @@ function SignupForm(props) {
     e.preventDefault();
     try {
       const newUserResponse = await authService.signup(values);
-      props.updateUser(newUserResponse);
+      updateUser(newUserResponse);
       navigate("/dashboard");
     } catch (err) {
       console.log(err);

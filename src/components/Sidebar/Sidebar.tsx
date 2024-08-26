@@ -1,15 +1,13 @@
 import { MouseEventHandler } from "react";
 import { Link } from "react-router-dom";
+import store from "../../store/store";
 
 type Props = {
-  user: {
-    username: string | null;
-    _id: string | null;
-  };
   handleSignout: MouseEventHandler;
 };
 
-function Sidebar({ user, handleSignout }: Props) {
+function Sidebar({ handleSignout }: Props) {
+  const user = store((state) => state.user);
   return (
     <>
       <button

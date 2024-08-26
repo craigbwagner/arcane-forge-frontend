@@ -10,11 +10,8 @@ import { useEffect } from "react";
 import store from "./store/store";
 
 function App() {
-  const username = store((state) => state.user?.username);
-  const userId = store((state) => state.user?._id);
+  const user = store((state) => state.user);
   const updateUser = store((state) => state.updateUser);
-
-  const user = { username, _id: userId };
 
   useEffect(() => {
     updateUser(authService.getUser());
@@ -26,24 +23,18 @@ function App() {
   }
   return (
     <>
-      <Sidebar user={user} handleSignout={handleSignout} />
+      <Sidebar handleSignout={handleSignout} />
       <h1>Hello</h1>
       <Routes>
-        {user.username ? (
+        {user ? (
           <>
-            <Route path="/dashboard" element={<Dashboard user={user} />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </>
         ) : (
           <>
             <Route path="/" element={<Landing />} />
-            <Route
-              path="/signin"
-              element={<SigninForm updateUser={updateUser} />}
-            />
-            <Route
-              path="/signup"
-              element={<SignupForm updateUser={updateUser} />}
-            />
+            <Route path="/signin" element={<SigninForm />} />
+            <Route path="/signup" element={<SignupForm />} />
           </>
         )}
       </Routes>

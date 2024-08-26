@@ -1,8 +1,7 @@
-type Props = {
-  user: { username: string | null; _id: string | null };
-};
+import store from "../../store/store";
 
-function Dashboard({ user }: Props) {
+function Dashboard() {
+  const user = store((state) => state.user);
   return (
     <main className="ml-[17rem]">
       <h1>Welcome, {user.username}</h1>
