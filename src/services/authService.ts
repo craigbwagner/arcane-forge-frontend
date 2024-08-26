@@ -1,13 +1,6 @@
 const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 
-interface User {
-  username: string | null;
-  _id: string | null;
-  password?: string;
-  iat?: number;
-}
-
-async function signup(formData) {
+async function signup(formData: { username: string; password: string }) {
   try {
     const res = await fetch(`${BACKEND_URL}/users/signup`, {
       method: "POST",
@@ -20,7 +13,9 @@ async function signup(formData) {
     }
     if (json.token) {
       localStorage.setItem("token", json.token);
-      const user: User = JSON.parse(atob(json.token.split(".")[1]));
+      const user: { username: string; _id: string; iat?: number } = JSON.parse(
+        atob(json.token.split(".")[1]),
+      );
       if (user) {
         delete user.iat;
         return user;
@@ -36,12 +31,12 @@ async function signup(formData) {
   }
 }
 
-async function signin(user) {
+async function signin(formData: { username: string; password: string }) {
   try {
     const res = await fetch(`${BACKEND_URL}/users/signin`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
+      body: JSON.stringify(formData),
     });
     const json = await res.json();
     if (json.err) {
@@ -50,8 +45,9 @@ async function signin(user) {
 
     if (json.token) {
       localStorage.setItem("token", json.token);
-      const user: User = JSON.parse(atob(json.token.split(".")[1]));
-      console.log(user);
+      const user: { username: string; _id: string; iat?: number } = JSON.parse(
+        atob(json.token.split(".")[1]),
+      );
       if (user) {
         delete user.iat;
         return user;
