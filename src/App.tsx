@@ -7,12 +7,12 @@ import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
 import { useEffect } from "react";
-import useUser from "./store/user";
+import store from "./store/store";
 
 function App() {
-  const username = useUser((state) => state.username);
-  const userId = useUser((state) => state._id);
-  const updateUser = useUser((state) => state.updateUser);
+  const username = store((state) => state.user?.username);
+  const userId = store((state) => state.user?._id);
+  const updateUser = store((state) => state.updateUser);
 
   const user = { username, _id: userId };
 
@@ -22,7 +22,7 @@ function App() {
 
   function handleSignout() {
     authService.signout();
-    updateUser({ username: null, _id: null });
+    updateUser(null);
   }
   return (
     <>

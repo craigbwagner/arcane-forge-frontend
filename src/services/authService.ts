@@ -69,9 +69,9 @@ async function signin(user: User): Promise<UserOrNull> {
   }
 }
 
-function getUser(): User {
+function getUser() {
   const token = localStorage.getItem("token");
-  if (!token) return { username: null, _id: null };
+  if (!token) return null;
   const user: { username: string; _id: string } = JSON.parse(
     atob(token.split(".")[1]),
   );
