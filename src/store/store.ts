@@ -1,9 +1,11 @@
-import { immer } from "zustand/middleware/immer";
+import { produce } from "immer";
 import { create } from "zustand";
 
 interface State {
-  user: { username: string; _id: string } | null;
-  updateUser: (user: { username: string; _id: string } | null) => void;
+  readonly user: { username: string; _id: string } | null;
+  readonly updateUser: (
+    updatedUser: { username: string; _id: string } | null,
+  ) => void;
 }
 
 const useStore = create<State>()((set) => ({
