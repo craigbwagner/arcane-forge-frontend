@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
-import store from "../../store/store";
+import useStore from "../../store/store";
 
 const signinSchema = z.object({
   username: z.string(),
@@ -23,7 +23,7 @@ const signinSchema = z.object({
 
 function SigninForm() {
   const navigate = useNavigate();
-  const updateUser = store((state) => state.updateUser);
+  const updateUser = useStore((state) => state.updateUser);
 
   const form = useForm<z.infer<typeof signinSchema>>({
     resolver: zodResolver(signinSchema),

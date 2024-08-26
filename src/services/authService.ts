@@ -7,9 +7,7 @@ interface User {
   iat?: number;
 }
 
-type UserOrNull = User | null;
-
-async function signup(formData: User): Promise<UserOrNull> {
+async function signup(formData) {
   try {
     const res = await fetch(`${BACKEND_URL}/users/signup`, {
       method: "POST",
@@ -38,7 +36,7 @@ async function signup(formData: User): Promise<UserOrNull> {
   }
 }
 
-async function signin(user: User): Promise<UserOrNull> {
+async function signin(user) {
   try {
     const res = await fetch(`${BACKEND_URL}/users/signin`, {
       method: "POST",

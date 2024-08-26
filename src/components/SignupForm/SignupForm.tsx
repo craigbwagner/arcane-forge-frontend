@@ -16,8 +16,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
-import store from "../../store/store";
-0;
+import useStore from "../../store/store";
 
 const signupSchema = z
   .object({
@@ -51,7 +50,7 @@ const signupSchema = z
 
 function SignupForm() {
   const navigate = useNavigate();
-  const updateUser = store((state) => state.updateUser);
+  const updateUser = useStore((state) => state.updateUser);
 
   const form = useForm<z.infer<typeof signupSchema>>({
     resolver: zodResolver(signupSchema),

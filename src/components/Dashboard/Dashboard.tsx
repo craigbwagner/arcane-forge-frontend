@@ -1,7 +1,7 @@
-import store from "../../store/store";
+import useStore from "../../store/store";
 
 function Dashboard() {
-  const user = store((state) => state.user);
+  const user = useStore((state) => state.user);
   return (
     <main className="ml-[17rem]">
       <h1>Welcome, {user.username}</h1>

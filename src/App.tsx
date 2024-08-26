@@ -7,11 +7,11 @@ import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
 import { useEffect } from "react";
-import store from "./store/store";
+import useStore from "./store/store";
 
 function App() {
-  const user = store((state) => state.user);
-  const updateUser = store((state) => state.updateUser);
+  const user = useStore((state) => state.user);
+  const updateUser = useStore((state) => state.updateUser);
 
   useEffect(() => {
     updateUser(authService.getUser());
