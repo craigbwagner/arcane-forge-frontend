@@ -6,11 +6,14 @@ interface State {
   updateUser: (user: { username: string; _id: string } | null) => void;
 }
 
-const useStore = create<State>()(
-  immer((set) => ({
-    user: { username: "", _id: "" },
-    updateUser: (user) => set(() => user),
-  })),
-);
+const useStore = create<State>()((set) => ({
+  user: { username: "", _id: "" },
+  updateUser: (updatedUser) =>
+    set(
+      produce((draft) => {
+        draft.user = updatedUser;
+      }),
+    ),
+}));
 
 export default useStore;
