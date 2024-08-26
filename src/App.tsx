@@ -7,12 +7,12 @@ import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
 import { useEffect } from "react";
-import useUserStore from "./store/user";
+import useUser from "./store/user";
 
 function App() {
-  const username = useUserStore((state) => state.username);
-  const userId = useUserStore((state) => state._id);
-  const updateUser = useUserStore((state) => state.updateUser);
+  const username = useUser((state) => state.username);
+  const userId = useUser((state) => state._id);
+  const updateUser = useUser((state) => state.updateUser);
 
   const user = { username, _id: userId };
 

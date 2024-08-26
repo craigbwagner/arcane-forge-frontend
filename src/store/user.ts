@@ -10,7 +10,7 @@ interface UserAction {
   updateUser: (user: UserState) => void;
 }
 
-const useUserStore = create<UserState & UserAction>()(
+const useUser = create<UserState & UserAction>()(
   immer((set) => ({
     username: null,
     _id: null,
@@ -18,4 +18,4 @@ const useUserStore = create<UserState & UserAction>()(
   })),
 );
 
-export default useUserStore;
+export default useUser;
