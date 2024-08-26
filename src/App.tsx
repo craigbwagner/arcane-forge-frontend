@@ -1,5 +1,4 @@
 import "./App.css";
-import { create } from "zustand";
 import { Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -8,24 +7,7 @@ import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
 import { useEffect } from "react";
-import { immer } from "zustand/middleware/immer";
-
-interface UserState {
-  username: string | null;
-  _id: string | null;
-}
-
-interface UserAction {
-  updateUser: (user: UserState) => void;
-}
-
-export const useUserStore = create<UserState & UserAction>()(
-  immer((set) => ({
-    username: null,
-    _id: null,
-    updateUser: ({ username, _id }) => set(() => ({ username, _id })),
-  })),
-);
+import useUserStore from "./store/user";
 
 function App() {
   const username = useUserStore((state) => state.username);
