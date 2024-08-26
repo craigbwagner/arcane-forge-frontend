@@ -2,6 +2,7 @@ import useStore from "../../store/store";
 
 function Dashboard() {
   const user = useStore((state) => state.user);
+  if (!user) return "You are not authorized to view this page";
   return (
     <main className="ml-[17rem]">
       <h1>Welcome, {user.username}</h1>
