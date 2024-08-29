@@ -29,7 +29,7 @@ function App() {
         {user ? (
           <>
             <Route path="/dashboard" element={<Dashboard />} />
-            {/* <Route path="/characters/new" element={<NewCharacter />} /> */}
+            {/* <Route path="/characters/:characterId" element={<CharacterSheet />} /> */}
           </>
         ) : (
           <>
