@@ -53,6 +53,7 @@ interface State {
     updatedUser: { username: string; _id: string } | null,
   ) => void;
   readonly updateCharacter: (updatedCharacter: Character | null) => void;
+  readonly addUserCharacter: (newCharacter: Character) => void;
 }
 
 const useStore = create<State>()((set) => ({
@@ -67,7 +68,13 @@ const useStore = create<State>()((set) => ({
   updateCharacter: (updatedCharacter) =>
     set(
       produce((draft) => {
-        draft.character = updatedCharacter;
+        draft.currentCharacter = updatedCharacter;
+      }),
+    ),
+  addUserCharacter: (newCharacter) =>
+    set(
+      produce((draft) => {
+        draft.user.characters.push(newCharacter);
       }),
     ),
 }));
