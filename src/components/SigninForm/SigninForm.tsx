@@ -39,7 +39,7 @@ function SigninForm() {
       const user = await authService.signin(values);
       updateUser(user);
       navigate("/dashboard");
-    } catch (err) {
+    } catch (err: unknown) {
       console.log(err);
     }
   }
