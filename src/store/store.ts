@@ -48,7 +48,7 @@ interface State {
     _id: string;
     characters: Character[];
   } | null;
-  readonly character: Character | null;
+  readonly currentCharacter: Character | null;
   readonly updateUser: (
     updatedUser: { username: string; _id: string } | null,
   ) => void;
@@ -56,8 +56,8 @@ interface State {
 }
 
 const useStore = create<State>()((set) => ({
-  user: { username: "", _id: "" },
-  character: null,
+  user: { username: "", _id: "", characters: [] },
+  currentCharacter: null,
   updateUser: (updatedUser) =>
     set(
       produce((draft) => {
