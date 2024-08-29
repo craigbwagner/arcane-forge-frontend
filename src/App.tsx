@@ -8,6 +8,7 @@ import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
 import { useEffect } from "react";
 import useStore from "./store/store";
+import CharactersList from "./components/CharactersList/CharactersList";
 
 function App() {
   const user = useStore((state) => state.user);
@@ -29,6 +30,7 @@ function App() {
         {user ? (
           <>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/characters" element={<CharactersList />} />
             {/* <Route path="/characters/:characterId" element={<CharacterSheet />} /> */}
           </>
         ) : (
