@@ -43,7 +43,11 @@ interface Character {
 }
 
 interface State {
-  readonly user: { username: string; _id: string } | null;
+  readonly user: {
+    username: string;
+    _id: string;
+    characters: Character[];
+  } | null;
   readonly character: Character | null;
   readonly updateUser: (
     updatedUser: { username: string; _id: string } | null,
