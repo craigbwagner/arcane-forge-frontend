@@ -9,6 +9,7 @@ interface Class {}
 
 export interface Character {
   creator: string;
+  _id?: string;
   name?: string;
   race?: string;
   classes?: Class[];
@@ -73,8 +74,8 @@ const useStore = create<State>()((set) => ({
     ),
   addUserCharacter: (newCharacter) =>
     set(
-      produce((draft) => {
-        draft.user.characters.push(newCharacter);
+      produce((draft: State) => {
+        if (draft.user) draft.user.characters.push(newCharacter);
       }),
     ),
 }));
