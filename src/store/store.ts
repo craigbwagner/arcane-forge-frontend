@@ -7,7 +7,7 @@ interface Item {}
 
 interface Class {}
 
-interface Character {
+export interface Character {
   creator: string;
   name?: string;
   race?: string;
