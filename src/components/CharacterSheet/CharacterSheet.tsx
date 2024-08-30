@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useStore, { Character } from "../../store/store";
-import { getCharacter } from "@/services/characterService";
+import * as characterService from "@/services/characterService";
 import { number, string, z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -48,7 +48,8 @@ function CharacterSheet() {
 
   useEffect(() => {
     const fetchCharacter = async () => {
-      const fetchedCharacter: Character = await getCharacter(characterId);
+      const fetchedCharacter: Character =
+        await characterService.getCharacter(characterId);
       if (fetchedCharacter) {
         updateCharacter(fetchedCharacter);
       }
@@ -181,7 +182,7 @@ function CharacterSheet() {
               <FormItem>
                 <FormLabel>Age</FormLabel>
                 <FormControl>
-                  <Input placeholder="Age" {...field} />
+                  <Input placeholder="Age" type="number" {...field} />
                 </FormControl>
                 <FormDescription></FormDescription>
                 <FormMessage />
@@ -209,7 +210,7 @@ function CharacterSheet() {
               <FormItem>
                 <FormLabel>Weight</FormLabel>
                 <FormControl>
-                  <Input placeholder="Weight" {...field} />
+                  <Input placeholder="Weight" type="number" {...field} />
                 </FormControl>
                 <FormDescription></FormDescription>
                 <FormMessage />
@@ -251,7 +252,7 @@ function CharacterSheet() {
               <FormItem>
                 <FormLabel>Initiative</FormLabel>
                 <FormControl>
-                  <Input placeholder="Initiative" {...field} />
+                  <Input placeholder="Initiative" type="number" {...field} />
                 </FormControl>
                 <FormDescription></FormDescription>
                 <FormMessage />
@@ -265,7 +266,7 @@ function CharacterSheet() {
               <FormItem>
                 <FormLabel>Speed</FormLabel>
                 <FormControl>
-                  <Input placeholder="Speed" {...field} />
+                  <Input placeholder="Speed" type="number" {...field} />
                 </FormControl>
                 <FormDescription></FormDescription>
                 <FormMessage />
@@ -279,7 +280,7 @@ function CharacterSheet() {
               <FormItem>
                 <FormLabel>Max HP</FormLabel>
                 <FormControl>
-                  <Input placeholder="Max HP" {...field} />
+                  <Input placeholder="Max HP" type="number" {...field} />
                 </FormControl>
                 <FormDescription></FormDescription>
                 <FormMessage />
@@ -293,7 +294,7 @@ function CharacterSheet() {
               <FormItem>
                 <FormLabel>Current HP</FormLabel>
                 <FormControl>
-                  <Input placeholder="Current HP" {...field} />
+                  <Input placeholder="Current HP" type="number" {...field} />
                 </FormControl>
                 <FormDescription></FormDescription>
                 <FormMessage />
@@ -307,7 +308,7 @@ function CharacterSheet() {
               <FormItem>
                 <FormLabel>Temp HP</FormLabel>
                 <FormControl>
-                  <Input placeholder="Temp HP" {...field} />
+                  <Input placeholder="Temp HP" type="number" {...field} />
                 </FormControl>
                 <FormDescription></FormDescription>
                 <FormMessage />
@@ -321,7 +322,11 @@ function CharacterSheet() {
               <FormItem>
                 <FormLabel>Remaining Hit Die</FormLabel>
                 <FormControl>
-                  <Input placeholder="Remaining Hit Die" {...field} />
+                  <Input
+                    placeholder="Remaining Hit Die"
+                    type="number"
+                    {...field}
+                  />
                 </FormControl>
                 <FormDescription></FormDescription>
                 <FormMessage />
@@ -349,7 +354,7 @@ function CharacterSheet() {
               <FormItem>
                 <FormLabel>Max # of Hit Die</FormLabel>
                 <FormControl>
-                  <Input placeholder="Total Hit Die" {...field} />
+                  <Input placeholder="Total Hit Die" type="number" {...field} />
                 </FormControl>
                 <FormDescription></FormDescription>
                 <FormMessage />
