@@ -49,7 +49,7 @@ interface State {
     _id: string;
     characters: Character[];
   } | null;
-  currentCharacter: Character | null;
+  currentCharacter: Character;
   updateUser: (updatedUser: { username: string; _id: string } | null) => void;
   updateCharacter: (updatedCharacter: Character | null) => void;
   addUserCharacter: (newCharacter: Character) => void;
@@ -57,7 +57,39 @@ interface State {
 
 const useStore = create<State>()((set) => ({
   user: { username: "", _id: "", characters: [] },
-  currentCharacter: null,
+  currentCharacter: {
+    creator: "",
+    name: "",
+    race: "",
+    classes: [],
+    level: 1,
+    sex: "",
+    size: "",
+    age: 0,
+    height: "",
+    weight: 0,
+    alignment: "",
+    languages: [],
+    initiative: 0,
+    speed: 0,
+    maxHP: 0,
+    currentHP: 0,
+    tempHP: 0,
+    hitDiceRemaining: 0,
+    hitDiceType: "",
+    hitDiceTotal: 1,
+    strength: 0,
+    dexterity: 0,
+    constitution: 0,
+    intelligence: 0,
+    wisdom: 0,
+    charisma: 0,
+    savingThrowProficiencies: [],
+    skillProficiencies: [],
+    skillExpertise: [],
+    abilities: [],
+    items: [],
+  },
   updateUser: (updatedUser) =>
     set(
       produce((draft) => {
