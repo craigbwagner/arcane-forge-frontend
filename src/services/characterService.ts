@@ -1,11 +1,8 @@
-import useStore, { Character } from "../store/store";
+import { Character } from "../store/store";
 
 const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
-const creator = useStore((state) => state.user?._id);
 
-const initializeCharacterValues = {};
-
-async function create(): Promise<Character> {
+async function create(characterData: Character): Promise<Character> {
   try {
     const res = await fetch(`${BACKEND_URL}/characters/new`, {
       method: "POST",
@@ -13,10 +10,9 @@ async function create(): Promise<Character> {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      body: JSON.stringify({ creator }),
+      body: JSON.stringify(characterData),
     });
     const json = await res.json();
-    json.creator = creator;
     if (json.err) {
       throw new Error(json.err);
     }
