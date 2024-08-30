@@ -43,7 +43,7 @@ async function getCharacter(characterId: string): Promise<Character> {
   }
 }
 
-async function updateCharacter(characterData: any) {
+async function saveCharacter(characterData: any) {
   try {
     const res = await fetch(`${BACKEND_URL}/characters/${characterData._id}`, {
       method: "PUT",
@@ -64,4 +64,4 @@ async function updateCharacter(characterData: any) {
   }
 }
 
-export { create, getCharacter, updateCharacter };
+export { create, getCharacter, saveCharacter };

@@ -105,7 +105,7 @@ function CharacterSheet() {
   ) {
     e.preventDefault();
     try {
-      characterService.updateCharacter({
+      characterService.saveCharacter({
         ...values,
         _id: characterId,
       });
