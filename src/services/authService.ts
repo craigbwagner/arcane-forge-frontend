@@ -1,4 +1,4 @@
-import Character, { Character } from "../store/store";
+import { Character } from "../store/store";
 
 const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 
@@ -19,7 +19,7 @@ async function signup(formData: { username: string; password: string }) {
         username: string;
         _id: string;
         iat?: number;
-        characters: (typeof Character)[];
+        characters: Character[];
       } = JSON.parse(atob(json.token.split(".")[1]));
       if (user) {
         delete user.iat;
