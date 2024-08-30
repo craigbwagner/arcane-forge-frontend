@@ -13,6 +13,39 @@ function CharactersList() {
     throw new Error("No current user.");
   }
 
+  const initializeCharacterValues = {
+    creator: user._id,
+    name: "",
+    race: "",
+    classes: [],
+    level: 1,
+    sex: "",
+    size: "",
+    age: 0,
+    height: "",
+    weight: 0,
+    alignment: "",
+    languages: [],
+    initiative: 0,
+    speed: 0,
+    maxHP: 0,
+    currentHP: 0,
+    tempHP: 0,
+    hitDiceRemaining: 0,
+    hitDiceType: "",
+    hitDiceTotal: 1,
+    strength: 0,
+    dexterity: 0,
+    constitution: 0,
+    intelligence: 0,
+    wisdom: 0,
+    charisma: 0,
+    savingThrowProficiencies: [],
+    skillProficiencies: [],
+    skillExpertise: [],
+    abilities: [],
+    items: [],
+  };
   const characters = user.characters;
   console.log("characters state:", characters);
 
@@ -20,7 +53,9 @@ function CharactersList() {
     e.preventDefault();
     try {
       if (user) {
-        const newCharacter: Character = await charactersService.create();
+        const newCharacter: Character = await charactersService.create(
+          initializeCharacterValues,
+        );
         addUserCharacter(newCharacter);
         updateCharacter(newCharacter);
         console.log(currentCharacter);
