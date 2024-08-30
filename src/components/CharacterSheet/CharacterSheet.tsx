@@ -65,7 +65,7 @@ function CharacterSheet() {
     },
   });
   return (
-    <>
+    <main className="ml-[17rem]">
       <h1>Current Character</h1>
     </>
   );
