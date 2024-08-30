@@ -36,7 +36,7 @@ async function getCharacter(characterId: string): Promise<Character> {
     if (json.err) {
       throw new Error(json.err);
     }
-    return json;
+    return json as Character;
   } catch (err: unknown) {
     console.log(err);
     throw err;
