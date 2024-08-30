@@ -1,4 +1,4 @@
-import Character from "../store/store";
+import Character, { Character } from "../store/store";
 
 const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 
@@ -76,9 +76,12 @@ async function signin(formData: { username: string; password: string }) {
 function getUser() {
   const token = localStorage.getItem("token");
   if (!token) return null;
-  const user: { username: string; _id: string } = JSON.parse(
-    atob(token.split(".")[1]),
-  );
+  const user: {
+    username: string;
+    _id: string;
+    characters: (typeof Character)[];
+  } = JSON.parse(atob(token.split(".")[1]));
+  user.characters = [];
   return user;
 }
 
