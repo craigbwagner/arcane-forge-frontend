@@ -1,8 +1,11 @@
 import useStore, { Character } from "../store/store";
 
 const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
+const creator = useStore((state) => state.user?._id);
 
-async function create(creator: string): Promise<Character> {
+const initializeCharacterValues = {};
+
+async function create(): Promise<Character> {
   try {
     const res = await fetch(`${BACKEND_URL}/characters/new`, {
       method: "POST",
