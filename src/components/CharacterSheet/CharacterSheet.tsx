@@ -103,6 +103,14 @@ function CharacterSheet() {
     e: any,
   ) {
     e.preventDefault();
+    try {
+      characterService.updateCharacter({
+        ...values,
+        _id: characterId,
+      });
+    } catch (err: unknown) {
+      console.log(err);
+    }
   }
 
   return (
