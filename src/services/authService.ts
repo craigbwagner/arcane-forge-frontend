@@ -1,3 +1,5 @@
+import Character from "../store/store";
+
 const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 
 async function signup(formData: { username: string; password: string }) {
@@ -13,11 +15,15 @@ async function signup(formData: { username: string; password: string }) {
     }
     if (json.token) {
       localStorage.setItem("token", json.token);
-      const user: { username: string; _id: string; iat?: number } = JSON.parse(
-        atob(json.token.split(".")[1]),
-      );
+      const user: {
+        username: string;
+        _id: string;
+        iat?: number;
+        characters: (typeof Character)[];
+      } = JSON.parse(atob(json.token.split(".")[1]));
       if (user) {
         delete user.iat;
+        user.characters = [];
         return user;
       } else {
         return null;
@@ -45,11 +51,15 @@ async function signin(formData: { username: string; password: string }) {
 
     if (json.token) {
       localStorage.setItem("token", json.token);
-      const user: { username: string; _id: string; iat?: number } = JSON.parse(
-        atob(json.token.split(".")[1]),
-      );
+      const user: {
+        username: string;
+        _id: string;
+        iat?: number;
+        characters?: (typeof Character)[];
+      } = JSON.parse(atob(json.token.split(".")[1]));
       if (user) {
         delete user.iat;
+        user.characters = json.characters;
         return user;
       } else {
         return null;
