@@ -1,4 +1,7 @@
-import useStore from "../../store/store";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import useStore, { Character } from "../../store/store";
+import { getCharacter } from "@/services/characterService";
 import { number, string, z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -35,11 +38,23 @@ const characterSchema = z.object({
 });
 
 function CharacterSheet() {
+  const { characterId } = useParams();
   const currentCharacter = useStore((state) => state.currentCharacter);
-  if (!currentCharacter) {
+  const updateCharacter = useStore((state) => state.updateCharacter);
+
+  if (!characterId) {
     throw new Error("No character currently selected.");
   }
-  console.log("current character", currentCharacter);
+
+  useEffect(() => {
+    const fetchCharacter = async () => {
+      const fetchedCharacter: Character = await getCharacter(characterId);
+      if (fetchedCharacter) {
+        updateCharacter(fetchedCharacter);
+      }
+    };
+    fetchCharacter();
+  }, []);
 
   const form = useForm<z.infer<typeof characterSchema>>({
     resolver: zodResolver(characterSchema),
