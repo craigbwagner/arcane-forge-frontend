@@ -24,7 +24,6 @@ function CharactersList() {
         const newCharacter: Character = await charactersService.create(
           user._id,
         );
-        console.log("new character", newCharacter);
         addUserCharacter(newCharacter);
         updateCharacter(newCharacter);
         console.log(currentCharacter);
@@ -44,7 +43,7 @@ function CharactersList() {
       {characters ? (
         <ul>
           {characters.map((character) => {
-            return <li>{character._id}</li>;
+            return <li key={character._id}>{character._id}</li>;
           })}
         </ul>
       ) : (
