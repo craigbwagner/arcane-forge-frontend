@@ -2,7 +2,7 @@ import useStore, { Character } from "../store/store";
 
 const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 
-async function create(creator: string): Promise<typeof Character> {
+async function create(creator: string): Promise<Character> {
   try {
     const res = await fetch(`${BACKEND_URL}/characters/new`, {
       method: "POST",
