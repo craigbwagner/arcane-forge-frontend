@@ -38,6 +38,32 @@ const characterSchema = z.object({
 
 function CharacterSheet() {
   const currentCharacter = useStore((state) => state.currentCharacter);
+  console.log("current character", currentCharacter);
+
+  const form = useForm<z.infer<typeof characterSchema>>({
+    resolver: zodResolver(characterSchema),
+    defaultValues: {
+      name: "",
+      race: "",
+      classes: [],
+      sex: "",
+      size: "",
+      age: 0,
+      height: "",
+      weight: 0,
+      alignment: "",
+      languages: [],
+      initiative: 0,
+      speed: 0,
+      maxHP: 0,
+      currentHP: 0,
+      tempHP: 0,
+      hitDiceRemaining: 0,
+      hitDiceType: "",
+      hitDiceTotal: 0,
+      skillExpertise: [],
+    },
+  });
   return (
     <>
       <h1>Current Character</h1>
