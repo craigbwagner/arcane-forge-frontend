@@ -1,4 +1,4 @@
-import useStore from "@/store/store";
+import useStore, { Character } from "@/store/store";
 import { Button } from "../ui/button";
 import * as charactersService from "../../services/characterService";
 import { Form, useNavigate } from "react-router-dom";
@@ -15,11 +15,14 @@ function CharactersList() {
   async function handleSubmit(e: any): Promise<void> {
     e.preventDefault();
     try {
-      const newCharacter = await charactersService.create(user._id);
-      addUserCharacter(newCharacter);
-      console.log(user);
+      if (user) {
+        const newCharacter: Character = await charactersService.create(
+          user._id,
+        );
+        addUserCharacter(newCharacter);
 
-      navigate(`/characters/${newCharacter._id}`);
+        navigate(`/characters/${newCharacter._id}`);
+      }
     } catch (err: unknown) {
       console.log(err);
     }
