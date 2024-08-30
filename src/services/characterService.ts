@@ -43,4 +43,25 @@ async function getCharacter(characterId: string): Promise<Character> {
   }
 }
 
-export { create, getCharacter };
+async function updateCharacter(characterData: any) {
+  try {
+    const res = await fetch(`${BACKEND_URL}/characters/${characterData._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(characterData),
+    });
+    const json = await res.json();
+    if (json.err) {
+      throw new Error(json.err);
+    }
+    return json;
+  } catch (err: unknown) {
+    console.log(err);
+    throw err;
+  }
+}
+
+export { create, getCharacter, updateCharacter };
