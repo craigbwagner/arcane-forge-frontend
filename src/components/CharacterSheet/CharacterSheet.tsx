@@ -17,7 +17,6 @@ import { Input } from "../ui/input";
 const characterSchema = z.object({
   name: z.string(),
   race: z.string(),
-  classes: z.string().array(),
   sex: string(),
   size: string(),
   age: number(),
@@ -37,6 +36,9 @@ const characterSchema = z.object({
 
 function CharacterSheet() {
   const currentCharacter = useStore((state) => state.currentCharacter);
+  if (!currentCharacter) {
+    throw new Error("No character currently selected.");
+  }
   console.log("current character", currentCharacter);
 
   const form = useForm<z.infer<typeof characterSchema>>({
@@ -44,7 +46,6 @@ function CharacterSheet() {
     defaultValues: {
       name: "",
       race: "",
-      classes: [],
       sex: "",
       size: "",
       age: 0,
@@ -60,6 +61,25 @@ function CharacterSheet() {
       hitDiceRemaining: 0,
       hitDiceType: "",
       hitDiceTotal: 0,
+    },
+    values: {
+      name: currentCharacter.name,
+      race: currentCharacter.race,
+      sex: currentCharacter.sex,
+      size: currentCharacter.size,
+      age: currentCharacter.age,
+      height: currentCharacter.height,
+      weight: currentCharacter.weight,
+      alignment: currentCharacter.alignment,
+      languages: currentCharacter.languages,
+      initiative: currentCharacter.initiative,
+      speed: currentCharacter.speed,
+      maxHP: currentCharacter.maxHP,
+      currentHP: currentCharacter.currentHP,
+      tempHP: currentCharacter.tempHP,
+      hitDiceRemaining: currentCharacter.hitDiceRemaining,
+      hitDiceType: currentCharacter.hitDiceType,
+      hitDiceTotal: currentCharacter.hitDiceTotal,
     },
   });
 
