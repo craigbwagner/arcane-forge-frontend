@@ -44,17 +44,15 @@ export interface Character {
 }
 
 interface State {
-  readonly user: {
+  user: {
     username: string;
     _id: string;
     characters: Character[];
   } | null;
-  readonly currentCharacter: Character | null;
-  readonly updateUser: (
-    updatedUser: { username: string; _id: string } | null,
-  ) => void;
-  readonly updateCharacter: (updatedCharacter: Character | null) => void;
-  readonly addUserCharacter: (newCharacter: Character) => void;
+  currentCharacter: Character | null;
+  updateUser: (updatedUser: { username: string; _id: string } | null) => void;
+  updateCharacter: (updatedCharacter: Character | null) => void;
+  addUserCharacter: (newCharacter: Character) => void;
 }
 
 const useStore = create<State>()((set) => ({
@@ -68,7 +66,7 @@ const useStore = create<State>()((set) => ({
     ),
   updateCharacter: (updatedCharacter) =>
     set(
-      produce((draft) => {
+      produce((draft: State) => {
         draft.currentCharacter = updatedCharacter;
       }),
     ),
