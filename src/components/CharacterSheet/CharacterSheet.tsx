@@ -125,20 +125,6 @@ function CharacterSheet() {
           />
           <FormField
             control={form.control}
-            name="classes"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Classes</FormLabel>
-                <FormControl>
-                  <Input placeholder="Classes" {...field} />
-                </FormControl>
-                <FormDescription></FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
             name="sex"
             render={({ field }) => (
               <FormItem>
