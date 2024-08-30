@@ -13,7 +13,6 @@ function CharactersList() {
     throw new Error("No current user.");
   }
 
-  const newCharacterData = {};
   const characters = user.characters;
   console.log("characters state:", characters);
 
@@ -21,9 +20,7 @@ function CharactersList() {
     e.preventDefault();
     try {
       if (user) {
-        const newCharacter: Character = await charactersService.create(
-          user._id,
-        );
+        const newCharacter: Character = await charactersService.create();
         addUserCharacter(newCharacter);
         updateCharacter(newCharacter);
         console.log(currentCharacter);
