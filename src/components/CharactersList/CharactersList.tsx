@@ -7,10 +7,15 @@ function CharactersList() {
   const navigate = useNavigate();
   const user = useStore((state) => state.user);
   const addUserCharacter = useStore((state) => state.addUserCharacter);
+  const updateCharacter = useStore((state) => state.updateCharacter);
+  const currentCharacter = useStore((state) => state.currentCharacter);
   if (!user) {
     throw new Error("No current user.");
   }
+
+  const newCharacterData = {};
   const characters = user.characters;
+  console.log("characters state:", characters);
 
   async function handleSubmit(e: any): Promise<void> {
     e.preventDefault();
@@ -19,8 +24,10 @@ function CharactersList() {
         const newCharacter: Character = await charactersService.create(
           user._id,
         );
+        console.log("new character", newCharacter);
         addUserCharacter(newCharacter);
-
+        updateCharacter(newCharacter);
+        console.log(currentCharacter);
         navigate(`/characters/${newCharacter._id}`);
       }
     } catch (err: unknown) {
@@ -34,6 +41,15 @@ function CharactersList() {
       <form onSubmit={handleSubmit}>
         <Button type="submit">Add Character</Button>
       </form>
+      {characters ? (
+        <ul>
+          {characters.map((character) => {
+            return <li>{character._id}</li>;
+          })}
+        </ul>
+      ) : (
+        <p>No characters created.</p>
+      )}
     </main>
   );
 }
