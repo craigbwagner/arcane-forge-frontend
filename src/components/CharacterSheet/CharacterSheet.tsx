@@ -67,7 +67,26 @@ function CharacterSheet() {
   return (
     <main className="ml-[17rem]">
       <h1>Current Character</h1>
-    </>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(saveCharacter)}>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Name" {...field} />
+                </FormControl>
+                <FormDescription></FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit">Save Character</Button>
+        </form>
+      </Form>
+    </main>
   );
 }
 
