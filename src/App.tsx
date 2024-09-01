@@ -8,7 +8,7 @@ import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
 import { useEffect } from "react";
 import useStore from "./store/store";
-import CharactersList from "./components/CharactersList/CharactersList";
+import CharactersPage from "./components/CharactersPage/CharactersPage";
 import CharacterSheet from "./components/CharacterSheet/CharacterSheet";
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
         {user ? (
           <>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/characters" element={<CharactersList />} />
+            <Route path="/characters" element={<CharactersPage />} />
             <Route
               path="/characters/:characterId"
               element={<CharacterSheet />}

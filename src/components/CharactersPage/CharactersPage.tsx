@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 import * as charactersService from "../../services/characterService";
 import { Form, useNavigate } from "react-router-dom";
 
-function CharactersList() {
+function CharactersPage() {
   const navigate = useNavigate();
   const user = useStore((state) => state.user);
   const addUserCharacter = useStore((state) => state.addUserCharacter);
@@ -85,4 +85,4 @@ function CharactersList() {
   );
 }
 
-export default CharactersList;
+export default CharactersPage;
