@@ -50,7 +50,13 @@ interface State {
     characters: Character[];
   } | null;
   currentCharacter: Character;
-  updateUser: (updatedUser: { username: string; _id: string } | null) => void;
+  updateUser: (
+    updatedUser: {
+      username: string;
+      _id: string;
+      characters: Character[];
+    } | null,
+  ) => void;
   updateCharacter: (updatedCharacter: Character) => void;
   addUserCharacter: (newCharacter: Character) => void;
 }
