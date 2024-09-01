@@ -16,7 +16,10 @@ function App() {
   const updateUser = useStore((state) => state.updateUser);
 
   useEffect(() => {
-    updateUser(authService.getUser());
+    const fetchLoggedInUser = async () => {
+      updateUser(await authService.getUser());
+    };
+    fetchLoggedInUser();
   }, []);
 
   function handleSignout() {
