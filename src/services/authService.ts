@@ -73,7 +73,7 @@ async function signin(formData: { username: string; password: string }) {
   }
 }
 
-function getUser() {
+async function getUser() {
   const token = localStorage.getItem("token");
   if (!token) return null;
   const user: {
@@ -81,7 +81,21 @@ function getUser() {
     _id: string;
     characters: Character[];
   } = JSON.parse(atob(token.split(".")[1]));
-  user.characters = [];
+
+  const res = await fetch(`${BACKEND_URL}/users/${user._id}/characters`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+
+  const json = await res.json();
+  if (json.err) {
+    throw new Error(json.err);
+  }
+  user.characters = json.characters;
+
   return user;
 }
 
