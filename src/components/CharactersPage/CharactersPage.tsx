@@ -9,12 +9,13 @@ function CharactersPage() {
   const user = useStore((state) => state.user);
   const addUserCharacter = useStore((state) => state.addUserCharacter);
   const updateCharacter = useStore((state) => state.updateCharacter);
+  console.log(user);
   if (!user) {
-    throw new Error("No current user.");
+    navigate("/signin");
   }
 
   const initializeCharacterValues = {
-    creator: user._id,
+    creator: user?._id ?? "",
     name: "",
     race: "",
     classes: [],
@@ -46,8 +47,6 @@ function CharactersPage() {
     abilities: [],
     items: [],
   };
-  const characters = user.characters;
-  console.log("characters state:", characters);
 
   async function handleSubmit(e: any): Promise<void> {
     e.preventDefault();
@@ -58,7 +57,6 @@ function CharactersPage() {
         );
         addUserCharacter(newCharacter);
         updateCharacter(newCharacter);
-        console.log(currentCharacter);
         navigate(`/characters/${newCharacter._id}`);
       }
     } catch (err: unknown) {
@@ -73,15 +71,6 @@ function CharactersPage() {
         <Button type="submit">Add Character</Button>
       </form>
       <CharactersList />
-      {characters ? (
-        <ul>
-          {characters.map((character) => {
-            return <li key={character._id}>{character._id}</li>;
-          })}
-        </ul>
-      ) : (
-        <p>No characters created.</p>
-      )}
     </main>
   );
 }

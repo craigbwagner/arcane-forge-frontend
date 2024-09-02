@@ -31,22 +31,14 @@ function App() {
       <Sidebar handleSignout={handleSignout} />
       <h1>Hello</h1>
       <Routes>
-        {user ? (
-          <>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/characters" element={<CharactersPage />} />
-            <Route
-              path="/characters/:characterId"
-              element={<CharacterSheet />}
-            />
-          </>
-        ) : (
-          <>
-            <Route path="/" element={<Landing />} />
-            <Route path="/signin" element={<SigninForm />} />
-            <Route path="/signup" element={<SignupForm />} />
-          </>
-        )}
+        <>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/characters" element={<CharactersPage />} />
+          <Route path="/characters/:characterId" element={<CharacterSheet />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/signin" element={<SigninForm />} />
+          <Route path="/signup" element={<SignupForm />} />
+        </>
       </Routes>
     </>
   );
