@@ -450,7 +450,7 @@ function CharacterSheet() {
               </div>
             </CardContent>
           </Card>
-          <FormField
+          {/* <FormField
             control={form.control}
             name="languages"
             render={({ field }) => (
@@ -463,7 +463,7 @@ function CharacterSheet() {
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
           <Button type="submit">Save Character</Button>
         </form>
       </Form>
