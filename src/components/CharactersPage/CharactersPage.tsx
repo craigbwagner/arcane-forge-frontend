@@ -1,7 +1,8 @@
 import useStore, { Character } from "@/store/store";
 import { Button } from "../ui/button";
 import * as charactersService from "../../services/characterService";
-import { Form, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import CharactersList from "../CharactersList/CharactersList";
 
 function CharactersPage() {
   const navigate = useNavigate();
@@ -72,6 +73,7 @@ function CharactersPage() {
       <form onSubmit={handleSubmit}>
         <Button type="submit">Add Character</Button>
       </form>
+      <CharactersList />
       {characters ? (
         <ul>
           {characters.map((character) => {
