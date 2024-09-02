@@ -1,6 +1,7 @@
 "use client";
 
 import * as authService from "../../services/authService";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -51,6 +52,13 @@ const signupSchema = z
 function SignupForm() {
   const navigate = useNavigate();
   const updateUser = useStore((state) => state.updateUser);
+  const user = useStore((state) => state.user);
+
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, []);
 
   const form = useForm<z.infer<typeof signupSchema>>({
     resolver: zodResolver(signupSchema),
