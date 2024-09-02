@@ -9,7 +9,6 @@ function CharactersPage() {
   const user = useStore((state) => state.user);
   const addUserCharacter = useStore((state) => state.addUserCharacter);
   const updateCharacter = useStore((state) => state.updateCharacter);
-  const currentCharacter = useStore((state) => state.currentCharacter);
   if (!user) {
     throw new Error("No current user.");
   }
