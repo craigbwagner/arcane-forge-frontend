@@ -12,7 +12,6 @@ import CharactersPage from "./components/CharactersPage/CharactersPage";
 import CharacterSheet from "./components/CharacterSheet/CharacterSheet";
 
 function App() {
-  const user = useStore((state) => state.user);
   const updateUser = useStore((state) => state.updateUser);
 
   useEffect(() => {
