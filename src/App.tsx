@@ -32,14 +32,30 @@ function App() {
       <Sidebar handleSignout={handleSignout} />
       <h1>Hello</h1>
       <Routes>
-        {/* {user ? (
+        {user ? (
           <>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/characters" element={<CharactersPage />} />
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute user={user}>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/characters"
+              element={
+                <PrivateRoute user={user}>
+                  <CharactersPage />
+                </PrivateRoute>
+              }
+            />
             <Route
               path="/characters/:characterId"
               element={<CharacterSheet />}
             />
+            <Route path="/signin" element={<Navigate to="/dashboard" />} />
+            <Route path="/signup" element={<Navigate to="/dashboard" />} />
           </>
         ) : (
           <>
@@ -49,36 +65,7 @@ function App() {
             <Route path="/dashboard" element={<Navigate to="/signin" />} />
             <Route path="/characters" element={<Navigate to="/signin" />} />
           </>
-        )} */}
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute user={user}>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/characters"
-          element={
-            <PrivateRoute user={user}>
-              <CharactersPage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/characters/:characterId"
-          element={
-            <PrivateRoute user={user}>
-              <CharacterSheet />
-            </PrivateRoute>
-          }
-        />
-        <Route path="/" element={<Landing />} />
-        <Route path="/signin" element={<SigninForm />} />
-        <Route path="/signup" element={<SignupForm />} />
-        {/* <Route path="/dashboard" element={<Navigate to="/signin" />} /> */}
-        {/* <Route path="/characters" element={<Navigate to="/signin" />} /> */}
+        )}
       </Routes>
     </>
   );
