@@ -17,7 +17,7 @@ function CharactersList() {
         <ul>
           {characters.map((character) => {
             return (
-              <a href={`characters/${character._id}`}>
+              <a href={`characters/${character._id}`} key={character._id}>
                 <Card>
                   <CardHeader>
                     <CardTitle>{character.name}</CardTitle>
