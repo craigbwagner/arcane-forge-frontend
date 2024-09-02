@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import * as charactersService from "../../services/characterService";
 import { useNavigate } from "react-router-dom";
 import CharactersList from "../CharactersList/CharactersList";
+import { useEffect } from "react";
 
 function CharactersPage() {
   const navigate = useNavigate();
@@ -10,9 +11,11 @@ function CharactersPage() {
   const addUserCharacter = useStore((state) => state.addUserCharacter);
   const updateCharacter = useStore((state) => state.updateCharacter);
   console.log(user);
-  if (!user) {
-    navigate("/signin");
-  }
+  useEffect(() => {
+    if (!user) {
+      navigate("/signin");
+    }
+  }, []);
 
   const initializeCharacterValues = {
     creator: user?._id ?? "",
