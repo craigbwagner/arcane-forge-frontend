@@ -290,11 +290,16 @@ function CharacterSheet() {
               <CardTitle>Abilities</CardTitle>
               <CardDescription>Ability Scores and Modifiers</CardDescription>
             </CardHeader>
-            <CardContent className="grid grid-cols-3">
-              <div className="flex flex-col text-center">
-                <h2>Strength</h2>
-                <h3>{currentCharacter.strength}</h3>
-              </div>
+            <CardContent className="grid grid-cols-2">
+              {abilityScores.map((ability) => {
+                return (
+                  <div className="flex flex-col text-center">
+                    <h2>{ability.name}</h2>
+                    <h3>{ability.abilityMod}</h3>
+                    <h4>{ability.abilityScore}</h4>
+                  </div>
+                );
+              })}
             </CardContent>
             <CardFooter></CardFooter>
           </Card>
