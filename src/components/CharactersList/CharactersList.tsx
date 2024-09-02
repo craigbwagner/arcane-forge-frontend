@@ -11,8 +11,7 @@ import {
 function CharactersList() {
   const characters = useStore((state) => state.user?.characters);
   return (
-    <main className="ml-[17rem">
-      <Card></Card>
+    <main className="ml-[17rem]">
       {characters ? (
         <ul>
           {characters.map((character) => {
