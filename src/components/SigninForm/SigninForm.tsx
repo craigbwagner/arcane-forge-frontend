@@ -88,6 +88,9 @@ function SigninForm() {
           <Button type="submit">Submit</Button>
         </form>
       </Form>
+      <p>
+        Don't have an account? <a href="/signup">Sign In</a>
+      </p>
     </main>
   );
 }
