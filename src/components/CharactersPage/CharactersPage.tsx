@@ -10,7 +10,6 @@ function CharactersPage() {
   const user = useStore((state) => state.user);
   const addUserCharacter = useStore((state) => state.addUserCharacter);
   const updateCharacter = useStore((state) => state.updateCharacter);
-  console.log(user);
   useEffect(() => {
     if (!user) {
       navigate("/signin");
