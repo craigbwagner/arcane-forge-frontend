@@ -50,8 +50,42 @@ function CharacterSheet() {
   const currentCharacter = useStore((state) => state.currentCharacter);
   const user = useStore((state) => state.user);
   const updateCharacter = useStore((state) => state.updateCharacter);
+  const abilityScores = [
+    {
+      name: "Str",
+      abilityScore: currentCharacter.strength,
+      abilityMod: calculateAbilityMod(currentCharacter.strength),
+    },
+    {
+      name: "Dex",
+      abilityScore: currentCharacter.dexterity,
+      abilityMod: calculateAbilityMod(currentCharacter.dexterity),
+    },
+    {
+      name: "Con",
+      abilityScore: currentCharacter.constitution,
+      abilityMod: calculateAbilityMod(currentCharacter.constitution),
+    },
+    {
+      name: "Cha",
+      abilityScore: currentCharacter.charisma,
+      abilityMod: calculateAbilityMod(currentCharacter.charisma),
+    },
+    {
+      name: "Wis",
+      abilityScore: currentCharacter.wisdom,
+      abilityMod: calculateAbilityMod(currentCharacter.wisdom),
+    },
+    {
+      name: "Int",
+      abilityScore: currentCharacter.intelligence,
+      abilityMod: calculateAbilityMod(currentCharacter.intelligence),
+    },
+  ];
 
-  console.log(characterId);
+  function calculateAbilityMod(abilityScore: number): number {
+    return Math.floor((abilityScore - 10) / 2);
+  }
 
   if (!characterId) {
     throw new Error("No character currently selected.");
@@ -250,6 +284,7 @@ function CharacterSheet() {
               />
             </CardContent>
           </Card>
+
           <Card>
             <CardHeader>
               <CardTitle>Abilities</CardTitle>
