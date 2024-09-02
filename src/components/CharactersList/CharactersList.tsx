@@ -10,16 +10,25 @@ import {
 
 function CharactersList() {
   const characters = useStore((state) => state.user?.characters);
+  console.log(characters);
   return (
-    <main className="ml-[17rem]">
+    <main>
       {characters ? (
         <ul>
           {characters.map((character) => {
             return (
-              <a href={`characters/${character._id}`} key={character._id}>
+              <li key={character._id}>
                 <Card>
                   <CardHeader>
-                    <CardTitle>{character.name}</CardTitle>
+                    <CardTitle>
+                      <a href={`/characters/${character._id}`}>
+                        {character.name === "" ? (
+                          <h2>Unnamed Character</h2>
+                        ) : (
+                          character.name
+                        )}
+                      </a>
+                    </CardTitle>
                     <CardDescription>
                       Level {character.level} character
                     </CardDescription>
@@ -29,7 +38,7 @@ function CharactersList() {
                   </CardContent>
                   <CardFooter></CardFooter>
                 </Card>
-              </a>
+              </li>
             );
           })}
         </ul>
