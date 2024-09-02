@@ -49,6 +49,7 @@ function CharacterSheet() {
   const { characterId } = useParams();
   const currentCharacter = useStore((state) => state.currentCharacter);
   const user = useStore((state) => state.user);
+  const updateUser = useStore((state) => state.updateUser);
   const updateCharacter = useStore((state) => state.updateCharacter);
   const abilityScores = [
     {
@@ -149,6 +150,36 @@ function CharacterSheet() {
     e: any,
   ) {
     e.preventDefault();
+    let tempUser;
+    if (user) {
+      tempUser = {
+        ...user,
+      };
+      let updatedUserCharacters = tempUser?.characters.filter(
+        (character) => character._id !== currentCharacter._id,
+      );
+      updatedUserCharacters?.unshift({
+        ...values,
+        _id: currentCharacter._id,
+        strength: currentCharacter.strength,
+        dexterity: currentCharacter.dexterity,
+        intelligence: currentCharacter.intelligence,
+        wisdom: currentCharacter.wisdom,
+        constitution: currentCharacter.constitution,
+        charisma: currentCharacter.charisma,
+        level: currentCharacter.level,
+        savingThrowProficiencies: currentCharacter.savingThrowProficiencies,
+        skillExpertise: currentCharacter.skillExpertise,
+        skillProficiencies: currentCharacter.skillProficiencies,
+        abilities: currentCharacter.abilities,
+        items: currentCharacter.items,
+        creator: currentCharacter.creator,
+        classes: currentCharacter.classes,
+      });
+      tempUser.characters = updatedUserCharacters;
+      updateUser(tempUser);
+    }
+
     try {
       characterService.saveCharacter({
         ...values,
