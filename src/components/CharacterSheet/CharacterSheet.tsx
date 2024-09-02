@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useStore, { Character } from "../../store/store";
 import * as characterService from "@/services/characterService";
 import { number, string, z } from "zod";
@@ -42,13 +42,8 @@ function CharacterSheet() {
   const currentCharacter = useStore((state) => state.currentCharacter);
   const user = useStore((state) => state.user);
   const updateCharacter = useStore((state) => state.updateCharacter);
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user) {
-      navigate("/signin");
-    }
-  }, []);
+  console.log(characterId);
 
   if (!characterId) {
     throw new Error("No character currently selected.");

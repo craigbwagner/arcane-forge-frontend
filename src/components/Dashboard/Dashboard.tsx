@@ -1,16 +1,7 @@
-import { useEffect } from "react";
 import useStore from "../../store/store";
-import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const user = useStore((state) => state.user);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!user) {
-      navigate("/signin");
-    }
-  }, []);
 
   return (
     <main className="ml-[17rem]">

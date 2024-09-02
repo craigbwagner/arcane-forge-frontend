@@ -27,12 +27,6 @@ function SigninForm() {
   const updateUser = useStore((state) => state.updateUser);
   const user = useStore((state) => state.user);
 
-  useEffect(() => {
-    if (user) {
-      navigate("/dashboard");
-    }
-  }, []);
-
   const form = useForm<z.infer<typeof signinSchema>>({
     resolver: zodResolver(signinSchema),
     defaultValues: {
@@ -46,6 +40,7 @@ function SigninForm() {
     try {
       const signedInUser = await authService.signin(values);
       updateUser(signedInUser);
+      console.log(user);
       navigate("/dashboard");
     } catch (err: unknown) {
       console.log(err);

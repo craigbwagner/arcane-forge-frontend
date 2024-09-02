@@ -15,7 +15,6 @@ import CharacterSheet from "./components/CharacterSheet/CharacterSheet";
 function App() {
   const updateUser = useStore((state) => state.updateUser);
   const user = useStore((state) => state.user);
-  console.log(user);
 
   useEffect(() => {
     const fetchLoggedInUser = async () => {
