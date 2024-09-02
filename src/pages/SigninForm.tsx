@@ -1,10 +1,9 @@
-import * as authService from "../../services/authService";
-import { useEffect } from "react";
+import * as authService from "../services/authService";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "../ui/button";
+import { Button } from "../components/ui/button";
 import {
   Form,
   FormField,
@@ -13,9 +12,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
-import useStore from "../../store/store";
+} from "../components/ui/form";
+import { Input } from "../components/ui/input";
+import useStore from "../store/store";
 
 const signinSchema = z.object({
   username: z.string(),

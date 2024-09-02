@@ -1,16 +1,16 @@
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Sidebar from "./components/Sidebar/Sidebar";
-import Dashboard from "./components/Dashboard/Dashboard";
-import Landing from "./components/Landing/Landing";
-import SignupForm from "./components/SignupForm/SignupForm";
-import SigninForm from "./components/SigninForm/SigninForm";
+import Sidebar from "./components/Sidebar";
+import Dashboard from "./pages/Dashboard";
+import Landing from "./pages/Landing";
+import SignupForm from "./pages/SignupForm";
+import SigninForm from "./pages/SigninForm";
 import * as authService from "../src/services/authService";
 import { useEffect } from "react";
 import useStore from "./store/store";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import CharactersPage from "./components/CharactersPage/CharactersPage";
-import CharacterSheet from "./components/CharacterSheet/CharacterSheet";
+import PrivateRoute from "./components/PrivateRoute";
+import CharactersPage from "./pages/CharactersPage";
+import CharacterSheet from "./pages/CharacterSheet";
 
 function App() {
   const updateUser = useStore((state) => state.updateUser);

@@ -1,4 +1,4 @@
-import useStore from "../../store/store";
+import useStore from "../store/store";
 
 function Dashboard() {
   const user = useStore((state) => state.user);

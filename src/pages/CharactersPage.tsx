@@ -1,8 +1,8 @@
 import useStore, { Character } from "@/store/store";
-import { Button } from "../ui/button";
-import * as charactersService from "../../services/characterService";
+import { Button } from "../components/ui/button";
+import * as charactersService from "../services/characterService";
 import { useNavigate } from "react-router-dom";
-import CharactersList from "../CharactersList/CharactersList";
+import CharactersList from "../components/CharactersList";
 
 function CharactersPage() {
   const navigate = useNavigate();
