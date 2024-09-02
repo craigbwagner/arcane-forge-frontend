@@ -44,8 +44,8 @@ function SigninForm() {
   async function handleSubmit(values: z.infer<typeof signinSchema>, e: any) {
     e.preventDefault();
     try {
-      const user = await authService.signin(values);
-      updateUser(user);
+      const signedInUser = await authService.signin(values);
+      updateUser(signedInUser);
       navigate("/dashboard");
     } catch (err: unknown) {
       console.log(err);
