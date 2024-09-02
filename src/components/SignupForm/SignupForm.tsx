@@ -136,6 +136,9 @@ function SignupForm() {
           <Button type="submit">Submit</Button>
         </form>
       </Form>
+      <p>
+        Don't have an account? <a href="/signin">Sign In</a>
+      </p>
     </main>
   );
 }
