@@ -17,18 +17,20 @@ function CharactersList() {
         <ul>
           {characters.map((character) => {
             return (
-              <Card>
-                <CardHeader>
-                  <CardTitle>{character.name}</CardTitle>
-                  <CardDescription>
-                    Level {character.level} character
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p>Card Content</p>
-                </CardContent>
-                <CardFooter></CardFooter>
-              </Card>
+              <a href={`characters/${character._id}`}>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>{character.name}</CardTitle>
+                    <CardDescription>
+                      Level {character.level} character
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p>Card Content</p>
+                  </CardContent>
+                  <CardFooter></CardFooter>
+                </Card>
+              </a>
             );
           })}
         </ul>
