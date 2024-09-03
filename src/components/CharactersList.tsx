@@ -10,12 +10,20 @@ import {
 
 function CharactersList() {
   const characters = useStore((state) => state.user?.characters);
-  console.log(characters);
+  const sortableCharacters = characters ? [...characters] : [];
+  const sortedCharacters = sortableCharacters?.sort((a, b): number => {
+    if (a.updatedAt && b.updatedAt) {
+      const dateA = new Date(b.updatedAt).getTime();
+      const dateB = new Date(a.updatedAt).getTime();
+      return dateA - dateB;
+    }
+    return 0;
+  });
   return (
     <main>
       {characters ? (
         <ul>
-          {characters.map((character) => {
+          {sortedCharacters.map((character) => {
             return (
               <li key={character._id}>
                 <Card>
