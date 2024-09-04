@@ -28,7 +28,7 @@ function App() {
     updateUser(null);
   }
   return (
-    <>
+    <div className="dark">
       <Sidebar handleSignout={handleSignout} />
       <h1>Hello</h1>
       <Routes>
@@ -51,7 +51,7 @@ function App() {
           </>
         )}
       </Routes>
-    </>
+    </div>
   );
 }
 
