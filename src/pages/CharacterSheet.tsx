@@ -235,7 +235,7 @@ function CharacterSheet() {
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
-              <CharBasicDetailsForm form={form} />
+              <CharBasicDetailsForm />
             </CardContent>
           </Card>
           <div className="grid grid-cols-2">
