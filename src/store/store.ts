@@ -22,6 +22,7 @@ export interface Character {
   weight: number;
   alignment: string;
   languages: string[];
+  proficiencyBonus?: number;
   initiative: number;
   initiativeMods?: number;
   speed: number;
@@ -79,6 +80,7 @@ const useStore = create<State>(
       weight: 0,
       alignment: "",
       languages: [],
+      proficiencyBonus: 2,
       initiative: 0,
       speed: 0,
       maxHP: 0,
