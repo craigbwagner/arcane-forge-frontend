@@ -34,22 +34,8 @@ function App() {
       <Routes>
         {user ? (
           <>
-            <Route
-              path="/dashboard"
-              element={
-                <PrivateRoute user={user}>
-                  <Dashboard />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/characters"
-              element={
-                <PrivateRoute user={user}>
-                  <CharactersPage />
-                </PrivateRoute>
-              }
-            />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/characters" element={<CharactersPage />} />
             <Route
               path="/characters/:characterId"
               element={<CharacterSheet />}
