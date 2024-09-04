@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useStore, { Character } from "../store/store";
 import * as characterService from "@/services/characterService";
 import { number, string, z } from "zod";
@@ -223,6 +223,12 @@ function CharacterSheet() {
     <main className="flex flex-col ml-[17rem]">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(saveCharacter)}>
+          <div className="flex justify-end">
+            <Link to="">
+              <Button>Edit Character</Button>
+            </Link>
+            <Button type="submit">Save Character</Button>
+          </div>
           <Card>
             <CardHeader>
               <CardTitle>Basic Details</CardTitle>
@@ -307,7 +313,6 @@ function CharacterSheet() {
               <CharSkills abilities={abilities} />
             </CardContent>
           </Card>
-          <Button type="submit">Save Character</Button>
         </form>
       </Form>
     </main>
