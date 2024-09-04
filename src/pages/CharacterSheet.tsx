@@ -220,7 +220,10 @@ function CharacterSheet() {
             <CardContent className="grid grid-cols-2 gap-2">
               {abilityScores.map((ability) => {
                 return (
-                  <div className="flex flex-col text-center rounded-md border-[1px] border-slate-300">
+                  <div
+                    className="flex flex-col text-center rounded-md border-[1px] border-slate-300"
+                    key={ability.name}
+                  >
                     <h2>{ability.name}</h2>
                     <h3>
                       {ability.abilityMod > 0
