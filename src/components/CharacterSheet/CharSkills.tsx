@@ -68,7 +68,7 @@ function CharSkills({
     <ul>
       {skills.map((skill) => {
         return (
-          <li>
+          <li key={skill.name}>
             <p>{skill.name}</p>
             <p>{skill.mod}</p>
           </li>
