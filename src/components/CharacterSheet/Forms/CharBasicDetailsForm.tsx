@@ -7,8 +7,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
+} from "../../ui/form";
+import { Input } from "../../ui/input";
 import {
   Select,
   SelectContent,
@@ -16,35 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
-interface FormData {
-  name: string;
-  race: string;
-  sex: string;
-  size: string;
-  age: number;
-  height: string;
-  weight: number;
-  alignment:
-    | "Chaotic Evil"
-    | "Chaotic Neutral"
-    | "Chaotic Good"
-    | "Lawful Evil"
-    | "Lawful Neutral"
-    | "Lawful Good"
-    | "Neutral Good"
-    | "Neutral"
-    | "Neutral Evil";
-  languages: string[];
-  initiative: number;
-  speed: number;
-  maxHP: number;
-  currentHP: number;
-  tempHP: number;
-  hitDiceRemaining: number;
-  hitDiceType: string;
-  hitDiceTotal: number;
-}
+import { FormData } from "@/pages/EditCharacterPage";
 
 function CharBasicDetailsForm({
   form,

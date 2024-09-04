@@ -15,7 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import CharBasicDetailsForm from "@/components/CharacterSheet/CharBasicDetailsForm";
+import CharBasicDetailsForm from "@/components/CharacterSheet/Forms/CharBasicDetailsForm";
 import CharCoreStats from "@/components/CharacterSheet/CharCoreStats";
 import CharSkills from "@/components/CharacterSheet/CharSkills";
 
@@ -40,6 +40,12 @@ const characterSchema = z.object({
   ]),
   languages: z.string().array(),
   initiative: z.coerce.number(),
+  strength: z.number(),
+  dexterity: z.number(),
+  constitution: z.number(),
+  charisma: z.number(),
+  wisdom: z.number(),
+  intelligence: z.number(),
   speed: z.coerce.number(),
   maxHP: z.coerce.number(),
   currentHP: z.coerce.number(),
@@ -48,6 +54,41 @@ const characterSchema = z.object({
   hitDiceType: string(),
   hitDiceTotal: z.coerce.number(),
 });
+
+export interface FormData {
+  name: string;
+  race: string;
+  sex: string;
+  size: string;
+  age: number;
+  height: string;
+  weight: number;
+  alignment:
+    | "Chaotic Evil"
+    | "Chaotic Neutral"
+    | "Chaotic Good"
+    | "Lawful Evil"
+    | "Lawful Neutral"
+    | "Lawful Good"
+    | "Neutral Good"
+    | "Neutral"
+    | "Neutral Evil";
+  languages: string[];
+  initiative: number;
+  strength: number;
+  dexterity: number;
+  constitution: number;
+  charisma: number;
+  wisdom: number;
+  intelligence: number;
+  speed: number;
+  maxHP: number;
+  currentHP: number;
+  tempHP: number;
+  hitDiceRemaining: number;
+  hitDiceType: string;
+  hitDiceTotal: number;
+}
 
 function EditCharacterPage() {
   const { characterId } = useParams();
