@@ -56,32 +56,32 @@ function CharacterSheet() {
   const updateCharacter = useStore((state) => state.updateCharacter);
   const abilityScores = [
     {
-      name: "Str",
+      name: "STR",
       abilityScore: currentCharacter.strength,
       abilityMod: calculateAbilityMod(currentCharacter.strength),
     },
     {
-      name: "Dex",
+      name: "DEX",
       abilityScore: currentCharacter.dexterity,
       abilityMod: calculateAbilityMod(currentCharacter.dexterity),
     },
     {
-      name: "Con",
+      name: "CON",
       abilityScore: currentCharacter.constitution,
       abilityMod: calculateAbilityMod(currentCharacter.constitution),
     },
     {
-      name: "Cha",
+      name: "CHA",
       abilityScore: currentCharacter.charisma,
       abilityMod: calculateAbilityMod(currentCharacter.charisma),
     },
     {
-      name: "Wis",
+      name: "WIS",
       abilityScore: currentCharacter.wisdom,
       abilityMod: calculateAbilityMod(currentCharacter.wisdom),
     },
     {
-      name: "Int",
+      name: "INT",
       abilityScore: currentCharacter.intelligence,
       abilityMod: calculateAbilityMod(currentCharacter.intelligence),
     },
