@@ -47,50 +47,20 @@ function CharCoreStats({
           <h1>AC</h1>
           <h2>some ac</h2>
         </div>
-        <FormField
-          control={form.control}
-          name="initiative"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Initiative</FormLabel>
-              <FormControl>
-                <Input placeholder="Initiative" type="number" {...field} />
-              </FormControl>
-              <FormDescription></FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="speed"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Speed</FormLabel>
-              <FormControl>
-                <Input placeholder="Speed" type="number" {...field} />
-              </FormControl>
-              <FormDescription></FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div>
+          <h1>Initiative</h1>
+          <h2>{currentCharacter.proficiencyBonus}</h2>
+        </div>
+        <div>
+          <h1>Speed</h1>
+          <h2>{currentCharacter.speed}</h2>
+        </div>
       </div>
       <div>
-        <FormField
-          control={form.control}
-          name="maxHP"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Max HP</FormLabel>
-              <FormControl>
-                <Input placeholder="Max HP" type="number" {...field} />
-              </FormControl>
-              <FormDescription></FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div>
+          <h1>Max HP</h1>
+          <h2>{currentCharacter.maxHP}</h2>
+        </div>
         <FormField
           control={form.control}
           name="currentHP"
@@ -121,20 +91,10 @@ function CharCoreStats({
         />
       </div>
       <div>
-        <FormField
-          control={form.control}
-          name="hitDiceTotal"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Max # of Hit Die</FormLabel>
-              <FormControl>
-                <Input placeholder="Total Hit Die" type="number" {...field} />
-              </FormControl>
-              <FormDescription></FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div>
+          <h1>Max # of Hit Die</h1>
+          <h2>{currentCharacter.hitDiceTotal}</h2>
+        </div>
         <FormField
           control={form.control}
           name="hitDiceRemaining"
@@ -153,20 +113,10 @@ function CharCoreStats({
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="hitDiceType"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Hit Dice Type</FormLabel>
-              <FormControl>
-                <Input placeholder="Hit Dice Type" {...field} />
-              </FormControl>
-              <FormDescription></FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div>
+          <h1>Hit Dice Type</h1>
+          <h2>{currentCharacter.hitDiceType}</h2>
+        </div>
       </div>
     </div>
   );
