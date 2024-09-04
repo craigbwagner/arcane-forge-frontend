@@ -224,7 +224,7 @@ function CharacterSheet() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(saveCharacter)}>
           <div className="flex justify-end">
-            <Link to="">
+            <Link to={`/characters/edit/${characterId}`}>
               <Button>Edit Character</Button>
             </Link>
             <Button type="submit">Save Character</Button>
