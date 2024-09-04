@@ -54,6 +54,7 @@ function CharacterSheet() {
   const user = useStore((state) => state.user);
   const updateUser = useStore((state) => state.updateUser);
   const updateCharacter = useStore((state) => state.updateCharacter);
+  let proficiencyBonus;
   const abilityScores = [
     {
       name: "STR",
@@ -103,7 +104,21 @@ function CharacterSheet() {
         updateCharacter(fetchedCharacter);
       }
     };
+    const setProficiencyBonus = () => {
+      if (currentCharacter.level < 5) {
+        proficiencyBonus = 2;
+      } else if (currentCharacter.level < 9) {
+        proficiencyBonus = 3;
+      } else if (currentCharacter.level < 13) {
+        proficiencyBonus = 4;
+      } else if (currentCharacter.level < 17) {
+        proficiencyBonus = 5;
+      } else {
+        proficiencyBonus = 6;
+      }
+    };
     fetchCharacter();
+    setProficiencyBonus();
   }, []);
 
   const form = useForm<z.infer<typeof characterSchema>>({
@@ -236,7 +251,7 @@ function CharacterSheet() {
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
-              <CharCoreStats form={form} />
+              <CharCoreStats form={form} proficiencyBonus={proficiencyBonus} />
             </CardContent>
           </Card>
           <Card>
@@ -245,7 +260,10 @@ function CharacterSheet() {
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
-              <CharSkills abilityScores={abilityScores} />
+              <CharSkills
+                abilityScores={abilityScores}
+                proficiencyBonus={proficiencyBonus}
+              />
             </CardContent>
           </Card>
           <Button type="submit">Save Character</Button>
