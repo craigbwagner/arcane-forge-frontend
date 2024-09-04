@@ -39,7 +39,10 @@ function CharCoreStats({
   return (
     <div className="grid grid-cols-3 gap-2">
       <div>
-        <h1>{proficiencyBonus}</h1>
+        <div>
+          <h1>Proficiency Bonus</h1>
+          <h2>{proficiencyBonus}</h2>
+        </div>
         <FormField
           control={form.control}
           name="initiative"
