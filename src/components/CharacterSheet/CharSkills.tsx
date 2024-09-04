@@ -68,11 +68,23 @@ function CharSkills({ abilities }: { abilities: Abilities }) {
 
   return (
     <ul>
+      <li className="flex justify-between">
+        <p>Skill Name</p>
+        <div className="flex w-60 justify-evenly">
+          <p>MOD</p>
+          <p>PROF.</p>
+          <p></p>
+        </div>
+      </li>
       {skills.map((skill) => {
         return (
-          <li key={skill.name}>
+          <li key={skill.name} className="flex justify-between">
             <p>{skill.name}</p>
-            <p>{skill.mod}</p>
+            <div className="flex w-60 justify-evenly">
+              <p>{skill.isProficient === true ? "true" : "false"}</p>
+              <p>{skill.ability}</p>
+              <p>{skill.mod}</p>
+            </div>
           </li>
         );
       })}
