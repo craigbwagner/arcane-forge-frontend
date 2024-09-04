@@ -9,6 +9,13 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface FormData {
   name: string;
@@ -139,53 +146,35 @@ function CharBasicDetailsForm({
       <FormField
         control={form.control}
         name="alignment"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Alignment</FormLabel>
-            <FormControl>
-              <Input placeholder="Alignment" {...field} />
-            </FormControl>
-            <FormDescription></FormDescription>
-            <FormMessage />
-          </FormItem>
-        )}
+        render={({ field }) => {
+          return (
+            <FormItem>
+              <FormLabel>Alignment</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Alignment" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Chaotic Evil">Chaotic Evil</SelectItem>
+                  <SelectItem value="Chaotic Neutral">
+                    Chaotic Neutral
+                  </SelectItem>
+                  <SelectItem value="Chaotic Good">Chaotic Good</SelectItem>
+                  <SelectItem value="Lawful Evil">Lawful Evil</SelectItem>
+                  <SelectItem value="Lawful Neutral">Lawful Neutral</SelectItem>
+                  <SelectItem value="Lawful Good">Lawful Good</SelectItem>
+                  <SelectItem value="Neutral Evil">Neutral Evil</SelectItem>
+                  <SelectItem value="Neutral">Neutral</SelectItem>
+                  <SelectItem value="Neutral Good">Neutral Good</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          );
+        }}
       />
-      <div>
-        <h1>Level</h1>
-        <h2>{currentCharacter.level}</h2>
-      </div>
-      <div>
-        <h1>Name</h1>
-        <h2>{currentCharacter.name}</h2>
-      </div>
-      <div>
-        <h1>Race</h1>
-        <h2>{currentCharacter.race}</h2>
-      </div>
-      <div>
-        <h1>Sex</h1>
-        <h2>{currentCharacter.sex}</h2>
-      </div>
-      <div>
-        <h1>Size</h1>
-        <h2>{currentCharacter.size}</h2>
-      </div>
-      <div>
-        <h1>Age</h1>
-        <h2>{currentCharacter.age}</h2>
-      </div>
-      <div>
-        <h1>Height</h1>
-        <h2>{currentCharacter.height}</h2>
-      </div>
-      <div>
-        <h1>Weight</h1>
-        <h2>{currentCharacter.weight}</h2>
-      </div>
-      <div>
-        <h1>Alignment</h1>
-        <h2>{currentCharacter.alignment}</h2>
-      </div>
     </div>
   );
 }
