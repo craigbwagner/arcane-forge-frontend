@@ -8,6 +8,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+import useStore from "@/store/store";
 
 interface FormData {
   name: string;
@@ -31,17 +32,20 @@ interface FormData {
 
 function CharCoreStats({
   form,
-  proficiencyBonus,
 }: {
   form: UseFormReturn<FormData, any, undefined>;
-  proficiencyBonus: number;
 }) {
+  const currentCharacter = useStore((state) => state.currentCharacter);
   return (
     <div className="grid grid-cols-3 gap-2">
       <div>
         <div>
           <h1>Proficiency Bonus</h1>
-          <h2>{proficiencyBonus}</h2>
+          <h2>{currentCharacter.proficiencyBonus}</h2>
+        </div>
+        <div>
+          <h1>AC</h1>
+          <h2>some ac</h2>
         </div>
         <FormField
           control={form.control}
