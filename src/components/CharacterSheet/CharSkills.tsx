@@ -1,4 +1,4 @@
-import useStore from "@/store/store";
+import useStore, { Character } from "@/store/store";
 
 interface Ability {
   name: string;
@@ -9,12 +9,13 @@ type AbilityScores = Ability[];
 
 function CharSkills({
   abilityScores,
-  proficiencyBonus,
 }: {
   abilityScores: AbilityScores;
   proficiencyBonus: number;
 }) {
-  const currentCharacter = useStore((state) => state.currentCharacter);
+  const currentCharacter = useStore(
+    (state) => state.currentCharacter,
+  ) as Character;
 
   const skills = [
     { name: "Acrobatics", ability: "DEX", mod: 0, isProficient: false },
@@ -59,7 +60,7 @@ function CharSkills({
     }
 
     if (currentCharacter.skillProficiencies.includes(skill.name)) {
-      skill.mod += proficiencyBonus;
+      skill.mod += currentCharacter.proficiencyBonus as number;
       skill.isProficient = true;
     }
   });

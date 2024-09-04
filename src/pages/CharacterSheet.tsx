@@ -257,10 +257,7 @@ function CharacterSheet() {
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
-              <CharSkills
-                abilityScores={abilityScores}
-                proficiencyBonus={proficiencyBonus}
-              />
+              <CharSkills abilityScores={abilityScores} />
             </CardContent>
           </Card>
           <Button type="submit">Save Character</Button>
