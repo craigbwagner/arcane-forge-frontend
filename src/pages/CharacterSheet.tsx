@@ -51,31 +51,43 @@ function CharacterSheet() {
       name: "STR",
       abilityScore: currentCharacter.strength,
       abilityMod: calculateAbilityMod(currentCharacter.strength),
+      proficientSave: false,
+      savingThrowMod: 0,
     },
     {
       name: "DEX",
       abilityScore: currentCharacter.dexterity,
       abilityMod: calculateAbilityMod(currentCharacter.dexterity),
+      proficientSave: false,
+      savingThrowMod: 0,
     },
     {
       name: "CON",
       abilityScore: currentCharacter.constitution,
       abilityMod: calculateAbilityMod(currentCharacter.constitution),
+      proficientSave: false,
+      savingThrowMod: 0,
     },
     {
       name: "CHA",
       abilityScore: currentCharacter.charisma,
       abilityMod: calculateAbilityMod(currentCharacter.charisma),
+      proficientSave: false,
+      savingThrowMod: 0,
     },
     {
       name: "WIS",
       abilityScore: currentCharacter.wisdom,
       abilityMod: calculateAbilityMod(currentCharacter.wisdom),
+      proficientSave: false,
+      savingThrowMod: 0,
     },
     {
       name: "INT",
       abilityScore: currentCharacter.intelligence,
       abilityMod: calculateAbilityMod(currentCharacter.intelligence),
+      proficientSave: false,
+      savingThrowMod: 0,
     },
   ];
 
