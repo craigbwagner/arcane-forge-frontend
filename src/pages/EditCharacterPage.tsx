@@ -39,7 +39,7 @@ const characterSchema = z.object({
   hitDiceTotal: z.coerce.number(),
 });
 
-function CharacterSheet() {
+function EditCharacterPage() {
   const { characterId } = useParams();
   const currentCharacter = useStore((state) => state.currentCharacter);
   const user = useStore((state) => state.user);
@@ -225,3 +225,5 @@ function CharacterSheet() {
     </>
   );
 }
+
+export default EditCharacterPage;
