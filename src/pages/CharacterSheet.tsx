@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/card";
 import CharBasicDetailsForm from "@/components/CharacterSheet/CharBasicDetailsForm";
 import CharCoreStats from "@/components/CharacterSheet/CharCoreStats";
+import CharSkills from "@/components/CharacterSheet/CharSkills";
 
 const characterSchema = z.object({
   name: z.string(),
@@ -205,7 +206,6 @@ function CharacterSheet() {
               <CharBasicDetailsForm form={form} />
             </CardContent>
           </Card>
-
           <Card>
             <CardHeader>
               <CardTitle>Abilities</CardTitle>
@@ -237,6 +237,15 @@ function CharacterSheet() {
             </CardHeader>
             <CardContent>
               <CharCoreStats form={form} />
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Skills</CardTitle>
+              <CardDescription></CardDescription>
+            </CardHeader>
+            <CardContent>
+              <CharSkills abilityScores={abilityScores} />
             </CardContent>
           </Card>
           <Button type="submit">Save Character</Button>
