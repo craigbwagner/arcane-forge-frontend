@@ -11,6 +11,7 @@ import useStore from "./store/store";
 import PrivateRoute from "./components/PrivateRoute";
 import CharactersPage from "./pages/CharactersPage";
 import CharacterSheet from "./pages/CharacterSheet";
+import EditCharacterPage from "./pages/EditCharacterPage";
 
 function App() {
   const updateUser = useStore((state) => state.updateUser);
@@ -39,6 +40,10 @@ function App() {
             <Route
               path="/characters/:characterId"
               element={<CharacterSheet />}
+            />
+            <Route
+              path="/characters/edit/:characterId"
+              element={<EditCharacterPage />}
             />
             <Route path="/signin" element={<Navigate to="/dashboard" />} />
             <Route path="/signup" element={<Navigate to="/dashboard" />} />
