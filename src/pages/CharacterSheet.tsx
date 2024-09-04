@@ -46,7 +46,7 @@ function CharacterSheet() {
   const updateUser = useStore((state) => state.updateUser);
   const updateCharacter = useStore((state) => state.updateCharacter);
   let proficiencyBonus = 2;
-  const abilityScores = [
+  const abilities = [
     {
       name: "STR",
       abilityScore: currentCharacter.strength,
@@ -216,7 +216,7 @@ function CharacterSheet() {
               <CardDescription>Ability Scores and Modifiers</CardDescription>
             </CardHeader>
             <CardContent className="grid grid-cols-2 gap-2">
-              {abilityScores.map((ability) => {
+              {abilities.map((ability) => {
                 return (
                   <div
                     className="flex flex-col text-center rounded-md border-[1px] border-slate-300"
@@ -255,7 +255,7 @@ function CharacterSheet() {
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
-              <CharSkills abilityScores={abilityScores} />
+              <CharSkills abilities={abilites} />
             </CardContent>
           </Card>
           <Button type="submit">Save Character</Button>

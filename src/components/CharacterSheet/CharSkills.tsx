@@ -4,10 +4,12 @@ interface Ability {
   name: string;
   abilityScore: number;
   abilityMod: number;
+  proficientSave: boolean;
+  savingThrowMod: number;
 }
-type AbilityScores = Ability[];
+type Abilities = Ability[];
 
-function CharSkills({ abilityScores }: { abilityScores: AbilityScores }) {
+function CharSkills({ abilities }: { abilities: Abilities }) {
   const currentCharacter = useStore(
     (state) => state.currentCharacter,
   ) as Character;
@@ -35,22 +37,22 @@ function CharSkills({ abilityScores }: { abilityScores: AbilityScores }) {
   skills.forEach((skill) => {
     switch (skill.ability) {
       case "STR":
-        skill.mod = abilityScores[0].abilityMod;
+        skill.mod = abilities[0].abilityMod;
         break;
       case "DEX":
-        skill.mod = abilityScores[1].abilityMod;
+        skill.mod = abilities[1].abilityMod;
         break;
       case "CON":
-        skill.mod = abilityScores[2].abilityMod;
+        skill.mod = abilities[2].abilityMod;
         break;
       case "CHA":
-        skill.mod = abilityScores[3].abilityMod;
+        skill.mod = abilities[3].abilityMod;
         break;
       case "WIS":
-        skill.mod = abilityScores[4].abilityMod;
+        skill.mod = abilities[4].abilityMod;
         break;
       case "INT":
-        skill.mod = abilityScores[5].abilityMod;
+        skill.mod = abilities[5].abilityMod;
         break;
     }
 
