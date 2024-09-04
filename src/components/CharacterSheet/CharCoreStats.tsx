@@ -9,7 +9,31 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 
-function CharCoreStats({ form }: { form: UseFormReturn }) {
+interface FormData {
+  name: string;
+  race: string;
+  sex: string;
+  size: string;
+  age: number;
+  height: string;
+  weight: number;
+  alignment: string;
+  languages: string[];
+  initiative: number;
+  speed: number;
+  maxHP: number;
+  currentHP: number;
+  tempHP: number;
+  hitDiceRemaining: number;
+  hitDiceType: string;
+  hitDiceTotal: number;
+}
+
+function CharCoreStats({
+  form,
+}: {
+  form: UseFormReturn<FormData, any, undefined>;
+}) {
   return (
     <div className="grid grid-cols-3 gap-2">
       <div>
