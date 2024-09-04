@@ -123,6 +123,20 @@ function CharCoreStats({
       <div>
         <FormField
           control={form.control}
+          name="hitDiceTotal"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Max # of Hit Die</FormLabel>
+              <FormControl>
+                <Input placeholder="Total Hit Die" type="number" {...field} />
+              </FormControl>
+              <FormDescription></FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="hitDiceRemaining"
           render={({ field }) => (
             <FormItem>
@@ -147,20 +161,6 @@ function CharCoreStats({
               <FormLabel>Hit Dice Type</FormLabel>
               <FormControl>
                 <Input placeholder="Hit Dice Type" {...field} />
-              </FormControl>
-              <FormDescription></FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="hitDiceTotal"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Max # of Hit Die</FormLabel>
-              <FormControl>
-                <Input placeholder="Total Hit Die" type="number" {...field} />
               </FormControl>
               <FormDescription></FormDescription>
               <FormMessage />
