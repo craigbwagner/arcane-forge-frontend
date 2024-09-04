@@ -25,7 +25,16 @@ interface FormData {
   age: number;
   height: string;
   weight: number;
-  alignment: string;
+  alignment:
+    | "Chaotic Evil"
+    | "Chaotic Neutral"
+    | "Chaotic Good"
+    | "Lawful Good"
+    | "Lawful Neutral"
+    | "Lawful Good"
+    | "Neutral Good"
+    | "Neutral"
+    | "Neutral Evil";
   languages: string[];
   initiative: number;
   speed: number;

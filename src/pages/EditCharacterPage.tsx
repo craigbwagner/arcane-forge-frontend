@@ -152,7 +152,7 @@ function EditCharacterPage() {
       age: 0,
       height: "",
       weight: 0,
-      alignment: "",
+      alignment: "Neutral",
       languages: [],
       initiative: 0,
       speed: 0,
