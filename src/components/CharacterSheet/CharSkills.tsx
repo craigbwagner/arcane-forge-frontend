@@ -7,12 +7,7 @@ interface Ability {
 }
 type AbilityScores = Ability[];
 
-function CharSkills({
-  abilityScores,
-}: {
-  abilityScores: AbilityScores;
-  proficiencyBonus: number;
-}) {
+function CharSkills({ abilityScores }: { abilityScores: AbilityScores }) {
   const currentCharacter = useStore(
     (state) => state.currentCharacter,
   ) as Character;
