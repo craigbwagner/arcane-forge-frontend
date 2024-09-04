@@ -15,7 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import CharBasicDetailsForm from "@/components/CharacterSheet/CharBasicDetailsForm";
+import CharBasicDetails from "@/components/CharacterSheet/CharBasicDetails";
 import CharCoreStats from "@/components/CharacterSheet/CharCoreStats";
 import CharSkills from "@/components/CharacterSheet/CharSkills";
 
@@ -235,7 +235,7 @@ function CharacterSheet() {
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
-              <CharBasicDetailsForm />
+              <CharBasicDetails />
             </CardContent>
           </Card>
           <div className="grid grid-cols-2">
