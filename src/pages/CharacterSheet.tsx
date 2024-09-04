@@ -92,24 +92,22 @@ function CharacterSheet() {
       const fetchedCharacter: Character =
         await characterService.getCharacter(characterId);
       if (fetchedCharacter) {
+        if (fetchedCharacter.level < 5) {
+          proficiencyBonus = 2;
+        } else if (fetchedCharacter.level < 9) {
+          proficiencyBonus = 3;
+        } else if (fetchedCharacter.level < 13) {
+          proficiencyBonus = 4;
+        } else if (fetchedCharacter.level < 17) {
+          proficiencyBonus = 5;
+        } else {
+          proficiencyBonus = 6;
+        }
+        fetchedCharacter.proficiencyBonus = proficiencyBonus;
         updateCharacter(fetchedCharacter);
       }
     };
-    const setProficiencyBonus = () => {
-      if (currentCharacter.level < 5) {
-        proficiencyBonus = 2;
-      } else if (currentCharacter.level < 9) {
-        proficiencyBonus = 3;
-      } else if (currentCharacter.level < 13) {
-        proficiencyBonus = 4;
-      } else if (currentCharacter.level < 17) {
-        proficiencyBonus = 5;
-      } else {
-        proficiencyBonus = 6;
-      }
-    };
     fetchCharacter();
-    setProficiencyBonus();
   }, []);
 
   const form = useForm<z.infer<typeof characterSchema>>({
