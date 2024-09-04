@@ -245,7 +245,10 @@ function CharacterSheet() {
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
-              <CharCoreStats form={form} proficiencyBonus={proficiencyBonus} />
+              <CharCoreStats
+                form={form}
+                proficiencyBonus={currentCharacter.proficiencyBonus as number}
+              />
             </CardContent>
           </Card>
           <Card>
