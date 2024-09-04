@@ -261,6 +261,30 @@ function CharacterSheet() {
           </Card>
           <Card>
             <CardHeader>
+              <CardTitle>Saving Throws</CardTitle>
+              <CardDescription>Saving Throw Modifiers</CardDescription>
+            </CardHeader>
+            <CardContent className="grid grid-cols-2 gap-2">
+              {abilities.map((ability) => {
+                return (
+                  <div
+                    className="flex justify-between text-center rounded-md border-[1px] border-slate-300"
+                    key={ability.name}
+                  >
+                    <h2>{ability.name}</h2>
+                    <h3>
+                      {ability.abilityMod > 0
+                        ? `+${ability.abilityMod}`
+                        : ability.abilityMod}
+                    </h3>
+                  </div>
+                );
+              })}
+            </CardContent>
+            <CardFooter></CardFooter>
+          </Card>
+          <Card>
+            <CardHeader>
               <CardTitle>Core Stats</CardTitle>
               <CardDescription></CardDescription>
             </CardHeader>
