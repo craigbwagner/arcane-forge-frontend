@@ -31,12 +31,15 @@ interface FormData {
 
 function CharCoreStats({
   form,
+  proficiencyBonus,
 }: {
   form: UseFormReturn<FormData, any, undefined>;
+  proficiencyBonus: number;
 }) {
   return (
     <div className="grid grid-cols-3 gap-2">
       <div>
+        <h1>{proficiencyBonus}</h1>
         <FormField
           control={form.control}
           name="initiative"
