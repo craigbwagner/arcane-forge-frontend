@@ -24,7 +24,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import BasicDetailsForm from "@/components/CharacterSheet/BasicDetailsForm";
+import CharBasicDetailsForm from "@/components/CharacterSheet/CharBasicDetailsForm";
 
 const characterSchema = z.object({
   name: z.string(),
@@ -201,7 +201,7 @@ function CharacterSheet() {
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
-              <BasicDetailsForm form={form} />
+              <CharBasicDetailsForm form={form} />
             </CardContent>
           </Card>
 

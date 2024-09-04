@@ -9,7 +9,7 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 
-function BasicDetailsForm({ form }: { form: UseFormReturn }) {
+function CharBasicDetailsForm({ form }: { form: UseFormReturn }) {
   return (
     <div className="grid grid-cols-3">
       <FormField
@@ -128,4 +128,4 @@ function BasicDetailsForm({ form }: { form: UseFormReturn }) {
   );
 }
 
-export default BasicDetailsForm;
+export default CharBasicDetailsForm;
