@@ -8,6 +8,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+import useStore from "@/store/store";
 
 interface FormData {
   name: string;
@@ -34,8 +35,10 @@ function CharBasicDetailsForm({
 }: {
   form: UseFormReturn<FormData, any, undefined>;
 }) {
+  const currentCharacter = useStore((state) => state.currentCharacter);
   return (
     <div className="grid grid-cols-3">
+      <h1>{currentCharacter.level}</h1>
       <FormField
         control={form.control}
         name="name"
