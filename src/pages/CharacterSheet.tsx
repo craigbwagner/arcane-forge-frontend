@@ -232,66 +232,72 @@ function CharacterSheet() {
               <CharBasicDetailsForm form={form} />
             </CardContent>
           </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Abilities</CardTitle>
-              <CardDescription>Ability Scores and Modifiers</CardDescription>
-            </CardHeader>
-            <CardContent className="grid grid-cols-2 gap-2">
-              {abilities.map((ability) => {
-                return (
-                  <div
-                    className="flex flex-col text-center rounded-md border-[1px] border-slate-300"
-                    key={ability.name}
-                  >
-                    <h2>{ability.name}</h2>
-                    <h3>
-                      {ability.abilityMod > 0
-                        ? `+${ability.abilityMod}`
-                        : ability.abilityMod}
-                    </h3>
-                    <h4 className="rounded-md border-[1px] border-slate-200">
-                      {ability.abilityScore}
-                    </h4>
-                  </div>
-                );
-              })}
-            </CardContent>
-            <CardFooter></CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Saving Throws</CardTitle>
-              <CardDescription>Saving Throw Modifiers</CardDescription>
-            </CardHeader>
-            <CardContent className="grid grid-cols-2 gap-2">
-              {abilities.map((ability) => {
-                return (
-                  <div
-                    className="flex justify-between text-center rounded-md border-[1px] border-slate-300"
-                    key={ability.name}
-                  >
-                    <h2>{ability.name}</h2>
-                    <h3>
-                      {ability.abilityMod > 0
-                        ? `+${ability.abilityMod}`
-                        : ability.abilityMod}
-                    </h3>
-                  </div>
-                );
-              })}
-            </CardContent>
-            <CardFooter></CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Core Stats</CardTitle>
-              <CardDescription></CardDescription>
-            </CardHeader>
-            <CardContent>
-              <CharCoreStats form={form} />
-            </CardContent>
-          </Card>
+          <div className="grid grid-cols-2">
+            <div className="grid grid-cols-2">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Abilities</CardTitle>
+                  <CardDescription>
+                    Ability Scores and Modifiers
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="grid grid-cols-2 gap-2">
+                  {abilities.map((ability) => {
+                    return (
+                      <div
+                        className="flex flex-col text-center rounded-md border-[1px] border-slate-300"
+                        key={ability.name}
+                      >
+                        <h2>{ability.name}</h2>
+                        <h3>
+                          {ability.abilityMod > 0
+                            ? `+${ability.abilityMod}`
+                            : ability.abilityMod}
+                        </h3>
+                        <h4 className="rounded-md border-[1px] border-slate-200">
+                          {ability.abilityScore}
+                        </h4>
+                      </div>
+                    );
+                  })}
+                </CardContent>
+                <CardFooter></CardFooter>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Saving Throws</CardTitle>
+                  <CardDescription>Saving Throw Modifiers</CardDescription>
+                </CardHeader>
+                <CardContent className="grid grid-cols-2 gap-2">
+                  {abilities.map((ability) => {
+                    return (
+                      <div
+                        className="flex justify-between text-center rounded-md border-[1px] border-slate-300"
+                        key={ability.name}
+                      >
+                        <h2>{ability.name}</h2>
+                        <h3>
+                          {ability.abilityMod > 0
+                            ? `+${ability.abilityMod}`
+                            : ability.abilityMod}
+                        </h3>
+                      </div>
+                    );
+                  })}
+                </CardContent>
+                <CardFooter></CardFooter>
+              </Card>
+            </div>
+            <Card>
+              <CardHeader>
+                <CardTitle>Core Stats</CardTitle>
+                <CardDescription></CardDescription>
+              </CardHeader>
+              <CardContent>
+                <CharCoreStats form={form} />
+              </CardContent>
+            </Card>
+          </div>
           <Card>
             <CardHeader>
               <CardTitle>Skills</CardTitle>
