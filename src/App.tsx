@@ -62,8 +62,6 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/signin" element={<SigninForm />} />
             <Route path="/signup" element={<SignupForm />} />
-            <Route path="/dashboard" element={<Navigate to="/signin" />} />
-            <Route path="/characters" element={<Navigate to="/signin" />} />
           </>
         )}
       </Routes>
