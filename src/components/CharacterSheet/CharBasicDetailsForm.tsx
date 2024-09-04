@@ -38,7 +38,10 @@ function CharBasicDetailsForm({
   const currentCharacter = useStore((state) => state.currentCharacter);
   return (
     <div className="grid grid-cols-3">
-      <h1>{currentCharacter.level}</h1>
+      <div>
+        <h1>Level</h1>
+        <h2>{currentCharacter.level}</h2>
+      </div>
       <FormField
         control={form.control}
         name="name"
