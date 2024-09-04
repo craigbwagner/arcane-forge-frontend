@@ -22,7 +22,7 @@ interface FormData {
     | "Chaotic Evil"
     | "Chaotic Neutral"
     | "Chaotic Good"
-    | "Lawful Good"
+    | "Lawful Evil"
     | "Lawful Neutral"
     | "Lawful Good"
     | "Neutral Good"

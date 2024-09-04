@@ -31,7 +31,7 @@ const characterSchema = z.object({
     "Chaotic Evil",
     "Chaotic Neutral",
     "Chaotic Good",
-    "Lawful Good",
+    "Lawful Evil",
     "Lawful Neutral",
     "Lawful Good",
     "Neutral Good",
