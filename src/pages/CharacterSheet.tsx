@@ -95,6 +95,14 @@ function CharacterSheet() {
     return Math.floor((abilityScore - 10) / 2);
   }
 
+  function setSavingThrowMods() {
+    abilities.forEach((ability) => {
+      if (currentCharacter.savingThrowProficiencies.includes(ability.name)) {
+        ability.proficientSave = true;
+      }
+    });
+  }
+
   if (!characterId) {
     throw new Error("No character currently selected.");
   }
@@ -117,6 +125,8 @@ function CharacterSheet() {
         }
         fetchedCharacter.proficiencyBonus = proficiencyBonus;
         updateCharacter(fetchedCharacter);
+        setSavingThrowMods();
+        console.log(abilities);
       }
     };
     fetchCharacter();
@@ -267,7 +277,7 @@ function CharacterSheet() {
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
-              <CharSkills abilities={abilites} />
+              <CharSkills abilities={abilities} />
             </CardContent>
           </Card>
           <Button type="submit">Save Character</Button>
