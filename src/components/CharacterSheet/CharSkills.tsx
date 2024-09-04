@@ -60,7 +60,11 @@ function CharSkills({
     }
 
     if (currentCharacter.skillProficiencies.includes(skill.name)) {
-      skill.mod += currentCharacter.proficiencyBonus as number;
+      if (currentCharacter.skillExpertise.includes(skill.name)) {
+        skill.mod += (currentCharacter.proficiencyBonus as number) * 2;
+      } else {
+        skill.mod += currentCharacter.proficiencyBonus as number;
+      }
       skill.isProficient = true;
     }
   });
