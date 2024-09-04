@@ -54,7 +54,7 @@ function CharacterSheet() {
   const user = useStore((state) => state.user);
   const updateUser = useStore((state) => state.updateUser);
   const updateCharacter = useStore((state) => state.updateCharacter);
-  let proficiencyBonus;
+  let proficiencyBonus = 2;
   const abilityScores = [
     {
       name: "STR",
