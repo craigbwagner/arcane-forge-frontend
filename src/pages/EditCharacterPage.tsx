@@ -16,8 +16,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import CharBasicDetailsForm from "@/components/CharacterSheet/Forms/CharBasicDetailsForm";
-import CharCoreStats from "@/components/CharacterSheet/CharCoreStats";
-import CharSkills from "@/components/CharacterSheet/CharSkills";
+import CharAbilitiesForm from "@/components/CharacterSheet/Forms/CharAbilitiesForm";
 
 const characterSchema = z.object({
   name: z.string(),
@@ -304,52 +303,11 @@ function EditCharacterPage() {
                 <CardHeader>
                   <CardTitle>Abilities</CardTitle>
                   <CardDescription>
-                    Ability Scores and Modifiers
+                    Ability Scores and Saving Throws
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="grid grid-cols-2 gap-2">
-                  {abilities.map((ability) => {
-                    return (
-                      <div
-                        className="flex flex-col text-center rounded-md border-[1px] border-slate-300"
-                        key={ability.name}
-                      >
-                        <h2>{ability.name}</h2>
-                        <h3>
-                          {ability.abilityMod > 0
-                            ? `+${ability.abilityMod}`
-                            : ability.abilityMod}
-                        </h3>
-                        <h4 className="rounded-md border-[1px] border-slate-200">
-                          {ability.abilityScore}
-                        </h4>
-                      </div>
-                    );
-                  })}
-                </CardContent>
-                <CardFooter></CardFooter>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Saving Throws</CardTitle>
-                  <CardDescription>Saving Throw Modifiers</CardDescription>
-                </CardHeader>
-                <CardContent className="grid grid-cols-2 gap-2">
-                  {abilities.map((ability) => {
-                    return (
-                      <div
-                        className="flex justify-between text-center rounded-md border-[1px] border-slate-300"
-                        key={ability.name}
-                      >
-                        <h2>{ability.name}</h2>
-                        <h3>
-                          {ability.abilityMod > 0
-                            ? `+${ability.abilityMod}`
-                            : ability.abilityMod}
-                        </h3>
-                      </div>
-                    );
-                  })}
+                  <CharAbilitiesForm form={form} abilities={abilities} />
                 </CardContent>
                 <CardFooter></CardFooter>
               </Card>
@@ -359,9 +317,7 @@ function EditCharacterPage() {
                 <CardTitle>Core Stats</CardTitle>
                 <CardDescription></CardDescription>
               </CardHeader>
-              <CardContent>
-                <CharCoreStats form={form} />
-              </CardContent>
+              <CardContent>{/* <CharCoreStats form={form} /> */}</CardContent>
             </Card>
           </div>
           <Card>
@@ -370,7 +326,7 @@ function EditCharacterPage() {
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
-              <CharSkills abilities={abilities} />
+              {/* <CharSkills abilities={abilities} /> */}
             </CardContent>
           </Card>
         </form>
