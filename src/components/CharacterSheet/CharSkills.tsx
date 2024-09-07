@@ -71,8 +71,8 @@ function CharSkills({ abilities }: { abilities: Abilities }) {
       <li className="flex justify-between">
         <p>Skill Name</p>
         <div className="flex w-60 justify-evenly">
-          <p>MOD</p>
           <p>PROF.</p>
+          <p>MOD</p>
           <p></p>
         </div>
       </li>
