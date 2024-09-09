@@ -289,47 +289,61 @@ function EditCharacterPage() {
               <Button type="submit">Save Character</Button>
             </div>
           </div>
-          <Card>
-            <CardHeader>
-              <CardTitle>Basic Details</CardTitle>
-              <CardDescription></CardDescription>
-            </CardHeader>
-            <CardContent>
-              <CharBasicDetailsForm form={form} />
-            </CardContent>
-          </Card>
-          <div className="grid grid-cols-2">
-            <div className="grid grid-cols-2">
+          {/* https://flowbite-react.com/docs/components/tabs */}
+          <Tabs aria-label="Tabs with underline" variant="underline">
+            <Tabs.Item active title="Description">
               <Card>
                 <CardHeader>
-                  <CardTitle>Abilities</CardTitle>
-                  <CardDescription>
-                    Ability Scores and Saving Throws
-                  </CardDescription>
+                  <CardTitle>Basic Details</CardTitle>
+                  <CardDescription></CardDescription>
                 </CardHeader>
-                <CardContent className="grid grid-cols-2 gap-2">
-                  <CharAbilitiesForm form={form} abilities={abilities} />
+                <CardContent>
+                  <CharBasicDetailsForm form={form} />
                 </CardContent>
-                <CardFooter></CardFooter>
               </Card>
-            </div>
-            <Card>
-              <CardHeader>
-                <CardTitle>Core Stats</CardTitle>
-                <CardDescription></CardDescription>
-              </CardHeader>
-              <CardContent>{/* <CharCoreStats form={form} /> */}</CardContent>
-            </Card>
-          </div>
-          <Card>
-            <CardHeader>
-              <CardTitle>Skills</CardTitle>
-              <CardDescription></CardDescription>
-            </CardHeader>
-            <CardContent>
-              {/* <CharSkills abilities={abilities} /> */}
-            </CardContent>
-          </Card>
+            </Tabs.Item>
+            <Tabs.Item title="Class"></Tabs.Item>
+            <Tabs.Item title="Ability Scores">
+              <div className="grid grid-cols-2">
+                <div className="grid grid-cols-2">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Abilities</CardTitle>
+                      <CardDescription>
+                        Ability Scores and Saving Throws
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="grid grid-cols-2 gap-2">
+                      <CharAbilitiesForm form={form} abilities={abilities} />
+                    </CardContent>
+                    <CardFooter></CardFooter>
+                  </Card>
+                </div>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Core Stats</CardTitle>
+                    <CardDescription></CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    {/* <CharCoreStats form={form} /> */}
+                  </CardContent>
+                </Card>
+              </div>
+            </Tabs.Item>
+            <Tabs.Item title="Skills">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Skills</CardTitle>
+                  <CardDescription></CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {/* <CharSkills abilities={abilities} /> */}
+                </CardContent>
+              </Card>
+            </Tabs.Item>
+            <Tabs.Item title="Items"></Tabs.Item>
+            <Tabs.Item title="Spells"></Tabs.Item>
+          </Tabs>
         </form>
       </Form>
     </main>
