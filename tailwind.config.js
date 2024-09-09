@@ -7,7 +7,6 @@ module.exports = {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
     "./node_modules/flowbite/**/*.js",
-    flowbite.content(),
   ],
   prefix: "",
   theme: {
