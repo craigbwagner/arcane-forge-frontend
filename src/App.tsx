@@ -8,7 +8,6 @@ import SigninForm from "./pages/SigninForm";
 import * as authService from "../src/services/authService";
 import { useEffect } from "react";
 import useStore from "./store/store";
-import PrivateRoute from "./components/PrivateRoute";
 import CharactersPage from "./pages/CharactersPage";
 import CharacterSheet from "./pages/CharacterSheet";
 import EditCharacterPage from "./pages/EditCharacterPage";
