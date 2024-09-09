@@ -9,31 +9,32 @@ interface Ability {
 }
 type Abilities = Ability[];
 
+export const skills = [
+  { name: "Acrobatics", ability: "DEX", mod: 0, isProficient: false },
+  { name: "Animal Handling", ability: "WIS", mod: 0, isProficient: false },
+  { name: "Arcana", ability: "INT", mod: 0, isProficient: false },
+  { name: "Athletics", ability: "STR", mod: 0, isProficient: false },
+  { name: "Deception", ability: "CHA", mod: 0, isProficient: false },
+  { name: "History", ability: "INT", mod: 0, isProficient: false },
+  { name: "Insight", ability: "WIS", mod: 0, isProficient: false },
+  { name: "Intimidation", ability: "CHA", mod: 0, isProficient: false },
+  { name: "Investigation", ability: "INT", mod: 0, isProficient: false },
+  { name: "Medicine", ability: "WIS", mod: 0, isProficient: false },
+  { name: "Nature", ability: "INT", mod: 0, isProficient: false },
+  { name: "Perception", ability: "WIS", mod: 0, isProficient: false },
+  { name: "Performance", ability: "CHA", mod: 0, isProficient: false },
+  { name: "Persuasion", ability: "CHA", mod: 0, isProficient: false },
+  { name: "Religion", ability: "INT", mod: 0, isProficient: false },
+  { name: "Sleight of Hand", ability: "DEX", mod: 0, isProficient: false },
+  { name: "Stealth", ability: "DEX", mod: 0, isProficient: false },
+  { name: "Survival", ability: "WIS", mod: 0, isProficient: false },
+];
+
 function CharSkills({ abilities }: { abilities: Abilities }) {
   const currentCharacter = useStore(
     (state) => state.currentCharacter,
   ) as Character;
 
-  const skills = [
-    { name: "Acrobatics", ability: "DEX", mod: 0, isProficient: false },
-    { name: "Animal Handling", ability: "WIS", mod: 0, isProficient: false },
-    { name: "Arcana", ability: "INT", mod: 0, isProficient: false },
-    { name: "Athletics", ability: "STR", mod: 0, isProficient: false },
-    { name: "Deception", ability: "CHA", mod: 0, isProficient: false },
-    { name: "History", ability: "INT", mod: 0, isProficient: false },
-    { name: "Insight", ability: "WIS", mod: 0, isProficient: false },
-    { name: "Intimidation", ability: "CHA", mod: 0, isProficient: false },
-    { name: "Investigation", ability: "INT", mod: 0, isProficient: false },
-    { name: "Medicine", ability: "WIS", mod: 0, isProficient: false },
-    { name: "Nature", ability: "INT", mod: 0, isProficient: false },
-    { name: "Perception", ability: "WIS", mod: 0, isProficient: false },
-    { name: "Performance", ability: "CHA", mod: 0, isProficient: false },
-    { name: "Persuasion", ability: "CHA", mod: 0, isProficient: false },
-    { name: "Religion", ability: "INT", mod: 0, isProficient: false },
-    { name: "Sleight of Hand", ability: "DEX", mod: 0, isProficient: false },
-    { name: "Stealth", ability: "DEX", mod: 0, isProficient: false },
-    { name: "Survival", ability: "WIS", mod: 0, isProficient: false },
-  ];
   skills.forEach((skill) => {
     switch (skill.ability) {
       case "STR":
