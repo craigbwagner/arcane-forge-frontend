@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/card";
 import CharBasicDetailsForm from "@/components/CharacterSheet/Forms/CharBasicDetailsForm";
 import CharAbilitiesForm from "@/components/CharacterSheet/Forms/CharAbilitiesForm";
+import { Tabs } from "flowbite-react";
 
 const characterSchema = z.object({
   name: z.string(),
