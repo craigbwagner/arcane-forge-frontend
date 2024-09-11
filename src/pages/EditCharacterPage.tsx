@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/card";
 import CharBasicDetailsForm from "@/components/CharacterSheet/Forms/CharBasicDetailsForm";
 import CharAbilitiesForm from "@/components/CharacterSheet/Forms/CharAbilitiesForm";
+import SkillProficienciesForm from "@/components/CharacterSheet/Forms/SkillProficienciesForm";
 import { Tabs, CustomFlowbiteTheme, Flowbite } from "flowbite-react";
 
 const customTheme: CustomFlowbiteTheme = {
@@ -391,7 +392,7 @@ function EditCharacterPage() {
                     <CardDescription></CardDescription>
                   </CardHeader>
                   <CardContent>
-                    {/* <CharSkills abilities={abilities} /> */}
+                    <SkillProficienciesForm />
                   </CardContent>
                 </Card>
               </Tabs.Item>
