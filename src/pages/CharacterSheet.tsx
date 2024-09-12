@@ -136,7 +136,6 @@ function CharacterSheet() {
         fetchedCharacter.proficiencyBonus = proficiencyBonus;
         updateCharacter(fetchedCharacter);
         setSavingThrowMods();
-        console.log(abilities);
       }
     };
     fetchCharacter();
