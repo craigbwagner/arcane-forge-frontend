@@ -231,7 +231,6 @@ function EditCharacterPage() {
         fetchedCharacter.proficiencyBonus = proficiencyBonus;
         updateCharacter(fetchedCharacter);
         setSavingThrowMods();
-        console.log(abilities);
       }
     };
     fetchCharacter();
@@ -297,6 +296,7 @@ function EditCharacterPage() {
   ) {
     e.preventDefault();
     let tempUser;
+
     if (user) {
       tempUser = {
         ...user,
