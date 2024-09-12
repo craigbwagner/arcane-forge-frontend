@@ -183,8 +183,8 @@ function CharSkills({ abilities }: { abilities: Abilities }) {
         break;
     }
 
-    if (currentCharacter.skillProficiencies.includes(skill.name)) {
-      if (currentCharacter.skillExpertise.includes(skill.name)) {
+    if (currentCharacter.skillProficiencies.includes(skill.attributeName)) {
+      if (currentCharacter.skillExpertise.includes(skill.attributeName)) {
         skill.mod += (currentCharacter.proficiencyBonus as number) * 2;
       } else {
         skill.mod += currentCharacter.proficiencyBonus as number;
