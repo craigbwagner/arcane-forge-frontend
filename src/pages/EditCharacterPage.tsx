@@ -82,6 +82,7 @@ const characterSchema = z.object({
   height: z.string(),
   weight: z.coerce.number(),
   alignment: z.enum([
+    "",
     "Chaotic Evil",
     "Chaotic Neutral",
     "Chaotic Good",
@@ -118,6 +119,7 @@ export interface FormData {
   height: string;
   weight: number;
   alignment:
+    | ""
     | "Chaotic Evil"
     | "Chaotic Neutral"
     | "Chaotic Good"
@@ -246,7 +248,7 @@ function EditCharacterPage() {
       age: 0,
       height: "",
       weight: 0,
-      alignment: "Neutral",
+      alignment: "",
       languages: [],
       initiative: 0,
       strength: 0,
@@ -309,12 +311,11 @@ function EditCharacterPage() {
         _id: currentCharacter._id,
         level: currentCharacter.level,
         savingThrowProficiencies: currentCharacter.savingThrowProficiencies,
-        skillExpertise: currentCharacter.skillExpertise,
-        skillProficiencies: currentCharacter.skillProficiencies,
         abilities: currentCharacter.abilities,
         items: currentCharacter.items,
         creator: currentCharacter.creator,
         classes: currentCharacter.classes,
+        skills: currentCharacter.skills,
       });
       tempUser.characters = updatedUserCharacters;
       updateUser(tempUser);
@@ -323,6 +324,7 @@ function EditCharacterPage() {
     try {
       characterService.saveCharacter({
         ...values,
+        skills: currentCharacter.skills,
         _id: characterId,
       });
     } catch (err: unknown) {
