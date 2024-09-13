@@ -8,7 +8,7 @@ interface Skill {
   ability: string;
   isProficient: boolean;
   hasExpertise: boolean;
-  skillMod: number;
+  skillMod?: number;
 }
 
 interface Ability {}
