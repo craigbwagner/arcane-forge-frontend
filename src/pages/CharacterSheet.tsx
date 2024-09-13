@@ -208,12 +208,11 @@ function CharacterSheet() {
         charisma: currentCharacter.charisma,
         level: currentCharacter.level,
         savingThrowProficiencies: currentCharacter.savingThrowProficiencies,
-        skillExpertise: currentCharacter.skillExpertise,
-        skillProficiencies: currentCharacter.skillProficiencies,
         abilities: currentCharacter.abilities,
         items: currentCharacter.items,
         creator: currentCharacter.creator,
         classes: currentCharacter.classes,
+        skills: currentCharacter.skills,
       });
       tempUser.characters = updatedUserCharacters;
       updateUser(tempUser);
