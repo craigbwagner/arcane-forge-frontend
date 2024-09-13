@@ -54,8 +54,8 @@ function CharSkills({ abilities }: { abilities: Abilities }) {
         <p>Skill Name</p>
         <div className="flex w-60 justify-evenly">
           <p>PROF.</p>
+          <p>ABIL</p>
           <p>MOD</p>
-          <p></p>
         </div>
       </li>
       {currentCharacter.skills.map((skill) => {
