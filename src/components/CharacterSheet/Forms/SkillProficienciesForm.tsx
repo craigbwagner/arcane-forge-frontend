@@ -1,5 +1,5 @@
 import useStore from "@/store/store";
-import { Checkbox } from "../../ui/checkbox";
+import SkillCheckbox from "./ProficiencyCheckbox";
 
 export const skills = [
   {
@@ -124,14 +124,16 @@ function SkillProficienciesForm() {
     }
   });
 
-  function checkHandler(e: any): void {
-    console.log(e);
-  }
-
   return (
     <section className="grid grid-cols-2 gap-4">
-      <div className="flex space-x-2 items-top">
-        <Checkbox id="acrobatics" onClick={checkHandler} />
+      {skills.map((skill) => (
+        <SkillCheckbox
+          skill={skill}
+          key={`${skill.attributeName}-proficiency`}
+        />
+      ))}
+      {/* <div className="flex space-x-2 items-top">
+        <Checkbox id="acrobatics" value="acrobatics" onClick={checkHandler} />
         <label
           htmlFor="acrobatics"
           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -291,7 +293,7 @@ function SkillProficienciesForm() {
         >
           Survival
         </label>
-      </div>
+      </div> */}
     </section>
   );
 }
