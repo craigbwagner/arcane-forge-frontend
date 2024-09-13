@@ -1,3 +1,4 @@
+import useStore from "@/store/store";
 import { Checkbox } from "../../ui/checkbox";
 
 export const skills = [
@@ -112,6 +113,17 @@ export const skills = [
 ];
 
 function SkillProficienciesForm() {
+  const currentCharacter = useStore((state) => state.currentCharacter);
+
+  skills.forEach((skill) => {
+    if (currentCharacter.skillProficiencies.includes(skill.attributeName)) {
+      if (currentCharacter.skillExpertise.includes(skill.attributeName)) {
+        skill.hasExpertise = true;
+      }
+      skill.isProficient = true;
+    }
+  });
+
   function checkHandler(e: any): void {
     console.log(e);
   }
