@@ -9,187 +9,49 @@ interface Ability {
 }
 type Abilities = Ability[];
 
-export const skills = [
-  {
-    name: "Acrobatics",
-    attributeName: "acrobatics",
-    ability: "DEX",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Animal Handling",
-    attributeName: "animal-handling",
-    ability: "WIS",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Arcana",
-    attributeName: "arcana",
-    ability: "INT",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Athletics",
-    attributeName: "athletics",
-    ability: "STR",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Deception",
-    attributeName: "deception",
-    ability: "CHA",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "History",
-    attributeName: "history",
-    ability: "INT",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Insight",
-    attributeName: "insight",
-    ability: "WIS",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Intimidation",
-    attributeName: "intimidation",
-    ability: "CHA",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Investigation",
-    attributeName: "intimidation",
-    ability: "INT",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Medicine",
-    attributeName: "medicine",
-    ability: "WIS",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Nature",
-    attributeName: "nature",
-    ability: "INT",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Perception",
-    attributeName: "perception",
-    ability: "WIS",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Performance",
-    attributeName: "performance",
-    ability: "CHA",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Persuasion",
-    attributeName: "persuasion",
-    ability: "CHA",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Religion",
-    attributeName: "religion",
-    ability: "INT",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Sleight of Hand",
-    attributeName: "sleight-of-hand",
-    ability: "DEX",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Stealth",
-    attributeName: "stealth",
-    ability: "DEX",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-  {
-    name: "Survival",
-    attributeName: "survival",
-    ability: "WIS",
-    mod: 0,
-    isProficient: false,
-    hasExpertise: false,
-  },
-];
+interface SkillMod {
+  skillName: string;
+  modValue: number;
+}
+
+const skillMods: SkillMod[] = [];
 
 function CharSkills({ abilities }: { abilities: Abilities }) {
   const currentCharacter = useStore(
     (state) => state.currentCharacter,
   ) as Character;
 
-  skills.forEach((skill) => {
+  currentCharacter.skills.forEach((skill) => {
+    let skillMod: SkillMod = { skillName: skill.name, modValue: 0 };
     switch (skill.ability) {
       case "STR":
-        skill.mod = abilities[0].abilityMod;
+        skillMod.modValue = abilities[0].abilityMod;
         break;
       case "DEX":
-        skill.mod = abilities[1].abilityMod;
+        skillMod.modValue = abilities[1].abilityMod;
         break;
       case "CON":
-        skill.mod = abilities[2].abilityMod;
+        skillMod.modValue = abilities[2].abilityMod;
         break;
       case "CHA":
-        skill.mod = abilities[3].abilityMod;
+        skillMod.modValue = abilities[3].abilityMod;
         break;
       case "WIS":
-        skill.mod = abilities[4].abilityMod;
+        skillMod.modValue = abilities[4].abilityMod;
         break;
       case "INT":
-        skill.mod = abilities[5].abilityMod;
+        skillMod.modValue = abilities[5].abilityMod;
         break;
     }
 
-    if (currentCharacter.skillProficiencies.includes(skill.attributeName)) {
-      if (currentCharacter.skillExpertise.includes(skill.attributeName)) {
-        skill.mod += (currentCharacter.proficiencyBonus as number) * 2;
+    if (skill.isProficient) {
+      if (skill.hasExpertise) {
+        skillMod.modValue += (currentCharacter.proficiencyBonus as number) * 2;
+        skillMods.push(skillMod);
       } else {
-        skill.mod += currentCharacter.proficiencyBonus as number;
+        skillMod.modValue += currentCharacter.proficiencyBonus as number;
+        skillMods.push(skillMod);
       }
-      skill.isProficient = true;
     }
   });
 
@@ -203,14 +65,14 @@ function CharSkills({ abilities }: { abilities: Abilities }) {
           <p></p>
         </div>
       </li>
-      {skills.map((skill) => {
+      {currentCharacter.skills.map((skill) => {
         return (
           <li key={skill.name} className="flex justify-between">
             <p>{skill.name}</p>
             <div className="flex w-60 justify-evenly">
               <p>{skill.isProficient === true ? "true" : "false"}</p>
               <p>{skill.ability}</p>
-              <p>{skill.mod}</p>
+              <p>{skill.skillMod}</p>
             </div>
           </li>
         );
