@@ -30,6 +30,7 @@ export interface Character {
   height: string;
   weight: number;
   alignment:
+    | ""
     | "Chaotic Evil"
     | "Chaotic Neutral"
     | "Chaotic Good"
@@ -96,7 +97,7 @@ const useStore = create<State>(
       age: 0,
       height: "",
       weight: 0,
-      alignment: "Neutral",
+      alignment: "",
       languages: [],
       proficiencyBonus: 2,
       initiative: 0,
