@@ -1,32 +1,28 @@
 import useStore from "@/store/store";
 import { Checkbox } from "../../ui/checkbox";
-import { useState } from "react";
 
 interface Skill {
   name: string;
   attributeName: string;
+  ability: string;
   isProficient: boolean;
   hasExpertise: boolean;
 }
 
 function SkillCheckbox({ skill }: { skill: Skill }) {
   const currentCharacter = useStore((state) => state.currentCharacter);
-  const [isChecked, setIsChecked] = useState(skill.isProficient);
+  const updateSkills = useStore((state) => state.updateSkills);
 
-  function checkHandler(e: any): void {
-    console.log(e);
-
-    setIsChecked(!isChecked);
-
-    if (isChecked === true) {
-      currentCharacter.skillProficiencies.push(e.target.value);
+  function checkHandler() {
+    const currentSkills = [...currentCharacter.skills];
+    const index = currentSkills.indexOf(skill);
+    if (skill.isProficient === true) {
+      currentSkills[index] = { ...skill, isProficient: false };
+      updateSkills(currentSkills);
     } else {
-      currentCharacter.skillProficiencies.filter(
-        (item) => item === e.target.value,
-      );
+      currentSkills[index] = { ...skill, isProficient: true };
+      updateSkills(currentSkills);
     }
-
-    console.log(currentCharacter.skillProficiencies);
   }
 
   return (
@@ -35,7 +31,7 @@ function SkillCheckbox({ skill }: { skill: Skill }) {
         id={skill.attributeName}
         value={skill.attributeName}
         onClick={checkHandler}
-        checked={isChecked}
+        checked={skill.isProficient}
       />
       <label
         htmlFor={skill.attributeName}
