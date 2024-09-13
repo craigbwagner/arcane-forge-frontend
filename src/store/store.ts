@@ -2,6 +2,14 @@ import { produce } from "immer";
 import { create } from "zustand";
 import zustymiddlewarets from "zustymiddlewarets";
 
+interface Skill {
+  name: string;
+  attributeName: string;
+  ability: string;
+  isProficient: boolean;
+  hasExpertise: boolean;
+}
+
 interface Ability {}
 
 interface Item {}
@@ -48,8 +56,7 @@ export interface Character {
   wisdom: number;
   charisma: number;
   savingThrowProficiencies: string[];
-  skillProficiencies: string[];
-  skillExpertise: string[];
+  skills: Skill[];
   abilities: Ability[];
   items: Item[];
   updatedAt?: Date;
@@ -105,8 +112,134 @@ const useStore = create<State>(
       wisdom: 0,
       charisma: 0,
       savingThrowProficiencies: [],
-      skillProficiencies: [],
-      skillExpertise: [],
+      skills: [
+        {
+          name: "Acrobatics",
+          attributeName: "acrobatics",
+          ability: "DEX",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Animal Handling",
+          attributeName: "animal-handling",
+          ability: "WIS",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Arcana",
+          attributeName: "arcana",
+          ability: "INT",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Athletics",
+          attributeName: "athletics",
+          ability: "STR",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Deception",
+          attributeName: "deception",
+          ability: "CHA",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "History",
+          attributeName: "history",
+          ability: "INT",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Insight",
+          attributeName: "insight",
+          ability: "WIS",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Intimidation",
+          attributeName: "intimidation",
+          ability: "CHA",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Investigation",
+          attributeName: "intimidation",
+          ability: "INT",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Medicine",
+          attributeName: "medicine",
+          ability: "WIS",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Nature",
+          attributeName: "nature",
+          ability: "INT",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Perception",
+          attributeName: "perception",
+          ability: "WIS",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Performance",
+          attributeName: "performance",
+          ability: "CHA",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Persuasion",
+          attributeName: "persuasion",
+          ability: "CHA",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Religion",
+          attributeName: "religion",
+          ability: "INT",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Sleight of Hand",
+          attributeName: "sleight-of-hand",
+          ability: "DEX",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Stealth",
+          attributeName: "stealth",
+          ability: "DEX",
+          isProficient: false,
+          hasExpertise: false,
+        },
+        {
+          name: "Survival",
+          attributeName: "survival",
+          ability: "WIS",
+          isProficient: false,
+          hasExpertise: false,
+        },
+      ],
       abilities: [],
       items: [],
     },
