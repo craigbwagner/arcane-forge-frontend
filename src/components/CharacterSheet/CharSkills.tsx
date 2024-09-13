@@ -9,13 +9,6 @@ interface Ability {
 }
 type Abilities = Ability[];
 
-interface SkillMod {
-  skillName: string;
-  modValue: number;
-}
-
-const skillMods: SkillMod[] = [];
-
 function CharSkills({ abilities }: { abilities: Abilities }) {
   const currentCharacter = useStore(
     (state) => state.currentCharacter,
