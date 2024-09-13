@@ -2,7 +2,7 @@ import { produce } from "immer";
 import { create } from "zustand";
 import zustymiddlewarets from "zustymiddlewarets";
 
-interface Skill {
+export interface Skill {
   name: string;
   attributeName: string;
   ability: string;
