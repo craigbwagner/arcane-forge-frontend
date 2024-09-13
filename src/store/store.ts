@@ -8,6 +8,7 @@ interface Skill {
   ability: string;
   isProficient: boolean;
   hasExpertise: boolean;
+  skillMod: number;
 }
 
 interface Ability {}
@@ -119,6 +120,7 @@ const useStore = create<State>(
           ability: "DEX",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Animal Handling",
@@ -126,6 +128,7 @@ const useStore = create<State>(
           ability: "WIS",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Arcana",
@@ -133,6 +136,7 @@ const useStore = create<State>(
           ability: "INT",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Athletics",
@@ -140,6 +144,7 @@ const useStore = create<State>(
           ability: "STR",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Deception",
@@ -147,6 +152,7 @@ const useStore = create<State>(
           ability: "CHA",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "History",
@@ -154,6 +160,7 @@ const useStore = create<State>(
           ability: "INT",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Insight",
@@ -161,6 +168,7 @@ const useStore = create<State>(
           ability: "WIS",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Intimidation",
@@ -168,6 +176,7 @@ const useStore = create<State>(
           ability: "CHA",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Investigation",
@@ -175,6 +184,7 @@ const useStore = create<State>(
           ability: "INT",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Medicine",
@@ -182,6 +192,7 @@ const useStore = create<State>(
           ability: "WIS",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Nature",
@@ -189,6 +200,7 @@ const useStore = create<State>(
           ability: "INT",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Perception",
@@ -196,6 +208,7 @@ const useStore = create<State>(
           ability: "WIS",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Performance",
@@ -203,6 +216,7 @@ const useStore = create<State>(
           ability: "CHA",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Persuasion",
@@ -210,6 +224,7 @@ const useStore = create<State>(
           ability: "CHA",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Religion",
@@ -217,6 +232,7 @@ const useStore = create<State>(
           ability: "INT",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Sleight of Hand",
@@ -224,6 +240,7 @@ const useStore = create<State>(
           ability: "DEX",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Stealth",
@@ -231,6 +248,7 @@ const useStore = create<State>(
           ability: "DEX",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
         {
           name: "Survival",
@@ -238,6 +256,7 @@ const useStore = create<State>(
           ability: "WIS",
           isProficient: false,
           hasExpertise: false,
+          skillMod: 0,
         },
       ],
       abilities: [],
