@@ -180,7 +180,7 @@ const useStore = create<State>(
         },
         {
           name: "Investigation",
-          attributeName: "intimidation",
+          attributeName: "investigation",
           ability: "INT",
           isProficient: false,
           hasExpertise: false,
