@@ -19,6 +19,7 @@ interface FormData {
   height: string;
   weight: number;
   alignment:
+    | ""
     | "Chaotic Evil"
     | "Chaotic Neutral"
     | "Chaotic Good"
