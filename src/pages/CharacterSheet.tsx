@@ -28,6 +28,7 @@ const characterSchema = z.object({
   height: z.string(),
   weight: z.coerce.number(),
   alignment: z.enum([
+    "",
     "Chaotic Evil",
     "Chaotic Neutral",
     "Chaotic Good",
