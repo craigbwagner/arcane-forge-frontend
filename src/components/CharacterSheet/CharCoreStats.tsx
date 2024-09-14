@@ -59,7 +59,7 @@ function CharCoreStats({
         </div>
         <div>
           <h1>Initiative</h1>
-          <h2>{currentCharacter.proficiencyBonus}</h2>
+          <h2>{currentCharacter.abilityScores[1].abilityMod}</h2>
         </div>
         <div>
           <h1>Speed</h1>
