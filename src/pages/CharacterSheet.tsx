@@ -120,8 +120,10 @@ function CharacterSheet() {
 
   useEffect(() => {
     const fetchCharacter = async () => {
+      const updatedSkills: Skill[] = [];
       const fetchedCharacter: Character =
         await characterService.getCharacter(characterId);
+
       if (fetchedCharacter) {
         if (fetchedCharacter.level < 5) {
           proficiencyBonus = 2;
