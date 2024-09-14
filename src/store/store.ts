@@ -8,7 +8,15 @@ export interface Skill {
   ability: string;
   isProficient: boolean;
   hasExpertise: boolean;
-  skillMod?: number;
+  skillMod: number;
+}
+
+interface AbilityScores {
+  name: string;
+  shortName: string;
+  abilityScore: number;
+  isProficientSave: boolean;
+  saveMod: number;
 }
 
 interface Ability {}
@@ -57,7 +65,7 @@ export interface Character {
   intelligence: number;
   wisdom: number;
   charisma: number;
-  savingThrowProficiencies: string[];
+  abilityScores: AbilityScores[];
   skills: Skill[];
   abilities: Ability[];
   items: Item[];
@@ -113,7 +121,50 @@ const useStore = create<State>(
       intelligence: 0,
       wisdom: 0,
       charisma: 0,
-      savingThrowProficiencies: [],
+      abilityScores: [
+        {
+          name: "Strength",
+          shortName: "STR",
+          abilityScore: 10,
+          isProficientSave: false,
+          saveMod: 0,
+        },
+        {
+          name: "Intelligence",
+          shortName: "INT",
+          abilityScore: 10,
+          isProficientSave: false,
+          saveMod: 0,
+        },
+        {
+          name: "Dexterity",
+          shortName: "DEX",
+          abilityScore: 10,
+          isProficientSave: false,
+          saveMod: 0,
+        },
+        {
+          name: "Wisdom",
+          shortName: "WIS",
+          abilityScore: 10,
+          isProficientSave: false,
+          saveMod: 0,
+        },
+        {
+          name: "Constitution",
+          shortName: "CON",
+          abilityScore: 10,
+          isProficientSave: false,
+          saveMod: 0,
+        },
+        {
+          name: "Charism",
+          shortName: "CHA",
+          abilityScore: 10,
+          isProficientSave: false,
+          saveMod: 0,
+        },
+      ],
       skills: [
         {
           name: "Acrobatics",
