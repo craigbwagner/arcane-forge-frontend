@@ -31,13 +31,57 @@ function CharactersPage() {
     hitDiceRemaining: 0,
     hitDiceType: "",
     hitDiceTotal: 1,
-    strength: 0,
-    dexterity: 0,
-    constitution: 0,
-    intelligence: 0,
-    wisdom: 0,
-    charisma: 0,
     savingThrowProficiencies: [],
+    abilityScores: [
+      {
+        name: "Strength",
+        shortName: "STR",
+        abilityScore: 10,
+        isProficientSave: false,
+        saveMod: 0,
+        abilityMod: 0,
+      },
+      {
+        name: "Intelligence",
+        shortName: "INT",
+        abilityScore: 10,
+        isProficientSave: false,
+        saveMod: 0,
+        abilityMod: 0,
+      },
+      {
+        name: "Dexterity",
+        shortName: "DEX",
+        abilityScore: 10,
+        isProficientSave: false,
+        saveMod: 0,
+        abilityMod: 0,
+      },
+      {
+        name: "Wisdom",
+        shortName: "WIS",
+        abilityScore: 10,
+        isProficientSave: false,
+        saveMod: 0,
+        abilityMod: 0,
+      },
+      {
+        name: "Constitution",
+        shortName: "CON",
+        abilityScore: 10,
+        isProficientSave: false,
+        saveMod: 0,
+        abilityMod: 0,
+      },
+      {
+        name: "Charisma",
+        shortName: "CHA",
+        abilityScore: 10,
+        isProficientSave: false,
+        saveMod: 0,
+        abilityMod: 0,
+      },
+    ],
     skills: [
       {
         name: "Acrobatics",
@@ -45,6 +89,7 @@ function CharactersPage() {
         ability: "DEX",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Animal Handling",
@@ -52,6 +97,7 @@ function CharactersPage() {
         ability: "WIS",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Arcana",
@@ -59,6 +105,7 @@ function CharactersPage() {
         ability: "INT",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Athletics",
@@ -66,6 +113,7 @@ function CharactersPage() {
         ability: "STR",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Deception",
@@ -73,6 +121,7 @@ function CharactersPage() {
         ability: "CHA",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "History",
@@ -80,6 +129,7 @@ function CharactersPage() {
         ability: "INT",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Insight",
@@ -87,6 +137,7 @@ function CharactersPage() {
         ability: "WIS",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Intimidation",
@@ -94,6 +145,7 @@ function CharactersPage() {
         ability: "CHA",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Investigation",
@@ -101,6 +153,7 @@ function CharactersPage() {
         ability: "INT",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Medicine",
@@ -108,6 +161,7 @@ function CharactersPage() {
         ability: "WIS",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Nature",
@@ -115,6 +169,7 @@ function CharactersPage() {
         ability: "INT",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Perception",
@@ -122,6 +177,7 @@ function CharactersPage() {
         ability: "WIS",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Performance",
@@ -129,6 +185,7 @@ function CharactersPage() {
         ability: "CHA",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Persuasion",
@@ -136,6 +193,7 @@ function CharactersPage() {
         ability: "CHA",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Religion",
@@ -143,6 +201,7 @@ function CharactersPage() {
         ability: "INT",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Sleight of Hand",
@@ -150,6 +209,7 @@ function CharactersPage() {
         ability: "DEX",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Stealth",
@@ -157,6 +217,7 @@ function CharactersPage() {
         ability: "DEX",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
       {
         name: "Survival",
@@ -164,6 +225,7 @@ function CharactersPage() {
         ability: "WIS",
         isProficient: false,
         hasExpertise: false,
+        skillMod: 0,
       },
     ],
     abilities: [],
