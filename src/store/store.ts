@@ -17,6 +17,7 @@ interface AbilityScores {
   abilityScore: number;
   isProficientSave: boolean;
   saveMod: number;
+  abilityMod?: number;
 }
 
 interface Ability {}
