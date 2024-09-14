@@ -79,7 +79,6 @@ interface State {
     } | null,
   ) => void;
   updateCharacter: (updatedCharacter: Character) => void;
-  updateSkills: (updatedSkill: Skill[]) => void;
   addUserCharacter: (newCharacter: Character) => void;
 }
 
@@ -274,12 +273,6 @@ const useStore = create<State>(
       set(
         produce((draft: State) => {
           draft.currentCharacter = updatedCharacter;
-        }),
-      ),
-    updateSkills: (updatedSkills) =>
-      set(
-        produce((draft: State) => {
-          draft.currentCharacter.skills = updatedSkills;
         }),
       ),
     addUserCharacter: (newCharacter) =>
