@@ -17,7 +17,7 @@ interface AbilityScores {
   abilityScore: number;
   isProficientSave: boolean;
   saveMod: number;
-  abilityMod?: number;
+  abilityMod: number;
 }
 
 interface Ability {}
@@ -60,12 +60,6 @@ export interface Character {
   hitDiceRemaining: number;
   hitDiceType: string;
   hitDiceTotal: number;
-  strength: number;
-  dexterity: number;
-  constitution: number;
-  intelligence: number;
-  wisdom: number;
-  charisma: number;
   abilityScores: AbilityScores[];
   skills: Skill[];
   abilities: Ability[];
@@ -116,12 +110,6 @@ const useStore = create<State>(
       hitDiceRemaining: 0,
       hitDiceType: "",
       hitDiceTotal: 1,
-      strength: 0,
-      dexterity: 0,
-      constitution: 0,
-      intelligence: 0,
-      wisdom: 0,
-      charisma: 0,
       abilityScores: [
         {
           name: "Strength",
@@ -129,6 +117,7 @@ const useStore = create<State>(
           abilityScore: 10,
           isProficientSave: false,
           saveMod: 0,
+          abilityMod: 0,
         },
         {
           name: "Intelligence",
@@ -136,6 +125,7 @@ const useStore = create<State>(
           abilityScore: 10,
           isProficientSave: false,
           saveMod: 0,
+          abilityMod: 0,
         },
         {
           name: "Dexterity",
@@ -143,6 +133,7 @@ const useStore = create<State>(
           abilityScore: 10,
           isProficientSave: false,
           saveMod: 0,
+          abilityMod: 0,
         },
         {
           name: "Wisdom",
@@ -150,6 +141,7 @@ const useStore = create<State>(
           abilityScore: 10,
           isProficientSave: false,
           saveMod: 0,
+          abilityMod: 0,
         },
         {
           name: "Constitution",
@@ -157,13 +149,15 @@ const useStore = create<State>(
           abilityScore: 10,
           isProficientSave: false,
           saveMod: 0,
+          abilityMod: 0,
         },
         {
-          name: "Charism",
+          name: "Charisma",
           shortName: "CHA",
           abilityScore: 10,
           isProficientSave: false,
           saveMod: 0,
+          abilityMod: 0,
         },
       ],
       skills: [
