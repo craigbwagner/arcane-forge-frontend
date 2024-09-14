@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import useStore, { Character } from "../store/store";
+import useStore, { Character, Skill } from "../store/store";
 import * as characterService from "@/services/characterService";
 import { number, string, z } from "zod";
 import { useForm } from "react-hook-form";
@@ -95,12 +95,6 @@ const characterSchema = z.object({
   ]),
   languages: z.string().array(),
   initiative: z.coerce.number(),
-  strength: z.coerce.number(),
-  dexterity: z.coerce.number(),
-  constitution: z.coerce.number(),
-  charisma: z.coerce.number(),
-  wisdom: z.coerce.number(),
-  intelligence: z.coerce.number(),
   speed: z.coerce.number(),
   maxHP: z.coerce.number(),
   currentHP: z.coerce.number(),
@@ -108,6 +102,12 @@ const characterSchema = z.object({
   hitDiceRemaining: z.coerce.number(),
   hitDiceType: string(),
   hitDiceTotal: z.coerce.number(),
+  strength: z.coerce.number(),
+  intelligence: z.coerce.number(),
+  dexterity: z.coerce.number(),
+  wisdom: z.coerce.number(),
+  constitution: z.coerce.number(),
+  charisma: z.coerce.number(),
 });
 
 export interface FormData {
@@ -131,12 +131,6 @@ export interface FormData {
     | "Neutral Evil";
   languages: string[];
   initiative: number;
-  strength: number;
-  dexterity: number;
-  constitution: number;
-  charisma: number;
-  wisdom: number;
-  intelligence: number;
   speed: number;
   maxHP: number;
   currentHP: number;
@@ -144,6 +138,12 @@ export interface FormData {
   hitDiceRemaining: number;
   hitDiceType: string;
   hitDiceTotal: number;
+  strength: number;
+  intelligence: number;
+  dexterity: number;
+  wisdom: number;
+  constitution: number;
+  charisma: number;
 }
 
 function EditCharacterPage() {
@@ -153,61 +153,9 @@ function EditCharacterPage() {
   const updateUser = useStore((state) => state.updateUser);
   const updateCharacter = useStore((state) => state.updateCharacter);
   let proficiencyBonus = 2;
-  const abilities = [
-    {
-      name: "STR",
-      abilityScore: currentCharacter.strength,
-      abilityMod: calculateAbilityMod(currentCharacter.strength),
-      proficientSave: false,
-      savingThrowMod: 0,
-    },
-    {
-      name: "DEX",
-      abilityScore: currentCharacter.dexterity,
-      abilityMod: calculateAbilityMod(currentCharacter.dexterity),
-      proficientSave: false,
-      savingThrowMod: 0,
-    },
-    {
-      name: "CON",
-      abilityScore: currentCharacter.constitution,
-      abilityMod: calculateAbilityMod(currentCharacter.constitution),
-      proficientSave: false,
-      savingThrowMod: 0,
-    },
-    {
-      name: "CHA",
-      abilityScore: currentCharacter.charisma,
-      abilityMod: calculateAbilityMod(currentCharacter.charisma),
-      proficientSave: false,
-      savingThrowMod: 0,
-    },
-    {
-      name: "WIS",
-      abilityScore: currentCharacter.wisdom,
-      abilityMod: calculateAbilityMod(currentCharacter.wisdom),
-      proficientSave: false,
-      savingThrowMod: 0,
-    },
-    {
-      name: "INT",
-      abilityScore: currentCharacter.intelligence,
-      abilityMod: calculateAbilityMod(currentCharacter.intelligence),
-      proficientSave: false,
-      savingThrowMod: 0,
-    },
-  ];
 
   function calculateAbilityMod(abilityScore: number): number {
     return Math.floor((abilityScore - 10) / 2);
-  }
-
-  function setSavingThrowMods() {
-    abilities.forEach((ability) => {
-      if (currentCharacter.savingThrowProficiencies.includes(ability.name)) {
-        ability.proficientSave = true;
-      }
-    });
   }
 
   if (!characterId) {
@@ -216,8 +164,10 @@ function EditCharacterPage() {
 
   useEffect(() => {
     const fetchCharacter = async () => {
+      const updatedSkills: Skill[] = [];
       const fetchedCharacter: Character =
         await characterService.getCharacter(characterId);
+
       if (fetchedCharacter) {
         if (fetchedCharacter.level < 5) {
           proficiencyBonus = 2;
@@ -231,8 +181,53 @@ function EditCharacterPage() {
           proficiencyBonus = 6;
         }
         fetchedCharacter.proficiencyBonus = proficiencyBonus;
+
+        fetchedCharacter.abilityScores.forEach((abilityScore) => {
+          abilityScore.abilityMod = calculateAbilityMod(
+            abilityScore.abilityScore,
+          );
+        });
+
+        fetchedCharacter.skills.forEach((skill) => {
+          const currentSkill = { ...skill };
+          let modValue = 0;
+
+          switch (skill.ability) {
+            case "STR":
+              modValue = fetchedCharacter.abilityScores[0].abilityMod;
+              break;
+            case "INT":
+              modValue = fetchedCharacter.abilityScores[1].abilityMod;
+              break;
+            case "DEX":
+              modValue = fetchedCharacter.abilityScores[2].abilityMod;
+              break;
+            case "WIS":
+              modValue = fetchedCharacter.abilityScores[3].abilityMod;
+              break;
+            case "CON":
+              modValue = fetchedCharacter.abilityScores[4].abilityMod;
+              break;
+            case "CHA":
+              modValue = fetchedCharacter.abilityScores[5].abilityMod;
+              break;
+          }
+
+          if (skill.isProficient) {
+            if (skill.hasExpertise) {
+              modValue =
+                modValue + (currentCharacter.proficiencyBonus as number) * 2;
+            } else {
+              modValue =
+                modValue + (currentCharacter.proficiencyBonus as number);
+            }
+          }
+
+          currentSkill.skillMod = modValue;
+          updatedSkills.push(currentSkill);
+        });
+        fetchedCharacter.skills = updatedSkills;
         updateCharacter(fetchedCharacter);
-        setSavingThrowMods();
       }
     };
     fetchCharacter();
@@ -251,12 +246,6 @@ function EditCharacterPage() {
       alignment: "",
       languages: [],
       initiative: 0,
-      strength: 0,
-      dexterity: 0,
-      constitution: 0,
-      charisma: 0,
-      wisdom: 0,
-      intelligence: 0,
       speed: 0,
       maxHP: 0,
       currentHP: 0,
@@ -264,6 +253,12 @@ function EditCharacterPage() {
       hitDiceRemaining: 0,
       hitDiceType: "",
       hitDiceTotal: 0,
+      strength: 10,
+      dexterity: 10,
+      intelligence: 10,
+      wisdom: 10,
+      constitution: 10,
+      charisma: 10,
     },
     values: {
       name: currentCharacter.name,
@@ -276,12 +271,6 @@ function EditCharacterPage() {
       alignment: currentCharacter.alignment,
       languages: currentCharacter.languages,
       initiative: currentCharacter.initiative,
-      strength: currentCharacter.strength,
-      dexterity: currentCharacter.dexterity,
-      constitution: currentCharacter.constitution,
-      charisma: currentCharacter.charisma,
-      wisdom: currentCharacter.wisdom,
-      intelligence: currentCharacter.intelligence,
       speed: currentCharacter.speed,
       maxHP: currentCharacter.maxHP,
       currentHP: currentCharacter.currentHP,
@@ -289,6 +278,12 @@ function EditCharacterPage() {
       hitDiceRemaining: currentCharacter.hitDiceRemaining,
       hitDiceType: currentCharacter.hitDiceType,
       hitDiceTotal: currentCharacter.hitDiceTotal,
+      strength: currentCharacter.abilityScores[0].abilityScore,
+      intelligence: currentCharacter.abilityScores[1].abilityScore,
+      dexterity: currentCharacter.abilityScores[2].abilityScore,
+      wisdom: currentCharacter.abilityScores[3].abilityScore,
+      constitution: currentCharacter.abilityScores[4].abilityScore,
+      charisma: currentCharacter.abilityScores[5].abilityScore,
     },
   });
 
@@ -310,12 +305,12 @@ function EditCharacterPage() {
         ...values,
         _id: currentCharacter._id,
         level: currentCharacter.level,
-        savingThrowProficiencies: currentCharacter.savingThrowProficiencies,
         abilities: currentCharacter.abilities,
         items: currentCharacter.items,
         creator: currentCharacter.creator,
         classes: currentCharacter.classes,
         skills: currentCharacter.skills,
+        abilityScores: currentCharacter.abilityScores,
       });
       tempUser.characters = updatedUserCharacters;
       updateUser(tempUser);
@@ -371,7 +366,7 @@ function EditCharacterPage() {
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="grid grid-cols-2 gap-2">
-                        <CharAbilitiesForm form={form} abilities={abilities} />
+                        <CharAbilitiesForm form={form} />
                       </CardContent>
                       <CardFooter></CardFooter>
                     </Card>
