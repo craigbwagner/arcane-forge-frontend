@@ -10,21 +10,10 @@ import {
 } from "../../ui/form";
 import { Input } from "../../ui/input";
 
-interface Ability {
-  name: string;
-  abilityScore: number;
-  abilityMod: number;
-  proficientSave: boolean;
-  savingThrowMod: number;
-}
-type Abilities = Ability[];
-
 function CharAbilitiesForm({
   form,
-  abilities,
 }: {
   form: UseFormReturn<FormData, any, undefined>;
-  abilities: Abilities;
 }) {
   return (
     <div className="grid grid-cols-2">
