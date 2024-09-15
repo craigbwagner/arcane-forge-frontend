@@ -2,7 +2,7 @@ import { Character } from "../store/store";
 
 const BACKEND_URL: string = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 
-async function create(characterData: Character): Promise<Character> {
+async function create<T>(characterData: T): Promise<T> {
   try {
     const res = await fetch(`${BACKEND_URL}/characters/new`, {
       method: "POST",
