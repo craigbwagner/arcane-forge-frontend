@@ -16,7 +16,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import CharBasicDetailsForm from "@/components/CharacterSheet/Forms/CharBasicDetailsForm";
-import CharAbilitiesForm from "@/components/CharacterSheet/Forms/CharAbilitiesForm";
+import CharAbilityScoresForm from "@/components/CharacterSheet/Forms/CharAbilityScoresForm";
 import SkillProficienciesForm from "@/components/CharacterSheet/Forms/SkillProficienciesForm";
 import { Tabs, CustomFlowbiteTheme, Flowbite } from "flowbite-react";
 
@@ -366,7 +366,7 @@ function EditCharacterPage() {
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="grid grid-cols-2 gap-2">
-                        <CharAbilitiesForm form={form} />
+                        <CharAbilityScoresForm form={form} />
                       </CardContent>
                       <CardFooter></CardFooter>
                     </Card>
