@@ -86,10 +86,8 @@ function CharacterSheet() {
         }
         fetchedCharacter.proficiencyBonus = proficiencyBonus;
 
-        fetchedCharacter.abilityScores.forEach((abilityScore) => {
-          abilityScore.abilityMod = calculateAbilityMod(
-            abilityScore.abilityScore,
-          );
+        fetchedCharacter.abilities.forEach((abilities) => {
+          abilities.abilityMod = calculateAbilityMod(abilities.abilityScore);
         });
 
         fetchedCharacter.skills.forEach((skill) => {
@@ -98,22 +96,22 @@ function CharacterSheet() {
 
           switch (skill.ability) {
             case "STR":
-              modValue = fetchedCharacter.abilityScores[0].abilityMod;
+              modValue = fetchedCharacter.abilities[0].abilityMod;
               break;
             case "INT":
-              modValue = fetchedCharacter.abilityScores[1].abilityMod;
+              modValue = fetchedCharacter.abilities[1].abilityMod;
               break;
             case "DEX":
-              modValue = fetchedCharacter.abilityScores[2].abilityMod;
+              modValue = fetchedCharacter.abilities[2].abilityMod;
               break;
             case "WIS":
-              modValue = fetchedCharacter.abilityScores[3].abilityMod;
+              modValue = fetchedCharacter.abilities[3].abilityMod;
               break;
             case "CON":
-              modValue = fetchedCharacter.abilityScores[4].abilityMod;
+              modValue = fetchedCharacter.abilities[4].abilityMod;
               break;
             case "CHA":
-              modValue = fetchedCharacter.abilityScores[5].abilityMod;
+              modValue = fetchedCharacter.abilities[5].abilityMod;
               break;
           }
 
@@ -197,12 +195,12 @@ function CharacterSheet() {
         ...values,
         _id: currentCharacter._id,
         level: currentCharacter.level,
-        abilities: currentCharacter.abilities,
+        features: currentCharacter.features,
         items: currentCharacter.items,
         creator: currentCharacter.creator,
         classes: currentCharacter.classes,
         skills: currentCharacter.skills,
-        abilityScores: currentCharacter.abilityScores,
+        abilities: currentCharacter.abilities,
       });
       tempUser.characters = updatedUserCharacters;
       updateUser(tempUser);
@@ -247,7 +245,7 @@ function CharacterSheet() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="grid grid-cols-2 gap-2">
-                  {currentCharacter.abilityScores.map((abilityScore) => {
+                  {currentCharacter.abilities.map((abilityScore) => {
                     return (
                       <div
                         className="flex flex-col text-center rounded-md border-[1px] border-slate-300"
@@ -274,17 +272,17 @@ function CharacterSheet() {
                   <CardDescription>Saving Throw Modifiers</CardDescription>
                 </CardHeader>
                 <CardContent className="grid grid-cols-2 gap-2">
-                  {currentCharacter.abilityScores.map((abilityScore) => {
+                  {currentCharacter.abilities.map((ability) => {
                     return (
                       <div
                         className="flex justify-between text-center rounded-md border-[1px] border-slate-300"
-                        key={abilityScore.name}
+                        key={ability.name}
                       >
-                        <h2>{abilityScore.name}</h2>
+                        <h2>{ability.name}</h2>
                         <h3>
-                          {abilityScore.abilityMod > 0
-                            ? `+${abilityScore.abilityMod}`
-                            : abilityScore.abilityMod}
+                          {ability.abilityMod > 0
+                            ? `+${ability.abilityMod}`
+                            : ability.abilityMod}
                         </h3>
                       </div>
                     );

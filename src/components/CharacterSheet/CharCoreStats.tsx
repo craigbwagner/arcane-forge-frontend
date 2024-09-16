@@ -60,9 +60,9 @@ function CharCoreStats({
         <div>
           <h1>Initiative</h1>
           <h2>
-            {currentCharacter.abilityScores[2].abilityMod > 0
-              ? `+${currentCharacter.abilityScores[2].abilityMod}`
-              : currentCharacter.abilityScores[2].abilityMod}
+            {currentCharacter.abilities[2].abilityMod > 0
+              ? `+${currentCharacter.abilities[2].abilityMod}`
+              : currentCharacter.abilities[2].abilityMod}
           </h2>
         </div>
         <div>

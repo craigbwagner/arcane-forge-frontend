@@ -11,7 +11,7 @@ export interface Skill {
   skillMod: number;
 }
 
-interface AbilityScores {
+interface Abilities {
   name: string;
   shortName: string;
   abilityScore: number;
@@ -20,7 +20,7 @@ interface AbilityScores {
   abilityMod: number;
 }
 
-interface Ability {}
+interface Feature {}
 
 interface Item {}
 
@@ -60,9 +60,9 @@ export interface Character {
   hitDiceRemaining: number;
   hitDiceType: string;
   hitDiceTotal: number;
-  abilityScores: AbilityScores[];
+  abilities: Abilities[];
   skills: Skill[];
-  abilities: Ability[];
+  features: Feature[];
   items: Item[];
   updatedAt?: Date;
 }
@@ -110,7 +110,7 @@ const useStore = create<State>(
       hitDiceRemaining: 0,
       hitDiceType: "",
       hitDiceTotal: 1,
-      abilityScores: [
+      abilities: [
         {
           name: "Strength",
           shortName: "STR",
@@ -306,7 +306,7 @@ const useStore = create<State>(
           skillMod: 0,
         },
       ],
-      abilities: [],
+      features: [],
       items: [],
     },
     updateUser: (updatedUser) =>

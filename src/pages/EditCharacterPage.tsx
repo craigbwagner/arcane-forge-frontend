@@ -16,7 +16,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import CharBasicDetailsForm from "@/components/CharacterSheet/Forms/CharBasicDetailsForm";
-import CharAbilityScoresForm from "@/components/CharacterSheet/Forms/CharAbilityScoresForm";
+import CharAbilitiesForm from "@/components/CharacterSheet/Forms/CharAbilitiesForm";
 import SkillProficienciesForm from "@/components/CharacterSheet/Forms/SkillProficienciesForm";
 import { Tabs, CustomFlowbiteTheme, Flowbite } from "flowbite-react";
 
@@ -182,10 +182,8 @@ function EditCharacterPage() {
         }
         fetchedCharacter.proficiencyBonus = proficiencyBonus;
 
-        fetchedCharacter.abilityScores.forEach((abilityScore) => {
-          abilityScore.abilityMod = calculateAbilityMod(
-            abilityScore.abilityScore,
-          );
+        fetchedCharacter.abilities.forEach((ability) => {
+          ability.abilityMod = calculateAbilityMod(ability.abilityScore);
         });
 
         fetchedCharacter.skills.forEach((skill) => {
@@ -194,22 +192,22 @@ function EditCharacterPage() {
 
           switch (skill.ability) {
             case "STR":
-              modValue = fetchedCharacter.abilityScores[0].abilityMod;
+              modValue = fetchedCharacter.abilities[0].abilityMod;
               break;
             case "INT":
-              modValue = fetchedCharacter.abilityScores[1].abilityMod;
+              modValue = fetchedCharacter.abilities[1].abilityMod;
               break;
             case "DEX":
-              modValue = fetchedCharacter.abilityScores[2].abilityMod;
+              modValue = fetchedCharacter.abilities[2].abilityMod;
               break;
             case "WIS":
-              modValue = fetchedCharacter.abilityScores[3].abilityMod;
+              modValue = fetchedCharacter.abilities[3].abilityMod;
               break;
             case "CON":
-              modValue = fetchedCharacter.abilityScores[4].abilityMod;
+              modValue = fetchedCharacter.abilities[4].abilityMod;
               break;
             case "CHA":
-              modValue = fetchedCharacter.abilityScores[5].abilityMod;
+              modValue = fetchedCharacter.abilities[5].abilityMod;
               break;
           }
 
@@ -278,12 +276,12 @@ function EditCharacterPage() {
       hitDiceRemaining: currentCharacter.hitDiceRemaining,
       hitDiceType: currentCharacter.hitDiceType,
       hitDiceTotal: currentCharacter.hitDiceTotal,
-      strength: currentCharacter.abilityScores[0].abilityScore,
-      intelligence: currentCharacter.abilityScores[1].abilityScore,
-      dexterity: currentCharacter.abilityScores[2].abilityScore,
-      wisdom: currentCharacter.abilityScores[3].abilityScore,
-      constitution: currentCharacter.abilityScores[4].abilityScore,
-      charisma: currentCharacter.abilityScores[5].abilityScore,
+      strength: currentCharacter.abilities[0].abilityScore,
+      intelligence: currentCharacter.abilities[1].abilityScore,
+      dexterity: currentCharacter.abilities[2].abilityScore,
+      wisdom: currentCharacter.abilities[3].abilityScore,
+      constitution: currentCharacter.abilities[4].abilityScore,
+      charisma: currentCharacter.abilities[5].abilityScore,
     },
   });
 
@@ -305,12 +303,12 @@ function EditCharacterPage() {
         ...values,
         _id: currentCharacter._id,
         level: currentCharacter.level,
-        abilities: currentCharacter.abilities,
+        features: currentCharacter.features,
         items: currentCharacter.items,
         creator: currentCharacter.creator,
         classes: currentCharacter.classes,
         skills: currentCharacter.skills,
-        abilityScores: currentCharacter.abilityScores,
+        abilities: currentCharacter.abilities,
       });
       tempUser.characters = updatedUserCharacters;
       updateUser(tempUser);
@@ -366,7 +364,7 @@ function EditCharacterPage() {
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="grid grid-cols-2 gap-2">
-                        <CharAbilityScoresForm form={form} />
+                        <CharAbilitiesForm form={form} />
                       </CardContent>
                       <CardFooter></CardFooter>
                     </Card>

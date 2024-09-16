@@ -32,7 +32,7 @@ function CharactersPage() {
     hitDiceType: "",
     hitDiceTotal: 1,
     savingThrowProficiencies: [],
-    abilityScores: [
+    abilities: [
       {
         name: "Strength",
         shortName: "STR",
@@ -228,7 +228,7 @@ function CharactersPage() {
         skillMod: 0,
       },
     ],
-    abilities: [],
+    features: [],
     items: [],
   };
 

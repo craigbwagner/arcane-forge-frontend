@@ -11,7 +11,6 @@ interface Skill {
 
 function SkillCheckbox({ skill }: { skill: Skill }) {
   const currentCharacter = useStore((state) => state.currentCharacter);
-  const updateSkills = useStore((state) => state.updateSkills);
 
   function checkHandler() {
     const currentSkills = [...currentCharacter.skills];
