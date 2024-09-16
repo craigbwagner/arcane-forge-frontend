@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import useStore, { Character, Skill } from "../store/store";
 import * as characterService from "@/services/characterService";
-import { number, string, z } from "zod";
+import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../components/ui/button";
@@ -46,7 +46,7 @@ const characterSchema = z.object({
   currentHP: z.coerce.number(),
   tempHP: z.coerce.number(),
   hitDiceRemaining: z.coerce.number(),
-  hitDiceType: string(),
+  hitDiceType: z.string(),
   hitDiceTotal: z.coerce.number(),
 });
 
