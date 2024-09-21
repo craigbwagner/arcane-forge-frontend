@@ -10,12 +10,24 @@ function CharClassesForm({
   form: UseFormReturn<FormData, any, undefined>;
 }) {
   const currentCharacter = useStore((state) => state.currentCharacter);
+  const updateCharacter = useStore((state) => state.updateCharacter);
+
+  function handleAddClass() {
+    const newClass = { name: "", subclass: "", level: 1 };
+    const updatedClasses = [...currentCharacter.classes, newClass];
+
+    updateCharacter({ ...currentCharacter, classes: updatedClasses });
+  }
   return (
     <div>
       {currentCharacter.classes.map((characterClass) => (
-        <ClassSelector characterClass={characterClass} form={form} />
+        <ClassSelector
+          key={characterClass.name + characterClass.level}
+          characterClass={characterClass}
+          form={form}
+        />
       ))}
-      <Button>Add Class</Button>
+      <Button onClick={handleAddClass}>Add Class</Button>
     </div>
   );
 }
