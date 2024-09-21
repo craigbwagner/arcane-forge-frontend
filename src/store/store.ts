@@ -24,7 +24,11 @@ interface Feature {}
 
 interface Item {}
 
-interface Class {}
+interface CharacterClass {
+  name: string;
+  level: number;
+  subclass: string;
+}
 
 export interface Character {
   creator: string;
