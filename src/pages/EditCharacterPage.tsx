@@ -352,7 +352,17 @@ function EditCharacterPage() {
                   </CardContent>
                 </Card>
               </Tabs.Item>
-              <Tabs.Item title="Class"></Tabs.Item>
+              <Tabs.Item title="Class">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Classes</CardTitle>
+                    <CardDescription></CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <CharClassesForm form={form} />
+                  </CardContent>
+                </Card>
+              </Tabs.Item>
               <Tabs.Item title="Abilities">
                 <div className="grid grid-cols-2">
                   <div className="grid grid-cols-2">
