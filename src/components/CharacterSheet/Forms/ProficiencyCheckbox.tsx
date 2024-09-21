@@ -1,19 +1,11 @@
-import useStore from "@/store/store";
+import useStore, { Skill } from "@/store/store";
 import { Checkbox } from "../../ui/checkbox";
-
-interface Skill {
-  name: string;
-  attributeName: string;
-  ability: string;
-  isProficient: boolean;
-  hasExpertise: boolean;
-}
 
 function SkillCheckbox({ skill }: { skill: Skill }) {
   const currentCharacter = useStore((state) => state.currentCharacter);
 
   function checkHandler() {
-    const currentSkills = [...currentCharacter.skills];
+    const currentSkills: Skill[] = [...currentCharacter.skills];
     const index = currentSkills.indexOf(skill);
     if (skill.isProficient === true) {
       currentSkills[index] = { ...skill, isProficient: false };
