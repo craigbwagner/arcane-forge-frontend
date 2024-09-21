@@ -18,6 +18,7 @@ import {
 import CharBasicDetailsForm from "@/components/CharacterSheet/Forms/CharBasicDetailsForm";
 import CharAbilitiesForm from "@/components/CharacterSheet/Forms/CharAbilitiesForm";
 import SkillProficienciesForm from "@/components/CharacterSheet/Forms/SkillProficienciesForm";
+import CharClassesForm from "@/components/CharacterSheet/Forms/CharClassesForm";
 import { Tabs, CustomFlowbiteTheme, Flowbite } from "flowbite-react";
 
 const customTheme: CustomFlowbiteTheme = {
