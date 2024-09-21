@@ -3,16 +3,17 @@ import { Checkbox } from "../../ui/checkbox";
 
 function SkillCheckbox({ skill }: { skill: Skill }) {
   const currentCharacter = useStore((state) => state.currentCharacter);
+  const updateCharacter = useStore((state) => state.updateCharacter);
 
   function checkHandler() {
     const currentSkills: Skill[] = [...currentCharacter.skills];
     const index = currentSkills.indexOf(skill);
     if (skill.isProficient === true) {
       currentSkills[index] = { ...skill, isProficient: false };
-      updateSkills(currentSkills);
+      updateCharacter({ ...currentCharacter, skills: currentSkills });
     } else {
       currentSkills[index] = { ...skill, isProficient: true };
-      updateSkills(currentSkills);
+      updateCharacter({ ...currentCharacter, skills: currentSkills });
     }
   }
 
