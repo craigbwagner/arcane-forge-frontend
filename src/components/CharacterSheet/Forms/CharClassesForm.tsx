@@ -20,11 +20,12 @@ function CharClassesForm({
   }
   return (
     <div>
-      {currentCharacter.classes.map((characterClass) => (
+      {currentCharacter.classes.map((characterClass, index) => (
         <ClassSelector
-          key={characterClass.name + characterClass.level}
+          key={characterClass.name + index}
           characterClass={characterClass}
           form={form}
+          index={index}
         />
       ))}
       <Button onClick={handleAddClass}>Add Class</Button>
