@@ -12,9 +12,9 @@ function CharClassesForm({
   const currentCharacter = useStore((state) => state.currentCharacter);
   return (
     <div>
-      {currentCharacter.classes.map((characterClass) => {
-        <ClassSelector characterClass={characterClass} form={form} />;
-      })}
+      {currentCharacter.classes.map((characterClass) => (
+        <ClassSelector characterClass={characterClass} form={form} />
+      ))}
       <Button>Add Class</Button>
     </div>
   );
