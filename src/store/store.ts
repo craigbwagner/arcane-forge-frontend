@@ -35,7 +35,7 @@ export interface Character {
   _id?: string;
   name: string;
   race: string;
-  classes: Class[];
+  classes: CharacterClass[];
   level: number;
   sex: string;
   size: string;
