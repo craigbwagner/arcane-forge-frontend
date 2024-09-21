@@ -333,7 +333,7 @@ function EditCharacterPage() {
             <h1>Edit Character</h1>
             <div className="flex justify-end">
               <Link to={`/characters/${characterId}`}>
-                <Button>Cancel</Button>
+                <Button>Character Sheet</Button>
               </Link>
               <Button type="submit">Save Character</Button>
             </div>
