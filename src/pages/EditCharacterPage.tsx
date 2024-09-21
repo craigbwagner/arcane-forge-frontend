@@ -353,7 +353,7 @@ function EditCharacterPage() {
                 </Card>
               </Tabs.Item>
               <Tabs.Item title="Class"></Tabs.Item>
-              <Tabs.Item title="Ability Scores">
+              <Tabs.Item title="Abilities">
                 <div className="grid grid-cols-2">
                   <div className="grid grid-cols-2">
                     <Card>
