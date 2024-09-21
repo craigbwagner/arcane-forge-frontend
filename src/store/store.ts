@@ -24,7 +24,7 @@ interface Feature {}
 
 interface Item {}
 
-interface CharacterClass {
+export interface CharacterClass {
   name: string;
   level: number;
   subclass: string;
