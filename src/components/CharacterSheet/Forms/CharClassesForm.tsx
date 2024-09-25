@@ -1,7 +1,5 @@
 import useStore from "@/store/store";
 import { useState } from "react";
-import { UseFormReturn } from "react-hook-form";
-import { FormData } from "@/pages/EditCharacterPage";
 import { Button } from "../../ui/button";
 import { Input } from "../../ui/input";
 import {
@@ -12,11 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-function CharClassesForm({
-  form,
-}: {
-  form: UseFormReturn<FormData, any, undefined>;
-}) {
+function CharClassesForm() {
   const currentCharacter = useStore((state) => state.currentCharacter);
   const updateCharacter = useStore((state) => state.updateCharacter);
   const [newClass, setNewClass] = useState("Class");
