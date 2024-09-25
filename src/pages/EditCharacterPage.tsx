@@ -20,6 +20,7 @@ import CharAbilitiesForm from "@/components/CharacterSheet/Forms/CharAbilitiesFo
 import SkillProficienciesForm from "@/components/CharacterSheet/Forms/SkillProficienciesForm";
 import CharClassesForm from "@/components/CharacterSheet/Forms/CharClassesForm";
 import { Tabs, CustomFlowbiteTheme, Flowbite } from "flowbite-react";
+import DeleteAlert from "@/components/DeleteAlert";
 
 const customTheme: CustomFlowbiteTheme = {
   tabs: {
@@ -340,6 +341,7 @@ function EditCharacterPage() {
                 <Button>Character Sheet</Button>
               </Link>
               <Button type="submit">Save Character</Button>
+              <DeleteAlert />
             </div>
           </div>
           {/* https://flowbite-react.com/docs/components/tabs */}
