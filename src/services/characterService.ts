@@ -64,4 +64,24 @@ async function saveCharacter(characterData: any) {
   }
 }
 
-export { create, getCharacter, saveCharacter };
+async function deleteCharacter(characterId: string) {
+  try {
+    const res = await fetch(`${BACKEND_URL}/characters/${characterId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    const json = await res.json();
+    if (json.err) {
+      throw new Error(json.err);
+    }
+    return json;
+  } catch (err: unknown) {
+    console.log(err);
+    throw err;
+  }
+}
+
+export { create, getCharacter, saveCharacter, deleteCharacter };
