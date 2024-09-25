@@ -226,6 +226,7 @@ function EditCharacterPage() {
           updatedSkills.push(currentSkill);
         });
         fetchedCharacter.skills = updatedSkills;
+
         updateCharacter(fetchedCharacter);
       }
     };
@@ -320,6 +321,7 @@ function EditCharacterPage() {
         ...values,
         skills: currentCharacter.skills,
         classes: currentCharacter.classes,
+        level: currentCharacter.level,
         _id: characterId,
       });
     } catch (err: unknown) {
