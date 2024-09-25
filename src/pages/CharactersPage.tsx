@@ -15,7 +15,7 @@ function CharactersPage() {
     name: "",
     race: "",
     classes: [],
-    level: 1,
+    level: 0,
     sex: "",
     size: "",
     age: 0,
