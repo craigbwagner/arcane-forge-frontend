@@ -31,14 +31,26 @@ function CharClassesForm({
     };
     const updatedClasses = [...currentCharacter.classes, addedClass];
 
-    updateCharacter({ ...currentCharacter, classes: updatedClasses });
+    const updatedCharLevel = currentCharacter.level + newLevel;
+
+    updateCharacter({
+      ...currentCharacter,
+      classes: updatedClasses,
+      level: updatedCharLevel,
+    });
   }
 
   function handleDeleteClass(e: any) {
     const updatedClasses = [...currentCharacter.classes];
+    const updatedCharLevel =
+      currentCharacter.level - updatedClasses[e.target.value].level;
     updatedClasses.splice(e.target.value, 1);
 
-    updateCharacter({ ...currentCharacter, classes: updatedClasses });
+    updateCharacter({
+      ...currentCharacter,
+      classes: updatedClasses,
+      level: updatedCharLevel,
+    });
   }
 
   return (
