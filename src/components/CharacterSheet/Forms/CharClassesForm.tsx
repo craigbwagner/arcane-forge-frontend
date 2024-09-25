@@ -33,6 +33,14 @@ function CharClassesForm({
 
     updateCharacter({ ...currentCharacter, classes: updatedClasses });
   }
+
+  function handleDeleteClass(e: any) {
+    const updatedClasses = [...currentCharacter.classes];
+    updatedClasses.splice(e.target.value, 1);
+
+    updateCharacter({ ...currentCharacter, classes: updatedClasses });
+  }
+
   return (
     <div>
       <ul>
@@ -41,7 +49,10 @@ function CharClassesForm({
             <h3>
               {characterClass.subclass} {characterClass.name}
             </h3>
-            <p>{characterClass.level}</p>
+            <p>Level {characterClass.level}</p>
+            <Button onClick={handleDeleteClass} value={index}>
+              Remove
+            </Button>
           </li>
         ))}
       </ul>
