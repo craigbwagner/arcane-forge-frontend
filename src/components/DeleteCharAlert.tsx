@@ -13,10 +13,13 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import useStore from "@/store/store";
+import * as characterService from "@/services/characterService";
 
-function DeleteAlert() {
+function DeleteCharAlert() {
   const [isOpen, setIsOpen] = useState(false);
   const currentCharacter = useStore((state) => state.currentCharacter);
+  const updateUser = useStore((state) => state.updateUser);
+  const user = useStore((state) => state.user);
   const navigate = useNavigate();
 
   const onClose = () => {
@@ -27,8 +30,26 @@ function DeleteAlert() {
     setIsOpen(true);
   };
 
-  function handleDeleteChar() {
-    const characterId = currentCharacter._id;
+  async function handleDeleteChar() {
+    const characterId = currentCharacter._id as string;
+    let tempUser;
+
+    if (user) {
+      tempUser = {
+        ...user,
+      };
+      let updatedUserCharacters = tempUser?.characters.filter(
+        (character) => character._id !== currentCharacter._id,
+      );
+      tempUser.characters = updatedUserCharacters;
+      updateUser(tempUser);
+    }
+
+    try {
+      characterService.deleteCharacter(characterId);
+    } catch (err: unknown) {
+      console.log(err);
+    }
 
     navigate("/characters");
   }
@@ -59,4 +80,4 @@ function DeleteAlert() {
   );
 }
 
-export default DeleteAlert;
+export default DeleteCharAlert;
