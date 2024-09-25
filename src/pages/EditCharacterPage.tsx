@@ -319,6 +319,7 @@ function EditCharacterPage() {
       characterService.saveCharacter({
         ...values,
         skills: currentCharacter.skills,
+        classes: currentCharacter.classes,
         _id: characterId,
       });
     } catch (err: unknown) {
