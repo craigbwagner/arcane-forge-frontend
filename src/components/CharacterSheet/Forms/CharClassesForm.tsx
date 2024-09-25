@@ -11,7 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import ClassSelector from "./ClassSelector";
 
 function CharClassesForm({
   form,
@@ -36,16 +35,18 @@ function CharClassesForm({
   }
   return (
     <div>
-      {currentCharacter.classes.map((characterClass, index) => (
-        <ClassSelector
-          key={characterClass.name + index}
-          characterClass={characterClass}
-          form={form}
-          index={index}
-        />
-      ))}
+      <ul>
+        {currentCharacter.classes.map((characterClass, index) => (
+          <li key={characterClass.name + index}>
+            <h3>
+              {characterClass.subclass} {characterClass.name}
+            </h3>
+            <p>{characterClass.level}</p>
+          </li>
+        ))}
+      </ul>
       <div className="flex">
-        <Select>
+        <Select value={newClass} onValueChange={(e) => setNewClass(e)}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Class" />
           </SelectTrigger>
@@ -67,9 +68,22 @@ function CharClassesForm({
           </SelectContent>
         </Select>
         <label htmlFor="level">Level</label>
-        <Input type="number" name="level" value={newLevel}></Input>
+        <Input
+          type="number"
+          name="level"
+          value={newLevel}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setNewLevel(Number(e.target.value))
+          }
+        ></Input>
         <label htmlFor="subclass">Subclass</label>
-        <Input name="subclass"></Input>
+        <Input
+          name="subclass"
+          value={newSubclass}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setNewSubclass(e.target.value)
+          }
+        ></Input>
         <Button onClick={handleAddClass}>Add Class</Button>
       </div>
     </div>
